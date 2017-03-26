@@ -21,7 +21,7 @@
         	session.setAttribute("logged_in", "yes");
         	rs = account.executeQuery();
         	rs.next();
-        	//session.setAttribute("Username", rs.getNString(username));
+        	session.setAttribute("Username", rs.getNString("username"));
         	session.setAttribute("First_Name", rs.getNString("firstname"));
         	session.setAttribute("Last_Name", rs.getNString("lastname"));
         	session.setAttribute("Email", rs.getNString("email"));

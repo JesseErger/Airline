@@ -6,7 +6,6 @@ String first_name = session.getAttribute("First_Name").toString();
 String last_name = session.getAttribute("Last_Name").toString();
 String email = session.getAttribute("Email").toString();
 String acc_type = session.getAttribute("Account_Type").toString();
-
 %>
 <!DOCTYPE html>
 <html>
