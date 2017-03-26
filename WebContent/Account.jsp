@@ -12,14 +12,40 @@ String acc_type = session.getAttribute("Account_Type").toString();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ACCOUNT PAGE</title>
+        <style type = "text/css">
+        h1{text-align:center;
+           color:red;}
+        body{background-image:url(plane2.PNG);
+        } 
+        h2{color:#123450;
+          font-weight:bold;
+          font-style:italian;}
+        table{top:20px;
+              left: 700px;
+              border: 2px dashed black;
+              position: absolute;
+              background-color: white;}  
+        </style>
+        <title>Account</title>
     </head>
     <body>
-    		<center>
-    		Welcome,
-			<% 
-			out.println(first_name); 
-			%>
-			</center>
+        <h1>Welcome to Iowa Airline!!</h1>
+        <hr />
+        <h2>Thank you for choosing Iowa airline, we will providing you best service for your trip</h2>
+        <table>
+        <tr>
+            <td>
+           Hello <%out.println(first_name); %>!
+            </td>
+        </tr>
+        <tr>
+            <td>
+                      Email: <%out.println(email); %>
+            </td>
+        </tr>
+        
+            
+        </table>
+        
     </body>
 </html>
