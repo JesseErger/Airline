@@ -1,42 +1,25 @@
-<%-- 
-    Document   : Login
-    Created on : 28 Feb, 2015, 8:50:26 AM
-    Author     : Lahaul Seth
---%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+ 
+<%@ page import ="java.sql.*"  language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" import="java.io.*,java.util.*" %>
+<%
+String username = session.getAttribute("Username").toString();
+String first_name = session.getAttribute("First_Name").toString();
+String last_name = session.getAttribute("Last_Name").toString();
+String email = session.getAttribute("Email").toString();
+String acc_type = session.getAttribute("Account_Type").toString();
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Account</title>
+        <title>ACCOUNT PAGE</title>
     </head>
     <body>
-        <form method="post" action="validate.jsp">
-            <center>
-            <table border="1" cellpadding="5" cellspacing="2">
-                <thead>
-                    <tr>
-                        <th colspan="2">Login Here</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Username</td>
-                        <td><input type="text" name="username" required/></td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td><input type="password" name="password" required/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center"><input type="submit" value="Login" />
-                            &nbsp;&nbsp;
-                            <input type="reset" value="Reset" />
-                        </td>                        
-                    </tr>                    
-                </tbody>
-            </table>
-            </center>
-        </form>
+    		<center>
+    		Welcome,
+			<% 
+			out.println(first_name); 
+			%>
+			</center>
     </body>
 </html>
