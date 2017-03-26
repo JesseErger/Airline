@@ -4,7 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+         <style type = "text/css">
+         body{background-image:url(plane2.PNG);
+        }
+        h1{text-align:center;
+              color:red;}
+         td{font-weight:bold;
+             font-style:center}
+         a:hover{ background-color: blue;
+                  color: white;
+                  text_decoration:underline;
+                  font-weight:bold;
+         } 
+         a:active{ background-color:red;
+         }   
+         
+        </style>
+<title>Create Account</title>
 </head>
 <body>
 <form method="post" action="CreateUser.jsp">

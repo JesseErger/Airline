@@ -1,7 +1,7 @@
 <%-- 
     Document   : Create User
     Created on : 15 March, 2017
-    Author     : Chris Boswell
+
 --%>
  
 <%@ page import ="java.sql.*"  language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="java.io.*,java.util.*" %>

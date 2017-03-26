@@ -1,7 +1,6 @@
 <%-- 
     Document   : validate
     Created on : 15 March, 2017
-    Author     : Chris Boswell
 --%>
  
 <%@ page import ="java.sql.*"  language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" import="java.io.*,java.util.*" %>

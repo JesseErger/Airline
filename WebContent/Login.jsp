@@ -19,7 +19,7 @@
          }   
          
         </style>
-        <title>Login Demo with JSP</title>
+        <title>Login</title>
        
     </head>
     <body>
