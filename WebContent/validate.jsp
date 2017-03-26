@@ -26,7 +26,7 @@
         	session.setAttribute("Last_Name", rs.getNString("lastname"));
         	session.setAttribute("Email", rs.getNString("email"));
         	session.setAttribute("Account_Type", rs.getNString("acc_type"));
-           String site = new String("http://localhost:8080/com.ariline.web.index/Account.jsp");
+           String site = new String("http://localhost:8080/com.airline.web.index/Account.jsp");
            //response.setHeader("Location", site); 
            response.sendRedirect(site);
         }        	
@@ -38,8 +38,8 @@
         
            
    }
-   catch(Exception e){       
-       out.println("Something went wrong !! Please try again" + e.getMessage());       
+   catch(Exception e){
+	         
    }
 
 %>
