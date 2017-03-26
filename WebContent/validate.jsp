@@ -4,34 +4,37 @@
     Author     : Chris Boswell
 --%>
  
-<%@ page import ="java.sql.*"  language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="java.io.*,java.util.*" %>
+<%@ page import ="java.sql.*"  language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" import="java.io.*,java.util.*" %>
 <%
     try{
         String username = request.getParameter("username");   
         String password = request.getParameter("password");
         Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");    
-        PreparedStatement pst = conn.prepareStatement("Select username,password from user where username=? and password=?");
-        PreparedStatement account = conn.prepareStatement("Select * from user where username=? and password=?");
+        PreparedStatement pst = conn.prepareStatement("Select username,password from users where username=? and password=?");
+        PreparedStatement account = conn.prepareStatement("Select * from users where username=? and password=?");
         pst.setString(1, username);
         pst.setString(2, password);
         account.setString(1, username);
         account.setString(2, password);
         ResultSet rs = pst.executeQuery();                        
         if(rs.next()) { 
-        	session.setAttribute("logged in", "yes");
+        	session.setAttribute("logged_in", "yes");
         	rs = account.executeQuery();
         	rs.next();
-           out.println("Welcome " + rs.getNString("first"));
-           out.println("Currently logged in as a " + rs.getNString("acc_type"));
+        	//session.setAttribute("Username", rs.getNString(username));
+        	session.setAttribute("First_Name", rs.getNString("firstname"));
+        	session.setAttribute("Last_Name", rs.getNString("lastname"));
+        	session.setAttribute("Email", rs.getNString("email"));
+        	session.setAttribute("Account_Type", rs.getNString("acc_type"));
            String site = new String("http://localhost:8080/com.ariline.web.index/Account.jsp");
-           response.setHeader("Location", site); 
+           //response.setHeader("Location", site); 
            response.sendRedirect(site);
         }        	
         else{
         	String site = new String("http://localhost:8080/com.ariline.web.index/Login.jsp");
-        	response.sendRedirect(site);
-           out.println("Invalid login credentials"); 
+           out.println("Invalid login credentials - redirecting to hompeage"); 
+           response.sendRedirect(site);
         }
         
            
