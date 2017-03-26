@@ -57,7 +57,7 @@
         <table>
         <tr>
         <td>do not have an account?</td>
-        <td><a href="http://www.ebay.com" title="create an new account">click here</a></td>
+        <td><a href="NewUserPage.jsp" title="create an new account">click here</a></td>
         </tr>
         </table>
         </div>
