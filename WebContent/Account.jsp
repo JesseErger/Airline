@@ -27,22 +27,21 @@ String acc_type = session.getAttribute("Account_Type").toString();
         <title>Account</title>
     </head>
     <body>
-        <h1>Welcome to Iowa Airline!!</h1>
+        <h1>Welcome to Iowa Airline!!
+        </h1>
         <hr />
         <h2>Thank you for choosing Iowa airline, we will providing you best service for your trip</h2>
         <table>
         <tr>
             <td>
-           Hello <%out.println(first_name); %>!
+           Hello <%out.println(first_name); %>! <a href="Login.jsp" title="Log Out">Log out</a>
             </td>
         </tr>
         <tr>
             <td>
-                      Email: <%out.println(email); %>
+                      Email: <%out.println(email); %> 
             </td>
-        </tr>
-        
-            
+        </tr>   
         </table>
         
     </body>
