@@ -32,8 +32,8 @@ page import="java.sql.*" language="java"
 			String newPassword = salt.toString();
 			out.println(newPassword);
 
-			classes.sendMail.send("PASSWORD RESET", newPassword, email);
-
+			//classes.sendMail.send("PASSWORD RESET", newPassword, email);
+			sendMail.send("PASSWORD RESET", newPassword, email);
 			out.println("emailing password");
 
 			PreparedStatement passUpdate = conn
