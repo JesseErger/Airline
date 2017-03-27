@@ -3,7 +3,6 @@
     Created on : 15 March, 2017
 
 --%>
-
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*"%>
@@ -41,9 +40,12 @@
 	        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
 	        Statement stmt = null;
 	        stmt = conn.createStatement();
-	        
+	        String acc_type = "customer";
+	        if(session.getAttribute("Account_Type").equals("admin")){
+	        	acc_type = "manager";
+	        }
 	        String sql = String.format("INSERT INTO `sys`.`users` (`password`, `lastname`, `username`, `firstname`, `acc_type`, `email`)" + 
-	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", password, last, username, first, "customer", email);
+	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", password, last, username, first, acc_type, email);
 	        stmt.executeUpdate(sql);
 	        out.print("Your account has been succesfully created");
         }
