@@ -27,6 +27,9 @@
         <h1>Welcome to Iowa Airline!!</h1>
         <hr />
             <center>
+            <%if("True".equals(session.getAttribute("Invalid_Login").toString()))
+        	out.println("Invalid Login, please try again!");
+        	%>
             <table border="1" cellpadding="5" cellspacing="2">
                 <thead>
                     <tr>
@@ -56,8 +59,8 @@
         <div>
         <table>
         <tr>
-        <td>do not have an account?</td>
-        <td><a href="NewUserPage.jsp" title="create an new account">click here</a></td>
+        <td>Don't have an account?</td>
+        <td><a href="NewUserPage.jsp" title="create a new account">click here</a></td>
         </tr>
         </table>
         </div>

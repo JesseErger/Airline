@@ -17,7 +17,7 @@
         	out.println("You must enter a valid First name!");
         }
         else if(last.length()==0 || !last.matches("[a-zA-Z ]*")){
-        	if(last.length()>=0 ){
+        	if(last.length()>0 ){
         	out.println("A last name cannot contain non letter characeters");      	
         	}
         	else{

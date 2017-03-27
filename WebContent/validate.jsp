@@ -18,6 +18,7 @@
         account.setString(2, password);
         ResultSet rs = pst.executeQuery();                        
         if(rs.next()) { 
+        	session.setAttribute("Invalid_Login", "False");
         	session.setAttribute("logged_in", "yes");
         	rs = account.executeQuery();
         	rs.next();
@@ -26,13 +27,16 @@
         	session.setAttribute("Last_Name", rs.getNString("lastname"));
         	session.setAttribute("Email", rs.getNString("email"));
         	session.setAttribute("Account_Type", rs.getNString("acc_type"));
-           String site = new String("http://localhost:8080/com.airline.web.index/Account.jsp");
-           //response.setHeader("Location", site); 
-           response.sendRedirect(site);
+           String site = new String("http://localhost:8080/com.ariline.web.index/Account.jsp");
+           response.setStatus(response.SC_MOVED_TEMPORARILY);
+           response.setHeader("Location", site); 
+            
+           //response.sendRedirect(site);
         }        	
         else{
         	String site = new String("http://localhost:8080/com.ariline.web.index/Login.jsp");
-           out.println("Invalid login credentials - redirecting to hompeage"); 
+           //out.println("Invalid login credentials - redirecting to hompeage"); 
+           session.setAttribute("Invalid_Login", "True");
            response.sendRedirect(site);
         }
         
@@ -41,5 +45,4 @@
    catch(Exception e){
 	         
    }
-
 %>
