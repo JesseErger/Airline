@@ -40,6 +40,10 @@ table {
 </head>
 <body>
 	<h1>Welcome to Iowa Airline!!</h1>
+	<h2><%if(session.getValue("Account_Type").equals("admin")){
+			out.println("<a href=\"NewUserPage.jsp\"title=\"Create Manager\">Create Manager</a>");
+	}
+		%></h2>
 	<hr />
 	<h2>Thank you for choosing Iowa airline, we will providing you
 		best service for your trip</h2>

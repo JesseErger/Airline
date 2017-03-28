@@ -38,9 +38,9 @@ a:active {
 		<h1>Welcome to Iowa Airline!!</h1>
 		<hr />
 		<center>
-			<!--%if("True".equals(session.getAttribute("Invalid_Login").toString()))
+			<%if("True".equals(session.getAttribute("Invalid_Login").toString()))
         	out.println("Invalid Login, please try again!");
-        	%-->
+        	%>
 			<table border="1" cellpadding="5" cellspacing="2">
 				<thead>
 					<tr>
