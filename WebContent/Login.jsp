@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -60,6 +61,17 @@ a:active {
 						<td colspan="2" align="center"><input type="submit"
 							value="Login" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
 						</td>
+					</tr>
+				
+				
+					<tr>
+					<td>
+					<a href = "ResetPasswordPage.jsp" title ="reset password">forget password?</a>
+					
+					</td>
+					<td>
+					<a href = "ForgetUsernamePage.jsp" title = "forget username">forget username?</a>
+					</td>
 					</tr>
 				</tbody>
 			</table>
