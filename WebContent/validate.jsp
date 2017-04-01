@@ -29,6 +29,7 @@
         	session.setAttribute("Last_Name", rs.getNString("lastname"));
         	session.setAttribute("Email", rs.getNString("email"));
         	session.setAttribute("Account_Type", rs.getNString("acc_type"));
+        	session.setAttribute("loged_out", "false");
            String site = new String("http://localhost:8080/com.airline.web.index/Account.jsp");
            response.setStatus(response.SC_MOVED_TEMPORARILY);
            response.setHeader("Location", site); 

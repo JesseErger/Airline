@@ -17,7 +17,7 @@ acc_type = session.getAttribute("Account_Type").toString();
 catch(Exception e){
     // Are not logged in/ invalid session
 	String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
-    response.sendRedirect(site); 
+    response.sendRedirect(site);
     return;
 }
 %>
