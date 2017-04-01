@@ -2,11 +2,24 @@
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"
 	import="java.io.*,java.util.*"%>
 <%
-String username = session.getAttribute("Username").toString();
-String first_name = session.getAttribute("First_Name").toString();
-String last_name = session.getAttribute("Last_Name").toString();
-String email = session.getAttribute("Email").toString();
-String acc_type = session.getAttribute("Account_Type").toString();
+String username = "";
+String first_name = "";
+String last_name = "";
+String email = "";
+String acc_type = "";
+try{
+username = session.getAttribute("Username").toString();
+first_name = session.getAttribute("First_Name").toString();
+last_name = session.getAttribute("Last_Name").toString();
+email = session.getAttribute("Email").toString();
+acc_type = session.getAttribute("Account_Type").toString();
+}
+catch(Exception e){
+    // Are not logged in/ invalid session
+	String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
+    response.sendRedirect(site); 
+    return;
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -40,9 +53,17 @@ table {
 </head>
 <body>
 	<h1>Welcome to Iowa Airline!!</h1>
-	<h2><%if(session.getValue("Account_Type").equals("admin")){
+	<h2><%	try{
+			if(session.getValue("Account_Type").equals("admin")){
 			out.println("<a href=\"NewUserPage.jsp\"title=\"Create Manager\">Create Manager</a>");
-	}
+			}
+			}
+			catch(Exception e){
+				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
+		        response.sendRedirect(site);
+			}
+	
+	
 		%></h2>
 	<hr />
 	<h2>Thank you for choosing Iowa airline, we will providing you
@@ -54,7 +75,7 @@ table {
 			</td>
 		</tr>
 		<tr>
-			<td>Email: <%out.println(email); %>
+			<td>Email: <% out.println(email); %>
 			</td>
 		</tr>
 	</table>

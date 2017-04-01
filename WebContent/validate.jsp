@@ -39,6 +39,7 @@
         	String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
            //out.println("Invalid login credentials - redirecting to hompeage"); 
            session.setAttribute("Invalid_Login", "True");
+           session.invalidate();
            response.sendRedirect(site);
         }
         

@@ -1,5 +1,8 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" language="java"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"
+	import="java.io.*,java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,8 +41,14 @@ a:active {
 		<h1>Welcome to Iowa Airline!!</h1>
 		<hr />
 		<center>
-			<%if("True".equals(session.getAttribute("Invalid_Login").toString()))
+			<%
+			try{
+			if("True".equals(session.getAttribute("Invalid_Login").toString()))
         	out.println("Invalid Login, please try again!");
+			}
+			catch(Exception e){
+			}
+			
         	%>
 			<table border="1" cellpadding="5" cellspacing="2">
 				<thead>
