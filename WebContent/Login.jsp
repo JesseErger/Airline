@@ -2,16 +2,7 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"
 	import="java.io.*,java.util.*"%>
-<%try{
-	String last_page = response.getHeader("Location");
-	if(last_page.equals("http://localhost:8080/com.airline.web.index/Account.jsp")){
-	session.invalidate();
-	}
-}
-catch(Exception e){
-	
-}
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,3 +97,4 @@ a:active {
 	</div>
 </body>
 </html>
+        

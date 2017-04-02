@@ -7,12 +7,14 @@ String first_name = "";
 String last_name = "";
 String email = "";
 String acc_type = "";
+String loged_out = "";
 try{
 username = session.getAttribute("Username").toString();
 first_name = session.getAttribute("First_Name").toString();
 last_name = session.getAttribute("Last_Name").toString();
 email = session.getAttribute("Email").toString();
 acc_type = session.getAttribute("Account_Type").toString();
+loged_out = session.getAttribute("loged_out").toString();
 }
 catch(Exception e){
     // Are not logged in/ invalid session
@@ -20,6 +22,11 @@ catch(Exception e){
     response.sendRedirect(site);
     return;
 }
+if(loged_out.equals("")){
+	String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
+response.sendRedirect(site);
+return;
+}	
 %>
 <!DOCTYPE html>
 <html>
@@ -66,12 +73,13 @@ table {
 	
 		%></h2>
 	<hr />
-	<h2>Thank you for choosing Iowa airline, we will providing you
-		best service for your trip</h2>
+	<h2>Thank you for choosing Iowa airline, we will provide you with
+		best service for your trip</h2>	
 	<table>
 		<tr>
-			<td>Hello <%out.println(first_name); %>! <a href="Login.jsp"
-				title="Log Out">Log out</a>
+			<td>Hello <%out.println(first_name); %>! 
+			<button type="button" onclick="location = 'LogOut.jsp'">Log Out</button>
+			</form>
 			</td>
 		</tr>
 		<tr>
