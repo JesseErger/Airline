@@ -7,6 +7,7 @@
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*"%>
 <%
+Boolean iscust = false;
 	try{
 		String first = request.getParameter("first");   
         String last = request.getParameter("last");
@@ -41,13 +42,23 @@
 	        Statement stmt = null;
 	        stmt = conn.createStatement();
 	        String acc_type = "customer";
+	        
+	        try{
 	        if(session.getAttribute("Account_Type").equals("admin")){
 	        	acc_type = "manager";
+	        }
+	        }
+	        catch(Exception e){
+	        	iscust = true;
 	        }
 	        String sql = String.format("INSERT INTO `sys`.`users` (`password`, `lastname`, `username`, `firstname`, `acc_type`, `email`)" + 
 	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", password, last, username, first, acc_type, email);
 	        stmt.executeUpdate(sql);
 	        out.print("Your account has been succesfully created");
+        }
+        if(!iscust){
+        	String site = new String("http://localhost:8080/com.airline.web.index/Account.jsp");
+	        response.sendRedirect(site);	
         }
         
         
@@ -55,6 +66,13 @@
 	catch(Exception e) {
 		if(e.getMessage().contains("Duplicate") && e.getMessage().contains("key"))
 		out.println("This username has already been selected, please choose a different username"); 
+		else 
+			out.println("There has been a problem creating the account, please try again!");
 	}
-
 %>
+
+<script>
+  setTimeout(function() {
+      document.location = "Login.jsp";
+  }, 2000);
+</script>
