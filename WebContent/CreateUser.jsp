@@ -6,6 +6,10 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*"%>
+<meta http-equiv="Refresh" content="5;url=Account.jsp">
+<meta http-equiv="Refresh" content="5;url=Login.jsp">
+<% response.setHeader("Refresh", "5;url=Login.jsp"); %>
+<% response.setHeader("Refresh", "5;url=Login.jsp"); %>
 <%
 Boolean iscust = false;
 	try{
@@ -54,13 +58,15 @@ Boolean iscust = false;
 	        String sql = String.format("INSERT INTO `sys`.`users` (`password`, `lastname`, `username`, `firstname`, `acc_type`, `email`)" + 
 	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", password, last, username, first, acc_type, email);
 	        stmt.executeUpdate(sql);
-	        out.print("Your account has been succesfully created");
-        }
-        if(!iscust){
-        	String site = new String("http://localhost:8080/com.airline.web.index/Account.jsp");
-	        response.sendRedirect(site);	
-        }
-        
+	        out.print("Your account has been succesfully created!");
+	        
+	        if(iscust){
+	        	response.setHeader("Refresh", "5;url=Login.jsp");
+	        }
+	        else{
+	        	response.setHeader("Refresh", "5;url=Account.jsp");
+	        }
+        }     
         
 	}
 	catch(Exception e) {
@@ -71,8 +77,3 @@ Boolean iscust = false;
 	}
 %>
 
-<script>
-  setTimeout(function() {
-      document.location = "Login.jsp";
-  }, 2000);
-</script>
