@@ -33,8 +33,7 @@
            String site = new String("http://localhost:8080/com.airline.web.index/Account.jsp");
            response.setStatus(response.SC_MOVED_TEMPORARILY);
            response.setHeader("Location", site); 
-            
-           //response.sendRedirect(site);
+           response.sendRedirect(site);
         }        	
         else{
         	String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
