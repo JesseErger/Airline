@@ -29,7 +29,7 @@ a:active {
 	background-color: red;
 }
 </style>
-<title>Create Account</title>
+<title>Add Plane</title>
 </head>
 <body>
 	<form method="post" action="CreatePlane.jsp">

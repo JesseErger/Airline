@@ -21,7 +21,8 @@
 	        String sql = String.format("INSERT INTO `sys`.`plane` (`added_by`, `model`, `capacity`)" + 
 	        		"VALUES ('%s', '%s', '%s')", added_by, model, capacity);
 	        stmt.executeUpdate(sql);
-	        out.print("Plane has been added!");
+	        out.print("Plane has been added! Redirecting you to your homepage");
+	        
         }
         
         
@@ -31,3 +32,8 @@
 	}
 
 %>
+<script>
+  setTimeout(function() {
+      document.location = "Account.jsp";
+  }, 2000);
+</script>
