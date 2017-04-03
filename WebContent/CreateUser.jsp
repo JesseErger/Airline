@@ -6,10 +6,6 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*"%>
-<meta http-equiv="Refresh" content="5;url=Account.jsp">
-<meta http-equiv="Refresh" content="5;url=Login.jsp">
-<% response.setHeader("Refresh", "5;url=Login.jsp"); %>
-<% response.setHeader("Refresh", "5;url=Login.jsp"); %>
 <%
 Boolean iscust = false;
 	try{
