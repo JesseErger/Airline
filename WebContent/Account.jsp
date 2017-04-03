@@ -152,7 +152,7 @@ h2 {
 	<div class="dropdown"><button class="dropbtn" onclick="myfunction()">User information</button>
 	<div class="dropdown-content" id="myDropdown">
 	    <a href="#">change Username</a>
-	    <a href="ResetPassword">change password</a>
+	    <a href="ResetPasswordPage.jsp">change password</a>
 	    <a href="#">add card</a>
 	    <a href="#">delete card</a>
 	    <a href="#">order history</a>
