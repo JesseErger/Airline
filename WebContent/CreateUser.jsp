@@ -6,7 +6,12 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*"%>
+<meta http-equiv="Refresh" content="5;url=Account.jsp">
+<meta http-equiv="Refresh" content="5;url=Login.jsp">
+<% response.setHeader("Refresh", "5;url=Login.jsp"); %>
+<% response.setHeader("Refresh", "5;url=Login.jsp"); %>
 <%
+Boolean iscust = false;
 	try{
 		String first = request.getParameter("first");   
         String last = request.getParameter("last");
@@ -41,20 +46,34 @@
 	        Statement stmt = null;
 	        stmt = conn.createStatement();
 	        String acc_type = "customer";
+	        
+	        try{
 	        if(session.getAttribute("Account_Type").equals("admin")){
 	        	acc_type = "manager";
+	        }
+	        }
+	        catch(Exception e){
+	        	iscust = true;
 	        }
 	        String sql = String.format("INSERT INTO `sys`.`users` (`password`, `lastname`, `username`, `firstname`, `acc_type`, `email`)" + 
 	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", password, last, username, first, acc_type, email);
 	        stmt.executeUpdate(sql);
-	        out.print("Your account has been succesfully created");
-        }
-        
+	        out.print("Your account has been succesfully created!");
+	        
+	        if(iscust){
+	        	response.setHeader("Refresh", "5;url=Login.jsp");
+	        }
+	        else{
+	        	response.setHeader("Refresh", "5;url=Account.jsp");
+	        }
+        }     
         
 	}
 	catch(Exception e) {
 		if(e.getMessage().contains("Duplicate") && e.getMessage().contains("key"))
 		out.println("This username has already been selected, please choose a different username"); 
+		else 
+			out.println("There has been a problem creating the account, please try again!");
 	}
-
 %>
+

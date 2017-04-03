@@ -123,14 +123,35 @@ h2 {
 </head>
 <body>
 	<h1>Welcome to Iowa Airline!!</h1>
+<<<<<<< HEAD
 	<hr />
 	
 	<div class="up"	>
 	<table borde=2px >
+=======
+	<h2>
+		<%	try{
+			if(session.getValue("Account_Type").equals("admin")){
+			out.println("<button type=\"button\" onclick=\"location = 'NewUserPage.jsp'\">Add Manager</button>");
+			out.print("<button type=\"button\" onclick=\"location = 'NewPlane.jsp'\">Add Plane</button>");
+			}
+			else if(session.getValue("Account_Type").equals("manager")){
+				out.println("<button type=\"button\" onclick=\"location = 'NewPlane.jsp'\">Add Plane</button>");
+			}
+			}
+			catch(Exception e){
+				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
+		        response.sendRedirect(site);
+			}
+		%>
+	</h2>
+	<h2>Thank you for choosing Iowa airline, we will provide you with
+		best service for your trip</h2>	
+	<table>
+>>>>>>> 7640e78fbd3c5706d9133d09fe3e9dd19f93274e
 		<tr>
 			<td ><font color="red">Hello <%out.println(first_name); %>! </font>
 			<button type="button" onclick="location = 'LogOut.jsp'">Log Out</button>
-			</form>
 			</td>
 		</tr>
 		<tr>
