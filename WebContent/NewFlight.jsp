@@ -56,7 +56,7 @@ a:active {
 					</tr>
 					<tr>
 						<td>Departure Time</td>
-						<td><input type="text" name="time_of_departure" required /></td>
+						<td><input type="text" name="time_of_departure" required/></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"

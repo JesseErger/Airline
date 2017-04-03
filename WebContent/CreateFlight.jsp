@@ -12,10 +12,7 @@
      	//needs to be formatted YYYY-MM-DD HH:MM:SS
         String date_time = date_of_departure.concat(time_of_departure.concat(":00"));
         String destination = request.getParameter("destination");
-        
-        int Plane_ID = Integer.parseInt(request.getParameter("Plane_ID"));
-        String sql1 = String.format("INSERT INTO `sys`.`flights` (`added_by`, 'destination', `date_of_departure`, `Plane_ID`)" + 
-        		"VALUES ('%s', '%s', '%s', '%d')", added_by, destination, date_time, Plane_ID);
+        String Plane_ID = request.getParameter("Plane_ID");
         if(!acc_type.equals("admin") && !acc_type.equals("manager")){
         	out.println("You dont have permission to add a flight!");
         }
@@ -25,7 +22,7 @@
 	        Statement stmt = null;
 	        stmt = conn.createStatement();
 	        added_by = session.getAttribute("Username").toString();
-	        String sql = String.format("INSERT INTO `sys`.`flights` (`added_by`, 'destination', `date_of_departure`, `Plane_ID`)" + 
+	        String sql = String.format("INSERT INTO `sys`.`flights` (`added_by`, `destination`, `date_of_departure`, `Plane_ID`)" + 
 	        		"VALUES ('%s', '%s', '%s', '%s')", added_by, destination, date_time, Plane_ID);
 	        stmt.executeUpdate(sql);
 	        out.print("Flight has been added! Redirecting you to your homepage");
@@ -33,14 +30,9 @@
         }     
 	}
 	catch(Exception e) {
-		String date_of_departure = request.getParameter("date_of_departure").concat(" ");
-        String time_of_departure = request.getParameter("time_of_departure");
-     	//needs to be formatted YYYY-MM-DD HH:MM:SS
-        String date_time = date_of_departure.concat(time_of_departure.concat(":00"));
-     	
-		out.println("There was a problem adding the plane, please try again!" + date_time); 
-		out.println(e.getMessage());
-		//response.setHeader("Refresh", "5;url=NewFlight.jsp");
+		out.println("There was a problem adding the plane, please try again!"); 
+		//out.println(e);
+		response.setHeader("Refresh", "5;url=NewFlight.jsp");
 	}
 
 %>
