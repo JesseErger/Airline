@@ -24,8 +24,8 @@ catch(Exception e){
 }
 if(loged_out.equals("")){
 	String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
-response.sendRedirect(site);
-return;
+	response.sendRedirect(site);
+	return;
 }	
 %>
 <!DOCTYPE html>
@@ -64,10 +64,12 @@ table {
 		<%	try{
 			if(session.getValue("Account_Type").equals("admin")){
 			out.println("<button type=\"button\" onclick=\"location = 'NewUserPage.jsp'\">Add Manager</button>");
+			out.println("<button type=\"button\" onclick=\"location = 'NewFlight.jsp'\">Add Flight</button>");
 			out.print("<button type=\"button\" onclick=\"location = 'NewPlane.jsp'\">Add Plane</button>");
 			}
 			else if(session.getValue("Account_Type").equals("manager")){
-				out.println("<button type=\"button\" onclick=\"location = 'NewPlane.jsp'\">Add Plane</button>");
+				out.println("<button type=\"button\" onclick=\"location = 'NewFlight.jsp'\">Add Flight</button>");
+				out.print("<button type=\"button\" onclick=\"location = 'NewPlane.jsp'\">Add Plane</button>");
 			}
 			}
 			catch(Exception e){
