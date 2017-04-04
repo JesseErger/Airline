@@ -48,8 +48,8 @@ h2 {
 }
 
 .up {
-	top: 20px;
-	left: 700px;
+	top: 10px;
+	right: 10px;
 	position: absolute;
 	background-color: none;
 	text-transform: capitalize;
@@ -175,7 +175,7 @@ h2 {
 		<%
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"#\"title=\"add plane\">add plane</a>");
+					out.println("<a href=\"NewPlane.jsp\"title=\"add plane\">add plane</a>");
 				}
 			} catch (Exception e) {
 				String site = new String("#");
