@@ -175,7 +175,7 @@ h2 {
 		<%
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"#\"title=\"add plane\">add plane</a>");
+					out.println("<a href=\"NewPlane.jsp\"title=\"add plane\">add plane</a>");
 				}
 			} catch (Exception e) {
 				String site = new String("#");
