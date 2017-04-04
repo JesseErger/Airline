@@ -156,10 +156,10 @@ h2 {
 			<button class="dropbtn" onclick="myfunction()">User
 				information</button>
 			<div class="dropdown-content" id="myDropdown">
-				<a href="#">change Username</a> <a href="ResetPasswordPage.jsp">change
+				<a href="#">change Username</a> <a href="ChangePasswordPage.jsp">change
 					password</a> <a href="#">add card</a> <a href="#">delete card</a> <a
 					href="#">order history</a> <a href="#">your next trip</a> <a
-					href="Login.jsp">Log out</a>
+					href="LogOut.jsp">Log out</a>
 			</div>
 		</div>
 		<%
