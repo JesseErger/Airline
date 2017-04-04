@@ -42,14 +42,12 @@ a:active {
 		<hr />
 		<center>
 			<%
-			try{
-			if("True".equals(session.getAttribute("Invalid_Login").toString()))
-        	out.println("Invalid Login, please try again!");
-			}
-			catch(Exception e){
-			}
-			
-        	%>
+				try {
+					if ("True".equals(session.getAttribute("Invalid_Login").toString()))
+						out.println("Invalid Login, please try again!");
+				} catch (Exception e) {
+				}
+			%>
 			<table border="1" cellpadding="5" cellspacing="2">
 				<thead>
 					<tr>
@@ -71,16 +69,13 @@ a:active {
 							value="Login" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
 						</td>
 					</tr>
-				
-				
+
+
 					<tr>
-					<td>
-					<a href = "ResetPasswordPage.jsp" title ="reset password">forget password?</a>
-					
-					</td>
-					<td>
-					<a href = "ForgetUsernamePage.jsp" title = "forget username">forget username?</a>
-					</td>
+						<td><a href="ResetPasswordPage.jsp" title="reset password">forget
+								password?</a></td>
+						<td><a href="ForgetUsernamePage.jsp" title="forget username">forget
+								username?</a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -97,4 +92,4 @@ a:active {
 	</div>
 </body>
 </html>
-        
+
