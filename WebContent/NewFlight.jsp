@@ -1,4 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" language="java"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
+	import="java.io.*,java.util.*"%>
+<%ResultSet resultset =null; ResultSet count =null;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +32,7 @@ a:active {
 	background-color: red;
 }
 </style>
-<title>Add Plane</title>
+<title>Add Flight</title>
 </head>
 <body>
 	<form method="post" action="CreateFlight.jsp">
@@ -40,11 +43,41 @@ a:active {
 						<th colspan="2">Add Flight</th>
 					</tr>
 				</thead>
+				<%
+					
+					try {
+						//Class.forName("com.mysql.jdbc.Driver").newInstance();
+						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
+						Statement stmt = null;
+				        stmt = conn.createStatement();
+						String sql = String.format("SELECT model FROM `sys`.`plane`");
+						resultset = stmt.executeQuery(sql);
+						ResultSetMetaData resultsetmd = resultset.getMetaData();
+						int size = resultsetmd.getColumnCount();					
+				%>
 
+				<center>
+					<h1>Select Plane</h1>
+					<select>
+						<%
+							while (resultset.next()) {
+						%>
+						<option><%=resultset.getString(size)%></option>
+						<%
+							}
+						%>
+					</select>
+				</center>
+
+				<%
+					} catch (Exception e) {
+						out.println("INVALID ->" + e);
+					}
+				%>
 				<tbody>
 					<tr>
-						<td>Plane ID</td>
-						<td><input type="text" name="Plane_ID" required /></td>
+						<td>Departure Location</td>
+						<td><input type="text" name="departure_loc" required /></td>
 					</tr>
 					<tr>
 						<td>Destination</td>
@@ -56,7 +89,11 @@ a:active {
 					</tr>
 					<tr>
 						<td>Departure Time</td>
-						<td><input type="text" name="time_of_departure" required/></td>
+						<td><input type="text" name="time_of_departure" required /></td>
+					</tr>
+					<tr>
+						<td>Flight Duration(Minutes)</td>
+						<td><input type="text" id = "dur" name="duration_min" required /></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
