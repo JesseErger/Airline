@@ -1,7 +1,7 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*"%>
-<%ResultSet resultset =null; ResultSet count =null;%>
+<%ResultSet resultset =null;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,6 +33,7 @@ a:active {
 }
 </style>
 <title>Add Flight</title>
+<h1>Add flight</h1>
 </head>
 <body>
 	<form method="post" action="CreateFlight.jsp">
@@ -44,21 +45,32 @@ a:active {
 					</tr>
 				</thead>
 				<%
-					
+				String origin = request.getParameter("origin").toString();
+				String destination = request.getParameter("destination").toString();
+				String date_ofdeparture = request.getParameter("date_of_departure").toString();
+				String time_of_departure = request.getParameter("time_of_departure").toString();
+				String arruval_date = request.getParameter("arrival_date").toString();
+				String arrival_time = request.getParameter("arrival_time").toString();
+				String capacity = request.getParameter("capacity").toString();
+				
+				session.setAttribute("origin", origin);
+				session.setAttribute("destination", destination);
+				session.setAttribute("date_of_departure", date_ofdeparture);
+				session.setAttribute("time_of_departure", time_of_departure);
+				session.setAttribute("arrival_date", arruval_date);
+				session.setAttribute("arrival_time", arrival_time);
+				session.setAttribute("capacity", capacity);
 					try {
-						//Class.forName("com.mysql.jdbc.Driver").newInstance();
 						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
 						Statement stmt = null;
 				        stmt = conn.createStatement();
-						String sql = String.format("SELECT model FROM `sys`.`plane`");
+						String sql = String.format("SELECT model FROM `sys`.`plane` WHERE capacity >= %s",capacity);
 						resultset = stmt.executeQuery(sql);
 						ResultSetMetaData resultsetmd = resultset.getMetaData();
 						int size = resultsetmd.getColumnCount();					
 				%>
-
-				<center>
-					<h1>Select Plane</h1>
-					<select>
+					Select from available Planes
+					<select name = 'model' id ='model'>
 						<%
 							while (resultset.next()) {
 						%>
@@ -66,34 +78,26 @@ a:active {
 						<%
 							}
 						%>
+						
 					</select>
-				</center>
-
 				<%
 					} catch (Exception e) {
 						out.println("INVALID ->" + e);
-					}
+					}					
 				%>
-				<tbody>
+				
+				<tbody>					
 					<tr>
-						<td>Departure Location</td>
-						<td><input type="text" name="departure_loc" required /></td>
+						<td>First Class Seating</td>
+						<td><input type="text" name="first_class" required /></td>
 					</tr>
 					<tr>
-						<td>Destination</td>
-						<td><input type="text" name="destination" required /></td>
+						<td>Business Class Seating</td>
+						<td><input type="text" name="business_class" required /></td>
 					</tr>
 					<tr>
-						<td>Departure Date</td>
-						<td><input type="text" name="date_of_departure" required /></td>
-					</tr>
-					<tr>
-						<td>Departure Time</td>
-						<td><input type="text" name="time_of_departure" required /></td>
-					</tr>
-					<tr>
-						<td>Flight Duration(Minutes)</td>
-						<td><input type="text" id = "dur" name="duration_min" required /></td>
+						<td>Coach Seating</td>
+						<td><input type="text" name="coach_class" required /></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"

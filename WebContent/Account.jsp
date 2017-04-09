@@ -185,7 +185,7 @@ h2 {
 		<%
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"NewFlight.jsp\"title=\"add flight\">add flight</a>");
+					out.println("<a href=\"FlightInfo.jsp\"title=\"add flight\">add flight</a>");
 				}
 			} catch (Exception e) {
 				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
