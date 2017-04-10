@@ -9,8 +9,7 @@
 	String acc_type = "";
 	String loged_out = "";
 	try {
-		username = session.ge
-				tAttribute("Username").toString();
+		username = session.getAttribute("Username").toString();
 		first_name = session.getAttribute("First_Name").toString();
 		last_name = session.getAttribute("Last_Name").toString();
 		email = session.getAttribute("Email").toString();
