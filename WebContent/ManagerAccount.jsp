@@ -166,7 +166,7 @@ h2 {
 		     <button class="dropbtn" onclick = "myfunction()">manage reservation</button>
 		     <div class="dropdown-content" id="myDropdown">
 		     <a href="EnterFirstLast.jsp">search customer by name</a>
-		     <a href="#">search customer by reservation ID</a>
+		     <a href="EnterReservationID.jsp">search customer by reservation ID</a>
 		     </div>
 		</div>     
 		
