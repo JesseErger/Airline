@@ -53,19 +53,19 @@ a:active {
 						<td><input type="text" name="destination" required /></td>
 					</tr>
 					<tr>
-						<td>Departure Date</td>
+						<td>Departure Date(YYYY-MM-DD)</td>
 						<td><input type="text" name="date_of_departure" required /></td>
 					</tr>
 					<tr>
-						<td>Departure Time</td>
+						<td>Departure Time(HH:MM)</td>
 						<td><input type="text" name="time_of_departure" required /></td>
 					</tr>
 					<tr>
-						<td>Arrival Date</td>
+						<td>Arrival Date (YYYY-MM-DD)</td>
 						<td><input type="text" name="arrival_date" required /></td>
 					</tr>
 					<tr>
-						<td>Arrival Time</td>
+						<td>Arrival Time(HH:MM)</td>
 						<td><input type="text" name="arrival_time" required /></td>
 					</tr>
 					<tr>

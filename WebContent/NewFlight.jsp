@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-	import="java.io.*,java.util.*"%>
+	import="java.io.*,java.util.*,org.joda.time.*"%>
 <%ResultSet resultset =null;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -59,6 +59,30 @@ a:active {
 				session.setAttribute("arrival_date", arrival_date);
 				session.setAttribute("arrival_time", arrival_time);
 				session.setAttribute("capacity", capacity);
+				
+				String [] dep_date_parts =session.getAttribute("date_of_departure").toString().split("-");
+		        String [] dep_time_parts = time_of_departure.split(":");
+		        int year_d = Integer.parseInt(dep_date_parts[0]);
+		        int month_d = Integer.parseInt(dep_date_parts[1]);
+		        int day_d = Integer.parseInt(dep_date_parts[2]);
+		        int hour_d = Integer.parseInt(dep_time_parts[0]);
+		        int min_d = Integer.parseInt(dep_time_parts[1]);
+		        String [] arr_date_parts =session.getAttribute("arrival_date").toString().split("-");
+		        String [] arr_time_parts = arrival_time.split(":");
+		        int year_a = Integer.parseInt(arr_date_parts[0]);
+		        int month_a = Integer.parseInt(arr_date_parts[1]);
+		        int day_a= Integer.parseInt(arr_date_parts[2]);
+		        int hour_a = Integer.parseInt(arr_time_parts[0]);
+		        int min_a = Integer.parseInt(arr_time_parts[1]);
+		        
+		        DateTime depart = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d);
+		        DateTime arrive = new DateTime(year_a,  month_a,  day_a,  hour_a,  min_a);
+		        Interval intv = new Interval(depart, arrive);
+		        Duration dur = new Duration(intv);
+		        String duration = Long.toString(dur.getStandardMinutes());
+				
+				
+				
 					try {
 						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
 						Statement stmt = null;
@@ -66,7 +90,11 @@ a:active {
 						String sql = String.format("SELECT model FROM `sys`.`plane` WHERE capacity >= %s",capacity);
 						resultset = stmt.executeQuery(sql);
 						ResultSetMetaData resultsetmd = resultset.getMetaData();
-						int size = resultsetmd.getColumnCount();					
+						int size = resultsetmd.getColumnCount();
+						session.setAttribute("available_plane", "True");
+						if (size == 0){
+							session.setAttribute("available_plane", "False");
+						}
 				%>
 					Select from available Planes
 					<select name = 'model' id ='model'>
