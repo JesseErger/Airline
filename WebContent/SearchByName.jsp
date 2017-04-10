@@ -13,6 +13,8 @@ try{
 				.prepareStatement("Select * from users where firstname=? and lastname=?");
 		pst2.setString(1, firstname);
 		pst2.setString(2, lastname);
+		account2.setString(1,firstname);
+		account2.setString(2,lastname);
 		ResultSet rs = pst2.executeQuery();
 		if(rs.next()){
 		   session.setAttribute("Cant_Find", "False");

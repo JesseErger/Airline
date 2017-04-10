@@ -9,16 +9,21 @@ try{
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "Pwtemp01!");
 		PreparedStatement pst2 = conn
 				.prepareStatement("Select username from reservations where reservation_ID=?");
+		PreparedStatement pst3 = conn
+				.prepareStatement("Select * from reservations where reservation_ID=?");
 		pst2.setInt(1, reservationID);
+		pst3.setInt(1,reservationID);
 		ResultSet rs = pst2.executeQuery();
 		if(rs.next()){
 		   session.setAttribute("Cant_Find", "False");
 		   session.setAttribute("Found_User", "True");
+		   rs = pst3.executeQuery();
+		   rs.next();
 		   session.setAttribute("Username", rs.getNString("username"));
 		   PreparedStatement account = conn
 					.prepareStatement("Select * from users where username=?");
-		   account.setString(2,session.getAttribute("Username").toString());
-		  account.executeQuery();
+		   account.setString(1,session.getAttribute("Username").toString());
+		  rs=account.executeQuery();
 		  rs.next();
 		   session.setAttribute("Username2", rs.getNString("username"));
 		   session.setAttribute("Password2", rs.getNString("password"));
