@@ -21,8 +21,6 @@
 					String from = request.getParameter("from");
 					String date = request.getParameter("date");
 					String ticketClass = request.getParameter("class");
-					String password = request.getParameter("password");
-					String conf_password = request.getParameter("ConfirmPassword");
 
 					Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
 					Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "Pwtemp01!");
