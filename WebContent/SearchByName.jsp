@@ -10,7 +10,7 @@ try{
 		PreparedStatement pst2 = conn
 				.prepareStatement("Select firstname,lastname from users where firstname=? and lastname=?");
 		PreparedStatement account2 = conn
-				.prepareStatement("Select * from users where username=? and password=?");
+				.prepareStatement("Select * from users where firstname=? and lastname=?");
 		pst2.setString(1, firstname);
 		pst2.setString(2, lastname);
 		ResultSet rs = pst2.executeQuery();
