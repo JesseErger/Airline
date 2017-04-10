@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-	import="java.io.*,java.util.*"%>
+	import="java.io.*,java.util.*,org.joda.time.*,java.text.*"%>
 <%
 	String added_by = "";
 	String model = request.getParameter("model");
@@ -22,6 +22,20 @@
 					"INSERT INTO `sys`.`plane` (`added_by`, `model`, `capacity`)" + "VALUES ('%s', '%s', '%s')",
 					added_by, model, capacity);
 			stmt.executeUpdate(sql);
+			
+			String sql2 = "SELECT MAX(plane_ID) from `sys`.`plane`";
+			ResultSet resultset = null;
+			resultset = stmt.executeQuery(sql2);
+			resultset.next();
+			String plane_id = resultset.getString(1);
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			java.util.Date date = new java.util.Date();
+			String curtime = dateFormat.format(date);
+			String sql3 = String.format(
+					"INSERT INTO `sys`.`flight` (`added_by`, `origin`, `destination`, `departure_time`, `arrival_time`, `first_vacancy`, `coach_vacancy`, `business_vacancy`, `plane_ID`)" 
+							+ "VALUES ('%s', '%s', '%s','%s', '%s', '%s','%s', '%s', '%s')", added_by, "Iowa", "Iowa", curtime, curtime, "0", "0", "0", plane_id);
+			stmt.executeUpdate(sql3);
 			out.print("Plane has been added! Redirecting you to your homepage");
 
 		}
