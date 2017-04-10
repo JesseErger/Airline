@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
 -- Host: localhost    Database: sys
 -- ------------------------------------------------------
--- Server version	5.7.17-log
+-- Server version	5.7.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,20 +23,21 @@ DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction` (
-  `username` varchar(255) DEFAULT NULL,
-  `credit_card` int(16) DEFAULT NULL,
-  `cardholder_first` varchar(30) DEFAULT NULL,
-  `cardholder_last` varchar(30) DEFAULT NULL,
-  `exp_date` date DEFAULT NULL,
-  `CVV` int(3) DEFAULT NULL,
-  `address_street` varchar(50) DEFAULT NULL,
-  `address_city` varchar(50) DEFAULT NULL,
-  `address_state` varchar(50) DEFAULT NULL,
-  `address_zipcode` int(5) DEFAULT NULL,
-  `amount` double(7,2) DEFAULT NULL,
-  `reservation_ID` int(15) DEFAULT NULL,
-  `transaction_ID` int(15) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `credit_card` int(16) NOT NULL,
+  `cardholder_first` varchar(30) NOT NULL,
+  `cardholder_last` varchar(30) NOT NULL,
+  `exp_date` date NOT NULL,
+  `CVV` int(3) NOT NULL,
+  `address_street` varchar(50) NOT NULL,
+  `address_city` varchar(50) NOT NULL,
+  `address_state` varchar(50) NOT NULL,
+  `address_zipcode` int(5) NOT NULL,
+  `amount` double(7,2) NOT NULL,
+  `reservation_ID` int(15) NOT NULL,
+  `transaction_ID` int(15) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`transaction_ID`),
+  UNIQUE KEY `transaction_ID_UNIQUE` (`transaction_ID`),
   KEY `username` (`username`),
   KEY `reservation_ID` (`reservation_ID`),
   CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`),
@@ -53,4 +54,4 @@ CREATE TABLE `transaction` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-09 15:27:48
+-- Dump completed on 2017-04-10  2:08:52
