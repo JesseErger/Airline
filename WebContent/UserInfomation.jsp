@@ -8,23 +8,19 @@
 	String email = "";
 	String acc_type = "";
 	String password = "";
-	try {
+
 		username = session.getAttribute("Username2").toString();
 		first_name = session.getAttribute("First_Name2").toString();
 		last_name = session.getAttribute("Last_Name2").toString();
 		email = session.getAttribute("Email2").toString();
 		acc_type = session.getAttribute("Account_Type2").toString();
 		password = session.getAttribute("Password2").toString();
-	} catch (Exception e) {
-		
-		
-		
-	}
+	
 %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Customer Information</title>
 </head>
 <body>
 <center>
