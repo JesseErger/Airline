@@ -47,17 +47,16 @@ a:active {
 				<%
 				String origin = request.getParameter("origin").toString();
 				String destination = request.getParameter("destination").toString();
-				String date_ofdeparture = request.getParameter("date_of_departure").toString();
+				String date_of_departure = request.getParameter("date_of_departure").toString();
 				String time_of_departure = request.getParameter("time_of_departure").toString();
-				String arruval_date = request.getParameter("arrival_date").toString();
+				String arrival_date = request.getParameter("arrival_date").toString();
 				String arrival_time = request.getParameter("arrival_time").toString();
 				String capacity = request.getParameter("capacity").toString();
-				
 				session.setAttribute("origin", origin);
 				session.setAttribute("destination", destination);
-				session.setAttribute("date_of_departure", date_ofdeparture);
+				session.setAttribute("date_of_departure", date_of_departure);
 				session.setAttribute("time_of_departure", time_of_departure);
-				session.setAttribute("arrival_date", arruval_date);
+				session.setAttribute("arrival_date", arrival_date);
 				session.setAttribute("arrival_time", arrival_time);
 				session.setAttribute("capacity", capacity);
 					try {
