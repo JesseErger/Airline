@@ -5,7 +5,7 @@
 --%>
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-	import="java.io.*,java.util.*"%>
+	import="java.io.*,java.util.*" import="classes.sendMail"%>
 <%
 	Boolean iscust = false;
 	try {
@@ -53,7 +53,8 @@
 					password, last, username, first, acc_type, email);
 			stmt.executeUpdate(sql);
 			out.print("Your account has been succesfully created!");
-
+			sendMail.send("New account", "Your account is " + username + "\n your password is " + password
+					+ "\n please change your password in your account settings", email);
 			if (iscust) {
 				response.setHeader("Refresh", "5;url=Login.jsp");
 			} else {

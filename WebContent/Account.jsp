@@ -143,7 +143,7 @@ h2 {
 		</table>
 	</div>
 	<div class="container">
-		<a href="#home">Home</a>
+		<a href="SearchPage.jsp">Home</a>
 		<div class="dropdown">
 			<button class="dropbtn" onclick="myfunction()">find your
 				destination</button>
