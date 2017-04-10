@@ -1,6 +1,25 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*"%>
+	
+	
+	
+	<table border="1" cellpadding="5" cellspacing="2">
+				<thead>
+					<tr>
+						<th colspan="2">Search</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>Results</td>
+						<td>
+						
+						</td>
+					</tr>
+				</tbody>
+			</table>
 <%
 	Boolean iscust = false;
 	try {
@@ -13,21 +32,30 @@
 
 		Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "Pwtemp01!");
-		PreparedStatement flights = conn
-				.prepareStatement("Select * from flight where origin=? and destination=? and CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, departure_time))) =?");
-
-		out.print("Your account has been succesfully created!");
-
-		if (iscust) {
-			response.setHeader("Refresh", "5;url=Login.jsp");
-		} else {
-			response.setHeader("Refresh", "5;url=Account.jsp");
+		String sql = "Select * from flight where origin=? and destination=? and " +
+						"departure_time BETWEEN '"+ date +" 00:00:00' AND '" + date + " 23:59:59' and ";
+		if(ticketClass.equals("first")){
+			sql += "first_vacancy > 0";
+		} else if(ticketClass.equals("business")){
+			sql += "business_vacancy > 0";
+		} else{
+			sql += "coach_vacancy > 0";
 		}
-
+		PreparedStatement flights = conn.prepareStatement(sql);
+		flights.setString(1, from);
+		flights.setString(2, to);
+		out.println(flights.toString());
+		ResultSet rs = flights.executeQuery();
+		if(rs.next()){
+			out.println(rs.getInt("plane_ID"));
+			
+		} else{
+			out.println("No results, please search again");
+			response.setHeader("Refresh", "5;url=SearchPage.jsp");
+		}
+		
+		
 	} catch (Exception e) {
-		if (e.getMessage().contains("Duplicate") && e.getMessage().contains("key"))
-			out.println("This username has already been selected, please choose a different username");
-		else
-			out.println("There has been a problem creating the account, please try again!");
+		out.println(e.toString());
 	}
 %>

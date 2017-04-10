@@ -59,20 +59,20 @@ a:active {
 						<td>From</td>
 						<td><select name="from">
 								<option value="Chicago">Chicago</option>
-								<option value="NewYork">New York</option>
-								<option value="IowaCity">Iowa City</option>
-								<option value="DesMoines">Des Moines</option>
-								<option value="SanFranscisco">San Franscisco</option>
+								<option value="New York">New York</option>
+								<option value="Iowa City">Iowa City</option>
+								<option value="Des Moines">Des Moines</option>
+								<option value="San Franscisco">San Franscisco</option>
 						</select></td>
 					</tr>
 					<tr>
 						<td>To</td>
 						<td><select name="to">
 								<option value="Chicago">Chicago</option>
-								<option value="NewYork" selected>New York</option>
-								<option value="IowaCity">Iowa City</option>
-								<option value="DesMoines">Des Moines</option>
-								<option value="SanFranscisco">San Franscisco</option>
+								<option value="New York" selected>New York</option>
+								<option value="Iowa City">Iowa City</option>
+								<option value="Des Moines">Des Moines</option>
+								<option value="San Franscisco">San Franscisco</option>
 						</select></td>
 					</tr>
 					<tr>
