@@ -31,17 +31,21 @@ a:active {
 }
 </style>
 <title>Search</title>
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/cupertino/jquery-ui.min.css">
+<link rel="stylesheet"
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/cupertino/jquery-ui.min.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
+	$(function() {
+		$("#datepicker").datepicker({
+			dateFormat : "yy-mm-dd"
+		});
+	});
+</script>
 </head>
 <body>
-	<form method="post" action="CreateUser.jsp">
+	<form method="post" action="Search.jsp">
 		<center>
 			<table border="1" cellpadding="5" cellspacing="2">
 				<thead>
@@ -51,6 +55,34 @@ a:active {
 				</thead>
 
 				<tbody>
+					<tr>
+						<td>From</td>
+						<td><select name="from">
+								<option value="Chicago">Chicago</option>
+								<option value="NewYork">New York</option>
+								<option value="IowaCity">Iowa City</option>
+								<option value="DesMoines">Des Moines</option>
+								<option value="SanFranscisco">San Franscisco</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td>To</td>
+						<td><select name="to">
+								<option value="Chicago">Chicago</option>
+								<option value="NewYork" selected>New York</option>
+								<option value="IowaCity">Iowa City</option>
+								<option value="DesMoines">Des Moines</option>
+								<option value="SanFranscisco">San Franscisco</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td>Class</td>
+						<td><select name="class">
+								<option value="coach">Coach</option>
+								<option value="business">Business</option>
+								<option value="first">First</option>
+						</select></td>
+					</tr>
 					<tr>
 						<td>Date</td>
 						<td><input type="text" name="date" id="datepicker" required /></td>
