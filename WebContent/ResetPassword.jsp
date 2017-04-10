@@ -2,9 +2,7 @@
 page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"
 	import="java.io.*,java.util.*" import="classes.sendMail"%>
-<%@ page import="java.io.*,java.util.*,javax.mail.*"%>
-<%@ page import="javax.mail.internet.*,javax.activation.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+
 <%
 	try {
 		String username = request.getParameter("username");
