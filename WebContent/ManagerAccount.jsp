@@ -9,8 +9,7 @@
 	String acc_type = "";
 	String loged_out = "";
 	try {
-		username = session.ge
-				tAttribute("Username").toString();
+		username = session.getAttribute("Username").toString();
 		first_name = session.getAttribute("First_Name").toString();
 		last_name = session.getAttribute("Last_Name").toString();
 		email = session.getAttribute("Email").toString();
@@ -163,6 +162,14 @@ h2 {
 					href="LogOut.jsp">Log out</a>
 			</div>
 		</div>
+		<div class="dropdown">
+		     <button class="dropbtn" onclick = "myfunction()">manage reservation</button>
+		     <div class="dropdown-content" id="myDropdown">
+		     <a href="EnterFirstLast.jsp">search customer by name</a>
+		     <a href="#">search customer by reservation ID</a>
+		     </div>
+		</div>     
+		
 		<%
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {

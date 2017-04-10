@@ -246,7 +246,8 @@ padding:0;
 	<h2>Thank you for choosing Iowa airline, we will provide you with
 		best service for your trip</h2>
 		
-	<h2>enter your depature date</h2>	
+	<h4>enter your depature date</h4>	
+	<table>
 	<div class="month">
 	  <ul>
 	   <li class="prev">&#10094;</li>
@@ -299,6 +300,7 @@ padding:0;
   <li>30</li>
   <li>31</li>
 </ul>
+</table>
 	
 	
 	
