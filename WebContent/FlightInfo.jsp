@@ -69,10 +69,6 @@ a:active {
 						<td><input type="text" name="arrival_time" required /></td>
 					</tr>
 					<tr>
-						<td>Desired Capacity</td>
-						<td><input type="text" name="capacity" required /></td>
-					</tr>
-					<tr>
 						<td colspan="2" align="center"><input type="submit"
 							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
 						</td>

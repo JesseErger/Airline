@@ -42,14 +42,26 @@ a:active {
 					</tr>
 				</thead>
 
-				<tbody>
-					<tr>
-						<td>Capacity</td>
-						<td><input type="text" name="capacity" required /></td>
-					</tr>
+				<tbody>					
 					<tr>
 						<td>Model</td>
 						<td><input type="text" name="model" required /></td>
+					</tr>
+					<tr>
+						<td>Starting Airport</td>
+						<td><input type="text" name="origin" required /></td>
+					</tr>
+					<tr>
+						<td>First Class Capacity</td>
+						<td><input type="text" name="f_capacity" required /></td>
+					</tr>
+					<tr>
+						<td>Business Class Capacity</td>
+						<td><input type="text" name="b_capacity" required /></td>
+					</tr>
+					<tr>
+						<td>Coach Capacity</td>
+						<td><input type="text" name="c_capacity" required /></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"

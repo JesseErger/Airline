@@ -51,14 +51,12 @@ a:active {
 				String time_of_departure = request.getParameter("time_of_departure").toString();
 				String arrival_date = request.getParameter("arrival_date").toString();
 				String arrival_time = request.getParameter("arrival_time").toString();
-				String capacity = request.getParameter("capacity").toString();
 				session.setAttribute("origin", origin);
 				session.setAttribute("destination", destination);
 				session.setAttribute("date_of_departure", date_of_departure);
 				session.setAttribute("time_of_departure", time_of_departure);
 				session.setAttribute("arrival_date", arrival_date);
 				session.setAttribute("arrival_time", arrival_time);
-				session.setAttribute("capacity", capacity);
 				
 				String [] dep_date_parts =session.getAttribute("date_of_departure").toString().split("-");
 		        String [] dep_time_parts = time_of_departure.split(":");
@@ -75,11 +73,11 @@ a:active {
 		        int hour_a = Integer.parseInt(arr_time_parts[0]);
 		        int min_a = Integer.parseInt(arr_time_parts[1]);
 		        
-		        DateTime depart = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d);
+		        /* DateTime depart = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d);
 		        DateTime arrive = new DateTime(year_a,  month_a,  day_a,  hour_a,  min_a);
 		        Interval intv = new Interval(depart, arrive);
 		        Duration dur = new Duration(intv);
-		        String duration = Long.toString(dur.getStandardMinutes());
+		        String duration = Long.toString(dur.getStandardMinutes()); */
 				
 				
 				
@@ -87,7 +85,8 @@ a:active {
 						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
 						Statement stmt = null;
 				        stmt = conn.createStatement();
-						String sql = String.format("SELECT model FROM `sys`.`plane` WHERE capacity >= %s",capacity);
+				        int capacity = 50;
+						String sql = String.format("SELECT model FROM `sys`.`plane`");// WHERE capacity >= %s",capacity);
 						resultset = stmt.executeQuery(sql);
 						ResultSetMetaData resultsetmd = resultset.getMetaData();
 						int size = resultsetmd.getColumnCount();
@@ -115,16 +114,16 @@ a:active {
 				
 				<tbody>					
 					<tr>
-						<td>First Class Seating</td>
-						<td><input type="text" name="first_class" required /></td>
+						<td>First Class Pricing</td>
+						<td><input type="text" name="first_cost" required /></td>
 					</tr>
 					<tr>
-						<td>Business Class Seating</td>
-						<td><input type="text" name="business_class" required /></td>
+						<td>Business Class Pricing</td>
+						<td><input type="text" name="business_cost" required /></td>
 					</tr>
 					<tr>
-						<td>Coach Seating</td>
-						<td><input type="text" name="coach_class" required /></td>
+						<td>Coach Pricing</td>
+						<td><input type="text" name="coach_cost" required /></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
