@@ -34,6 +34,25 @@ a:active {
 </style>
 <title>Add Flight</title>
 <h1>Add flight</h1>
+<link rel="stylesheet"
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/cupertino/jquery-ui.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+	$(function() {
+		$("#datepicker").datepicker({
+			dateFormat : "yy-mm-dd"
+		});
+	});
+</script>
+<script>
+	$(function() {
+		$("#datepicker1").datepicker({
+			dateFormat : "yy-mm-dd"
+		});
+	});
+</script>
 </head>
 <body>
 	<form method="post" action="NewFlight.jsp">
@@ -45,24 +64,36 @@ a:active {
 					</tr>
 				</thead>
 					<tr>
-						<td>Flight Origin</td>
-						<td><input type="text" name="origin" required /></td>
+						<td>From</td>
+						<td><select name="origin">
+								<option value="Chicago">Chicago</option>
+								<option value="New York">New York</option>
+								<option value="Iowa City">Iowa City</option>
+								<option value="Des Moines">Des Moines</option>
+								<option value="San Franscisco">San Franscisco</option>
+						</select></td>
 					</tr>
 					<tr>
-						<td>Destination</td>
-						<td><input type="text" name="destination" required /></td>
+						<td>To</td>
+						<td><select name="destination">
+								<option value="Chicago">Chicago</option>
+								<option value="New York" selected>New York</option>
+								<option value="Iowa City">Iowa City</option>
+								<option value="Des Moines">Des Moines</option>
+								<option value="San Franscisco">San Franscisco</option>
+						</select></td>
 					</tr>
 					<tr>
-						<td>Departure Date(YYYY-MM-DD)</td>
-						<td><input type="text" name="date_of_departure" required /></td>
+						<td>Departure Date</td>
+						<td><input type="text" name="date_of_departure" id="datepicker" required /></td>
 					</tr>
 					<tr>
 						<td>Departure Time(HH:MM)</td>
 						<td><input type="text" name="time_of_departure" required /></td>
 					</tr>
 					<tr>
-						<td>Arrival Date (YYYY-MM-DD)</td>
-						<td><input type="text" name="arrival_date" required /></td>
+						<td>Arrival Date</td>
+						<td><input type="text" name="arrival_date" id="datepicker1" required /></td>
 					</tr>
 					<tr>
 						<td>Arrival Time(HH:MM)</td>
