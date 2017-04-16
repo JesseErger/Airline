@@ -1,7 +1,6 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*,org.joda.time.*"%>
-<%ResultSet resultset =null;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -73,11 +72,10 @@ a:active {
 		        int hour_a = Integer.parseInt(arr_time_parts[0]);
 		        int min_a = Integer.parseInt(arr_time_parts[1]);
 		        
-		        /* DateTime depart = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d);
-		        DateTime arrive = new DateTime(year_a,  month_a,  day_a,  hour_a,  min_a);
-		        Interval intv = new Interval(depart, arrive);
-		        Duration dur = new Duration(intv);
-		        String duration = Long.toString(dur.getStandardMinutes()); */
+		        DateTime depart = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d);
+		        DateTime arrive = new DateTime(year_a,  month_a,  day_a,  hour_a+5,  min_a); //add 5 hour buffer
+		        Interval intv = new Interval(depart, arrive);        
+		        //String duration = Long.toString(dur.getStandardMinutes()); 
 				
 				
 				
@@ -85,9 +83,62 @@ a:active {
 						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
 						Statement stmt = null;
 				        stmt = conn.createStatement();
-				        int capacity = 50;
-						String sql = String.format("SELECT model FROM `sys`.`plane`");// WHERE capacity >= %s",capacity);
-						resultset = stmt.executeQuery(sql);
+				        
+				        PreparedStatement pst1 = conn.prepareStatement("Select plane_ID,departure_time,arrival_time from flight");
+						
+						//pst.setString(1, username);
+						//pst.setString(2, password);
+						//account.setString(1, username);
+						//account.setString(2, password);
+						
+						ResultSet resultset1 = pst1.executeQuery();
+						ResultSetMetaData resultsetmd1 = resultset1.getMetaData();
+						int size1 = resultsetmd1.getColumnCount();	
+						/* String [] p_id = new String [size1+1];
+						String [] dep_d = new String [size1+1];
+						String [] arr_d = new String [size1+1]; */
+						ArrayList<String> avail_planes = new ArrayList<String>();
+						for(int i = 0; resultset1.next();i++){							
+							String p_id = resultset1.getString(1);
+							 
+							String doa = resultset1.getString(2).split(" ")[0];
+							String toa = resultset1.getString(2).split(" ")[1];
+							String [] dep_date_parts1 = doa.split("-");
+							String [] dep_time_parts1 = toa.split(":");
+					        int year_d1 = Integer.parseInt(dep_date_parts1[0]);
+					        int month_d1 = Integer.parseInt(dep_date_parts1[1]);
+					        int day_d1 = Integer.parseInt(dep_date_parts1[2]);
+					        int hour_d1 = Integer.parseInt(dep_time_parts1[0]);
+					        int min_d1 = Integer.parseInt(dep_time_parts1[1]);
+							String doa1 = resultset1.getString(3).split(" ")[0];
+							String toa1 = resultset1.getString(3).split(" ")[1];
+							String [] arr_date_parts1 = doa1.split("-");
+							String [] arr_time_parts1 = toa1.split(":");
+					        int year_a1 = Integer.parseInt(arr_date_parts1[0]);
+					        int month_a1 = Integer.parseInt(arr_date_parts1[1]);
+					        int day_a1 = Integer.parseInt(arr_date_parts1[2]);
+					        int hour_a1 = Integer.parseInt(arr_time_parts1[0]);
+					        int min_a1 = Integer.parseInt(arr_time_parts1[1]);
+					        DateTime depart1 = new DateTime(year_d1,  month_d1,  day_d1,  hour_d1,  min_d1);
+					        DateTime arrive1 = new DateTime(year_a1,  month_a1,  day_a1,  hour_a1,  min_a1);
+					        if( arrive.isBefore(depart1) || depart.isAfter(arrive1) ){
+					        	avail_planes.add(p_id);
+					        }
+					        
+							//out.println(resultset1.getString(1));
+							//out.println(resultset1.getString(2));
+							//out.println(resultset1.getString(3));
+						}
+						String get_models = "SELECT model FROM `sys`.`plane` where plane_ID = 0";//Not valid plane ID
+						for(int x = 0; x<avail_planes.size();x++){
+							if( (x+1) != avail_planes.size()){
+							get_models += " or " + avail_planes.get(x);
+							}
+							else{
+								get_models += avail_planes.get(x);
+							}
+						}
+						ResultSet resultset = stmt.executeQuery(get_models);
 						ResultSetMetaData resultsetmd = resultset.getMetaData();
 						int size = resultsetmd.getColumnCount();
 						session.setAttribute("available_plane", "True");
@@ -100,7 +151,7 @@ a:active {
 						<%
 							while (resultset.next()) {
 						%>
-						<option><%=resultset.getString(size)%></option>
+						<option><%=resultset.getString(1)%></option>
 						<%
 							}
 						%>
