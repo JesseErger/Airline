@@ -8,24 +8,20 @@
 	import="java.io.*,java.util.*"%>
 <%
 	try {
+		//SELECT password, aes_decrypt(password, 'passw') FROM sys.users
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String password = "AES_ENCRYPT('";
+		password += request.getParameter("password")+ "','_KEY_')";
 		Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "Pwtemp01!");
-		PreparedStatement pst = conn
-				.prepareStatement("Select username,password from users where username=? and password=?");
-		PreparedStatement account = conn
-				.prepareStatement("Select * from users where username=? and password=?");
-		pst.setString(1, username);
-		pst.setString(2, password);
-		account.setString(1, username);
-		account.setString(2, password);
-		ResultSet rs = pst.executeQuery();
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		String sql = String.format("Select * from `sys`.`users` where username='%s' and password = %s ", username,password);
+		//out.println(sql);
+		ResultSet rs = stmt.executeQuery(sql);
 		if (rs.next()) {
 			session.setAttribute("Invalid_Login", "False");
 			session.setAttribute("logged_in", "yes");
-			rs = account.executeQuery();
-			rs.next();
 			session.setAttribute("Username", rs.getNString("username"));
 			session.setAttribute("First_Name", rs.getNString("firstname"));
 			session.setAttribute("Last_Name", rs.getNString("lastname"));
@@ -43,9 +39,9 @@
 			session.setAttribute("Invalid_Login", "True");
 			//session.invalidate();
 			response.sendRedirect(site);
-		}
+		} 
 
 	} catch (Exception e) {
-
+			out.println(e);
 	}
 %>

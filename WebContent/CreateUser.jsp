@@ -7,14 +7,17 @@
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
 	import="java.io.*,java.util.*" import="classes.sendMail"%>
 <%
+	//Run this query to add an admin account to the database -> INSERT INTO users VALUES('F_Name', 'L_Name','admin',AES_ENCRYPT('password_here','_KEY_'),'username_here','email@email.com'); 
 	Boolean iscust = false;
 	try {
 		String first = request.getParameter("first");
 		String last = request.getParameter("last");
 		String email = request.getParameter("email");
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String conf_password = request.getParameter("ConfirmPassword");
+		String password = "AES_ENCRYPT('";
+		password += request.getParameter("password")+ "','_KEY_')";
+		String conf_password = "AES_ENCRYPT('";
+		conf_password += request.getParameter("ConfirmPassword")+ "','_KEY_')";
 		if (first.length() == 0 || first.matches(".*\\d+.*")) {
 			out.println("You must enter a valid First name!");
 		} else if (last.length() == 0 || !last.matches("[a-zA-Z ]*")) {
@@ -49,7 +52,7 @@
 			}
 			String sql = String.format(
 					"INSERT INTO `sys`.`users` (`password`, `lastname`, `username`, `firstname`, `acc_type`, `email`)"
-							+ "VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+							+ "VALUES (%s, '%s', '%s', '%s', '%s', '%s')",
 					password, last, username, first, acc_type, email);
 			stmt.executeUpdate(sql);
 			out.print("Your account has been succesfully created!");
