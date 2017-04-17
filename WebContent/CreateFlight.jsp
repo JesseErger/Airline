@@ -5,9 +5,12 @@
 <%
 	String added_by = "";
 	String model = "";
+	String plane_ID = "";
 	boolean err = false;
 	try{
-		model = request.getParameter("model").toString();
+		model = request.getParameter("model").toString().split(" ")[0];
+		plane_ID = request.getParameter("model").toString().split(":")[1];
+		
 	}
 	catch (Exception e){
     	out.print("There were no abailable planes for your selection, please try again");
@@ -63,15 +66,6 @@
         	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
         	stmt = conn.createStatement();
         	Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
-        	
-			String sql_ids = String.format("SELECT plane_ID FROM `sys`.`plane` WHERE model = '%s'", model);
-			resultset_ids = stmt.executeQuery(sql_ids);
-			resultset_ids.next();
-        	String plane_ID = resultset_ids.getString(1); 
-        	//String plane_ID = "5";	
-        	
-        
-
 	        added_by = session.getAttribute("Username").toString();
 	        String sql = String.format("INSERT INTO `sys`.`flight` (`added_by`, `destination`, `departure_time`, `arrival_time`,`origin`, `first_cost`,`business_cost`,`coach_cost`, `plane_ID` )" + 
 	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", added_by, destination, date_time, date_time_arrival, origin, first_cost, business_cost, coach_cost, plane_ID);

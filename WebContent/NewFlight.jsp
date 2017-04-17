@@ -73,8 +73,9 @@ a:active {
 		        int min_a = Integer.parseInt(arr_time_parts[1]);
 		        
 		        DateTime depart = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d);
-		        DateTime arrive = new DateTime(year_a,  month_a,  day_a,  hour_a+5,  min_a); //add 5 hour buffer
-		        Interval intv = new Interval(depart, arrive);        
+		        DateTime temp = new DateTime(year_a,  month_a,  day_a,  hour_a,  min_a); //add 5 hour buffer
+		        DateTime arrive = temp.plusHours(5);
+		        //Interval intv = new Interval(depart, arrive);        
 		        //String duration = Long.toString(dur.getStandardMinutes()); 
 				
 				
@@ -85,22 +86,16 @@ a:active {
 				        stmt = conn.createStatement();
 				        
 				        PreparedStatement pst1 = conn.prepareStatement("Select plane_ID,departure_time,arrival_time from flight");
-						
-						//pst.setString(1, username);
-						//pst.setString(2, password);
-						//account.setString(1, username);
-						//account.setString(2, password);
-						
+
 						ResultSet resultset1 = pst1.executeQuery();
 						ResultSetMetaData resultsetmd1 = resultset1.getMetaData();
 						int size1 = resultsetmd1.getColumnCount();	
-						/* String [] p_id = new String [size1+1];
-						String [] dep_d = new String [size1+1];
-						String [] arr_d = new String [size1+1]; */
 						ArrayList<String> avail_planes = new ArrayList<String>();
+						ArrayList<String> all_planes = new ArrayList<String>();
+						ArrayList<String> not_avail_planes = new ArrayList<String>();
 						for(int i = 0; resultset1.next();i++){							
 							String p_id = resultset1.getString(1);
-							 
+							all_planes.add(p_id);
 							String doa = resultset1.getString(2).split(" ")[0];
 							String toa = resultset1.getString(2).split(" ")[1];
 							String [] dep_date_parts1 = doa.split("-");
@@ -121,22 +116,18 @@ a:active {
 					        int min_a1 = Integer.parseInt(arr_time_parts1[1]);
 					        DateTime depart1 = new DateTime(year_d1,  month_d1,  day_d1,  hour_d1,  min_d1);
 					        DateTime arrive1 = new DateTime(year_a1,  month_a1,  day_a1,  hour_a1,  min_a1);
-					        if( arrive.isBefore(depart1) || depart.isAfter(arrive1) ){
-					        	avail_planes.add(p_id);
+					        if( !arrive.isBefore(depart1) && !depart.isAfter(arrive1) ){
+					        	not_avail_planes.add(p_id);
 					        }
-					        
-							//out.println(resultset1.getString(1));
-							//out.println(resultset1.getString(2));
-							//out.println(resultset1.getString(3));
 						}
-						String get_models = "SELECT model FROM `sys`.`plane` where plane_ID = 0";//Not valid plane ID
+						for(int y =0;y<all_planes.size();y++){
+							if(!not_avail_planes.contains(all_planes.get(y))){
+								avail_planes.add(all_planes.get(y));
+							}
+						}
+						String get_models = "SELECT model,plane_ID FROM `sys`.`plane` where plane_ID = 0";//Not valid plane ID
 						for(int x = 0; x<avail_planes.size();x++){
-							if( (x+1) != avail_planes.size()){
-							get_models += " or " + avail_planes.get(x);
-							}
-							else{
-								get_models += avail_planes.get(x);
-							}
+							get_models += " or plane_ID = " + avail_planes.get(x);	
 						}
 						ResultSet resultset = stmt.executeQuery(get_models);
 						ResultSetMetaData resultsetmd = resultset.getMetaData();
@@ -151,7 +142,7 @@ a:active {
 						<%
 							while (resultset.next()) {
 						%>
-						<option><%=resultset.getString(1)%></option>
+						<option><%=resultset.getString(1)+" ID:"+resultset.getString(2)%></option>
 						<%
 							}
 						%>
