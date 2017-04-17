@@ -48,10 +48,6 @@ a:active {
 						<td><input type="text" name="model" required /></td>
 					</tr>
 					<tr>
-						<td>Starting Airport</td>
-						<td><input type="text" name="origin" required /></td>
-					</tr>
-					<tr>
 						<td>First Class Capacity</td>
 						<td><input type="text" name="f_capacity" required /></td>
 					</tr>

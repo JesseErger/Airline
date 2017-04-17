@@ -86,16 +86,22 @@ a:active {
 				        stmt = conn.createStatement();
 				        
 				        PreparedStatement pst1 = conn.prepareStatement("Select plane_ID,departure_time,arrival_time from flight");
+				        PreparedStatement pst2 = conn.prepareStatement("Select plane_ID from plane");
+				        
 
 						ResultSet resultset1 = pst1.executeQuery();
+						ResultSet resultset2 = pst2.executeQuery();
 						ResultSetMetaData resultsetmd1 = resultset1.getMetaData();
 						int size1 = resultsetmd1.getColumnCount();	
 						ArrayList<String> avail_planes = new ArrayList<String>();
 						ArrayList<String> all_planes = new ArrayList<String>();
 						ArrayList<String> not_avail_planes = new ArrayList<String>();
-						for(int i = 0; resultset1.next();i++){							
-							String p_id = resultset1.getString(1);
+						for(int z = 0; resultset2.next();z++){
+							String p_id = resultset2.getString(1);
 							all_planes.add(p_id);
+						}
+						for(int i = 0; resultset1.next();i++){
+							String p_id1 = resultset1.getString(1);
 							String doa = resultset1.getString(2).split(" ")[0];
 							String toa = resultset1.getString(2).split(" ")[1];
 							String [] dep_date_parts1 = doa.split("-");
@@ -117,7 +123,7 @@ a:active {
 					        DateTime depart1 = new DateTime(year_d1,  month_d1,  day_d1,  hour_d1,  min_d1);
 					        DateTime arrive1 = new DateTime(year_a1,  month_a1,  day_a1,  hour_a1,  min_a1);
 					        if( !arrive.isBefore(depart1) && !depart.isAfter(arrive1) ){
-					        	not_avail_planes.add(p_id);
+					        	not_avail_planes.add(p_id1);
 					        }
 						}
 						for(int y =0;y<all_planes.size();y++){
