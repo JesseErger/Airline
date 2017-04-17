@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-	import="java.io.*,java.util.*"%>
+	import="java.io.*,java.util.*" import="classes.SearchFlights"%>
 
 
 
@@ -22,7 +22,7 @@
 					String date = request.getParameter("date");
 					String ticketClass = request.getParameter("class");
 
-					Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
+					/* Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
 					Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "Pwtemp01!");
 					String sql = "Select * from flight where origin=? and destination=? and " + "departure_time BETWEEN '"
 							+ date + " 00:00:00' AND '" + date + " 23:59:59' and ";
@@ -36,7 +36,9 @@
 					PreparedStatement flights = conn.prepareStatement(sql);
 					flights.setString(1, from);
 					flights.setString(2, to);
-					ResultSet rs = flights.executeQuery();
+					ResultSet rs = flights.executeQuery(); */
+					
+					ResultSet rs = SearchFlights.search(to, from, date, ticketClass);
 					if (!rs.next()) {
 						out.println("No results, please search again");
 						response.setHeader("Refresh", "5;url=SearchPage.jsp");

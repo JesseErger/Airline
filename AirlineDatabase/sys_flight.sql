@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
 -- Host: localhost    Database: sys
 -- ------------------------------------------------------
--- Server version	5.7.17-log
+-- Server version	5.7.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -33,11 +33,24 @@ CREATE TABLE `flight` (
   `coach_cost` int(10) NOT NULL,
   `flight_ID` int(10) NOT NULL AUTO_INCREMENT,
   `added_by` varchar(30) NOT NULL,
+  `coach_vacancy` int(3) NOT NULL,
+  `business_vacancy` int(3) NOT NULL,
+  `first_vacancy` int(3) NOT NULL,
   PRIMARY KEY (`flight_ID`),
   UNIQUE KEY `flight_ID_UNIQUE` (`flight_ID`),
   KEY `plane_ID` (`origin`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `flight`
+--
+
+LOCK TABLES `flight` WRITE;
+/*!40000 ALTER TABLE `flight` DISABLE KEYS */;
+INSERT INTO `flight` VALUES (1,'New York','Chicago','2017-04-20 05:30:00','2017-04-20 07:30:00',300,200,100,1,'admin',20,20,20),(1,'Chicago','Iowa City','2017-04-20 08:30:00','2017-04-20 09:30:00',300,200,100,2,'admin',20,20,20),(2,'New York','Iowa City','2017-04-20 05:30:00','2017-04-20 09:30:00',400,300,200,3,'admin',1,1,1);
+/*!40000 ALTER TABLE `flight` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -48,4 +61,4 @@ CREATE TABLE `flight` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-11 20:38:47
+-- Dump completed on 2017-04-17  2:02:24
