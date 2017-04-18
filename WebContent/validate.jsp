@@ -17,7 +17,6 @@
 		Statement stmt = null;
 		stmt = conn.createStatement();
 		String sql = String.format("Select * from `sys`.`users` where username='%s' and password = %s ", username,password);
-		//out.println(sql);
 		ResultSet rs = stmt.executeQuery(sql);
 		if (rs.next()) {
 			session.setAttribute("Invalid_Login", "False");

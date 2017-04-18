@@ -1,11 +1,12 @@
 <%@ 
 page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"
-	import="java.io.*,java.util.*" import="classes.sendMail"
+	import="java.io.*,java.util.*" 
 	import="java.io.*,java.util.*,javax.mail.*"
 	import="javax.mail.internet.*,javax.activation.*"
 	import="javax.servlet.http.*,javax.servlet.*"%>
 <%
+//import="classes.sendMail"
 	String username = "";
 	String first_name = "";
 	String last_name = "";
@@ -35,8 +36,7 @@ page import="java.sql.*" language="java"
 		String currentPassword = request.getParameter("currentPassword");
 		String newPassword = request.getParameter("newPassword");
 		String confirmNewPassword = request.getParameter("confirmNewPassword");
-		//out.println("grabbed values" + username + email);
-
+		
 		if (newPassword.length() < 7 || (newPassword.toLowerCase() == newPassword)
 				|| !newPassword.matches(".*\\d+.*")) {
 			out.println(
@@ -44,37 +44,27 @@ page import="java.sql.*" language="java"
 		} else if (!confirmNewPassword.equals(newPassword)) {
 			out.println("Your password must match the confirm password!");
 		} else {
-
+			newPassword = "AES_ENCRYPT('";
+			newPassword += request.getParameter("newPassword")+ "','_KEY_')";
+			currentPassword = "AES_ENCRYPT('";
+			currentPassword += request.getParameter("currentPassword")+ "','_KEY_')";
 			Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root",
 					"Pwtemp01!");
-			PreparedStatement pst = conn.prepareStatement(
-					"Select username,password from sys.users where username=? and password=?");
-			pst.setString(1, username);
-			pst.setString(2, currentPassword);
-			out.println(pst);
-			out.println(pst);
-			ResultSet rs = pst.executeQuery();
+			Statement stmt = null;
+			stmt = conn.createStatement();
+			String sql = String.format("Select * from `sys`.`users` where username = '%s' and password = %s ", username,currentPassword);
+			ResultSet rs = stmt.executeQuery(sql);
 			if (rs.next()) {
-				//out.println("in the if");
-
-				out.println(newPassword);
-
-				//classes.sendMail.send("PASSWORD RESET", newPassword, email);
-				sendMail.send("PASSWORD RESET", newPassword, email);
-				out.println("emailing password");
-
-				PreparedStatement passUpdate = conn
-						.prepareStatement("UPDATE `sys`.`users` SET `password`=? WHERE `username`=?");
-				passUpdate.setString(1, newPassword);
-				passUpdate.setString(2, username);
-				passUpdate.executeUpdate();
-				String site = new String("http://localhost:8080/com.airline.web.index/Account.jsp");
-				response.sendRedirect(site);
+				//sendMail.send("PASSWORD RESET", newPassword, email);
+				String passUpdate = String.format("UPDATE `sys`.`users` SET `password`= %s WHERE `username`='%s'", newPassword,username);
+				stmt.executeUpdate(passUpdate);
+				out.println("Password has been updated! Redirecting you to your account.");
+				response.setHeader("Refresh", "5;url=Account.jsp");
 			} else {
+				String passUpdate1 = String.format("UPDATE `sys`.`users` SET `password`= %s WHERE `username` ='%s'", newPassword,username);
 				String site = new String("http://localhost:8080/com.airline.web.index/Account.jsp");
-				out.println("Invalid login credentials - redirecting to Account page");
-				response.sendRedirect(site);
+				out.println("Invalid login credentials - please go back and try again");
 			}
 		}
 	} catch (Exception e) {
