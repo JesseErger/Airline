@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 body {
-	background-image: url(plane2.PNG);
 }
 
 h1 {
@@ -32,7 +31,6 @@ a:active {
 }
 </style>
 <title>Add Flight</title>
-<h1>Add flight</h1>
 </head>
 <body>
 	<form method="post" action="CreateFlight.jsp">
@@ -143,7 +141,7 @@ a:active {
 							session.setAttribute("available_plane", "False");
 						}
 				%>
-					Select from available Planes
+					Select from available planes
 					<select name = 'model' id ='model'>
 						<%
 							while (resultset.next()) {

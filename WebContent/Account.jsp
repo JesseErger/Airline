@@ -34,7 +34,7 @@
 <style type="text/css">
 h1 {
 	text-align: center;
-	color: red;
+	color: orange;
 }
 
 body {
@@ -57,7 +57,7 @@ h2 {
 
 .container {
 	overflow: hidden;
-	background-color: grey;
+	background-color: blue;
 	font-family: Arial;
 }
 
@@ -82,7 +82,7 @@ h2 {
 	outline: none;
 	color: white;
 	padding: 14px 16px;
-	background-color: grey;
+	background-color: blue;
 }
 
 .container a:hover, .dropdown:hover .dropbtn {
@@ -128,7 +128,7 @@ h2 {
 	<div class="up">
 		<table>
 			<tr>
-				<td><font color="red">Hello <%
+				<td><font color="orange">Hello <%
 					out.println(first_name);
 				%>!
 				</font>
@@ -136,30 +136,21 @@ h2 {
 						Out</button></td>
 			</tr>
 			<tr>
-				<td><font color="red">Email: <%
+				<td><font color="orange">Email: <%
 					out.println(email);
 				%></font></td>
 			</tr>
 		</table>
 	</div>
 	<div class="container">
-		<a href="SearchPage.jsp">Home</a>
-		<div class="dropdown">
-			<button class="dropbtn" onclick="myfunction()">find your
-				destination</button>
-			<div class="dropdown-content" id=myDropdown>
-				<a href="#">Los Angles</a> <a href="#">Seattle</a> <a href="#">New
-					York</a> <a href="#">Miami</a> <a href="#">Chicago</a>
-			</div>
-		</div>
+		<a href="SearchPage.jsp">Search Flights</a>
 		<div class="dropdown">
 			<button class="dropbtn" onclick="myfunction()">User
 				information</button>
 			<div class="dropdown-content" id="myDropdown">
-				<a href="#">change Username</a> <a href="ChangePasswordPage.jsp">change
-					password</a> <a href="#">add card</a> <a href="#">delete card</a> <a
-					href="#">order history</a> <a href="#">your next trip</a> <a
-					href="LogOut.jsp">Log out</a>
+					<a href="ChangePasswordPage.jsp">Change
+					Password</a> <a href="#">Edit Payment Information</a> <a
+					href="#">Order History</a>  <a href="LogOut.jsp">Log out</a>
 			</div>
 		</div>
 		<%
@@ -175,7 +166,7 @@ h2 {
 		<%
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"NewPlane.jsp\"title=\"add plane\">add plane</a>");
+					out.println("<a href=\"NewPlane.jsp\"title=\"add plane\">Add Plane</a>");
 				}
 			} catch (Exception e) {
 				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
@@ -185,7 +176,7 @@ h2 {
 		<%
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"FlightInfo.jsp\"title=\"add flight\">add flight</a>");
+					out.println("<a href=\"FlightInfo.jsp\"title=\"add flight\">Add Flight</a>");
 				}
 			} catch (Exception e) {
 				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
@@ -193,16 +184,6 @@ h2 {
 			}
 		%>
 	</div>
-	<h2>Thank you for choosing Iowa airline, we will provide you with
-		best service for your trip</h2>
-		
-	<h2>enter your depature date</h2>	
-	
-
-
-
-
-
 	<script>
 		function myFunction() {
 			document.getElementById("myDropdown").classList.toggle("show");

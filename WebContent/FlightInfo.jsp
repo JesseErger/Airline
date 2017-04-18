@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 body {
-	background-image: url(plane2.PNG);
 }
 
 h1 {
@@ -33,7 +32,6 @@ a:active {
 }
 </style>
 <title>Add Flight</title>
-<h1>Add flight</h1>
 <link rel="stylesheet"
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/cupertino/jquery-ui.min.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
