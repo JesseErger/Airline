@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-	import="java.io.*,java.util.*" import="classes.SearchFlights"%>
+	import="java.io.*,java.util.*,classes.SearchFlights,classes.Flights"%>
 
 
 
@@ -37,19 +37,25 @@
 					flights.setString(1, from);
 					flights.setString(2, to);
 					ResultSet rs = flights.executeQuery(); */
-					
-					ResultSet rs = SearchFlights.search(to, from, date, ticketClass);
-					if (!rs.next()) {
+
+					ArrayList<Flights> returnedFlights = SearchFlights.search(to, from, date, ticketClass);
+					if (!returnedFlights.isEmpty()) {
 						out.println("No results, please search again");
 						response.setHeader("Refresh", "5;url=SearchPage.jsp");
 					} else {
-						out.println("<tr><td>Departure Time</td><td>" + rs.getTimestamp("departure_time") + "</td>"
-								+ "<td><form method='post' action='Checkout.jsp'><input type='submit' name='Buy' value='" + rs.getInt("flight_ID")
-								+ "'></td></form></tr>");
-						while (rs.next()) {
-							//out.println(rs.getInt("plane_ID"));
-							out.println(
-									"<tr><td>Departure Time</td><td>" + rs.getTimestamp("departure_time") + "</td></tr>");
+						for (int i = 0; i < returnedFlights.size(); i++) {
+							if (returnedFlights.get(i).destination.equals(to)
+									&& returnedFlights.get(i).destination.equals(from)) {
+								out.println(
+										"<tr><td>Departure Time</td><td>" + returnedFlights.get(i).departure_time + "</td>"
+												+ "<td><form method='post' action='Checkout.jsp'><input type='submit' name='Buy' value='"
+												+ returnedFlights.get(i).flight_ID + "'></td></form></tr>");
+							} else {
+								out.println(
+										"<tr><td>Departure Time</td><td>" + returnedFlights.get(i).departure_time + "</td>"
+												+ "<td><form method='post' action='Checkout.jsp'><input type='submit' name='Buy' value='"
+												+ returnedFlights.get(i).flight_ID + "'></td></form></tr>");
+							}
 						}
 					}
 
