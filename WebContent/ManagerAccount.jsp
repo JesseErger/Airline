@@ -134,7 +134,7 @@ h2 {
 
 	
 	
-		<form method="post" action="SearchByName.jsp">
+		<form method="post" action="SearchByReservation.jsp">
 		<center>
 			<table border="1" cellpadding="5" cellspacing="2">
 				<thead>

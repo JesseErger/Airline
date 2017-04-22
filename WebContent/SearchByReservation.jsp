@@ -1,47 +1,55 @@
 <%@ page import="java.sql.*" language="java"
-	contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"
-	import="java.io.*,java.util.*"%>
-<%
-try{
-    int reservationID  = Integer.parseInt(request.getParameter("ReservationID"));
-    
-    Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "Pwtemp01!");
-		PreparedStatement pst2 = conn
-				.prepareStatement("Select username from reservations where reservation_ID=?");
-		PreparedStatement pst3 = conn
-				.prepareStatement("Select * from reservations where reservation_ID=?");
-		pst2.setInt(1, reservationID);
-		pst3.setInt(1,reservationID);
-		ResultSet rs = pst2.executeQuery();
-		if(rs.next()){
-		   session.setAttribute("Cant_Find", "False");
-		   session.setAttribute("Found_User", "True");
-		   rs = pst3.executeQuery();
-		   rs.next();
-		   session.setAttribute("Username", rs.getNString("username"));
-		   PreparedStatement account = conn
-					.prepareStatement("Select * from users where username=?");
-		   account.setString(1,session.getAttribute("Username").toString());
-		  rs=account.executeQuery();
-		  rs.next();
-		   session.setAttribute("Username2", rs.getNString("username"));
-		   session.setAttribute("Password2", rs.getNString("password"));
-		   session.setAttribute("First_Name2", rs.getNString("firstname"));
-		   session.setAttribute("Last_Name2", rs.getNString("lastname"));
-		   session.setAttribute("Email2", rs.getNString("email"));
-		   session.setAttribute("Account_Type2", rs.getNString("acc_type"));
-		   String site2 = new String("http://localhost:8080/com.airline.web.index/UserInfomation.jsp");
-		   response.sendRedirect(site2);
-			}
-		else{
-			session.setAttribute("Cant_Find", "True");
-			//String site2 = new String("http://localhost:8080/com.airline.web.index/EnterReservationID.jsp");
-			//response.sendRedirect(site2);
-			out.println("cant find");
-			}
-}
-catch(Exception e){
-	
-}
-%>
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
+	import="java.io.*,java.util.*" %>
+
+
+
+<table border="1" cellpadding="5" cellspacing="2">
+	<thead>
+		<tr>
+			<th colspan="3">Results</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		<td>
+			<%
+				Boolean iscust = false;
+				try {
+					String f_name = "";
+					String l_name = "";
+					String reservationID = "";
+					Boolean by_name = false;
+					try{
+						f_name = request.getParameter("f_name");
+						l_name = request.getParameter("l_name");
+						by_name = true;
+					}
+					catch (Exception e){
+						reservationID = request.getParameter("res_num");
+					}
+					out.println(reservationID);
+
+					/* if (!rs.next()) {
+						out.println("No Reservations found");
+						
+					} else {
+						out.println("<tr><td>Departure Time</td>
+								+ "<td><form method='post' action='CheckinCustomer.jsp'><input type='submit' name='check_in' value='" + "RESERVATION_ID"
+								+ "'></td></form></tr>");
+						while (rs.next()) {
+							//out.println(rs.getInt("plane_ID"));
+							out.println(
+									"<tr><td>Departure Time</td><td>" + rs.getTimestamp("departure_time") + "</td></tr>");
+						}
+					} */
+
+				} catch (Exception e) {
+					out.println(e.toString());
+				}
+			%>
+		</td>
+
+	</tbody>
+</table>
