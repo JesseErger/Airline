@@ -63,12 +63,17 @@
         else if (session.getAttribute("available_plane").equals("True")){
         	Statement stmt = null;  
         	ResultSet resultset_ids = null;
+        	ResultSet rs = null;
         	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
         	stmt = conn.createStatement();
+        	String get_caps = String.format("SELECT f_capacity, b_capacity, c_capacity FROM `sys`.`plane` where plane_ID = '%s'",plane_ID);
+	        rs = stmt.executeQuery(get_caps);
+        	rs.next();
+        	
         	Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
 	        added_by = session.getAttribute("Username").toString();
-	        String sql = String.format("INSERT INTO `sys`.`flight` (`added_by`, `destination`, `departure_time`, `arrival_time`,`origin`, `first_cost`,`business_cost`,`coach_cost`, `plane_ID` )" + 
-	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", added_by, destination, date_time, date_time_arrival, origin, first_cost, business_cost, coach_cost, plane_ID);
+	        String sql = String.format("INSERT INTO `sys`.`flight` (`added_by`, `destination`, `departure_time`, `arrival_time`,`origin`, `first_cost`,`business_cost`,`coach_cost`, `plane_ID`,`business_vacancy`,`coach_vacancy`, `first_vacancy` )" + 
+	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", added_by, destination, date_time, date_time_arrival, origin, first_cost, business_cost, coach_cost, plane_ID, rs.getString("b_capacity"), rs.getString("c_capacity"), rs.getString("f_capacity") );
 	        stmt.executeUpdate(sql);
 	        out.print("Flight has been added! Redirecting you to your homepage");
 	        response.setHeader("Refresh", "5;url=Account.jsp");
