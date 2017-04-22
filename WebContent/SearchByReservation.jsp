@@ -7,7 +7,7 @@
 <table border="1" cellpadding="5" cellspacing="2">
 	<thead>
 		<tr>
-			<th colspan="4">Results</th>
+			<th colspan="7">Results</th>
 		</tr>
 	</thead>
 
@@ -57,23 +57,31 @@
 			        	rs = stmt.executeQuery(get_reservations);
 			        }
 			        
-
-			      
+			      	
 
 					if (!rs.next()) {
 						out.println("No Reservations found");
 						out.println(by_name);
 						
 					} else {
-						out.println("<tr><td>Reservation ID</td><td>Date of Departure</td><td>Check In</td><td>Cancel Res</td></tr>");
+						Statement stmt1 = null;
+				        stmt1 = conn.createStatement();
+						ResultSet rs1 = null;
+				        String get_name = String.format("SELECT * FROM `sys`.`users` where username = '%s'",rs.getString("username"));
+				        rs1 = stmt1.executeQuery(get_name);
+						rs1.next();
+						out.println("<tr><td>Reservation ID</td><td>First Name</td><td>Last Name</td><td>Seating Class</td><td>Date of Departure</td><td>Check In</td><td>Cancel Res</td></tr>");
 						boolean tf = true;
 
 						while (tf) {
 							String res_id = rs.getString("reservation_ID");
+							String seating_class = rs.getString("seating_class");
+							String firstname = rs1.getString("firstname");
+							String lastname = rs1.getString("lastname");
 							String cancel_button = "<td><form method='post' action='CancelReservation.jsp'><input type='submit' name='cancel_res' value='" +res_id + "'></td>";
 							String checkin_button = "<td><form method='post' action='CheckIn.jsp'><input type='submit' name='checkin_res' value='" +res_id + "'></td>";
 							out.println(
-									"<tr><td>"+res_id+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>" +cancel_button + checkin_button + "</tr>");
+									"<tr><td>"+res_id+"</td><td>"+firstname+"</td><td>"+lastname+"</td><td>"+seating_class+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>" +cancel_button + checkin_button + "</tr>");
 						tf = rs.next();
 						}
 					} 
