@@ -154,6 +154,15 @@ h2 {
 			</div>
 		</div>
 		<%
+		try {
+			if (session.getValue("Account_Type").equals("manager")) {
+				String site = new String("http://localhost:8080/com.airline.web.index/ManagerAccount.jsp");
+				response.sendRedirect(site);
+			}
+		} catch (Exception e) {
+			String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
+			response.sendRedirect(site);
+		}
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {
 					out.println("<a href=\"NewUserPage.jsp\"title=\"Create Manager\">Create Manager</a>");

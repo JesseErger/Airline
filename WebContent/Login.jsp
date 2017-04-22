@@ -14,7 +14,7 @@ body {
 
 h1 {
 	text-align: center;
-	color: red;
+	color: white;
 }
 
 td {
@@ -38,7 +38,7 @@ a:active {
 </head>
 <body>
 	<form method="post" action="validate.jsp">
-		<h1>Welcome to Iowa Airline!!</h1>
+		<h1>Welcome to Iowa Airline</h1>
 		<hr />
 		<center>
 			<%

@@ -170,36 +170,7 @@ h2 {
 		     </div>
 		</div>     
 		
-		<%
-			try {
-				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"NewUserPage.jsp\"title=\"Create Manager\">Create Manager</a>");
-				}
-			} catch (Exception e) {
-				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
-				response.sendRedirect(site);
-			}
-		%>
-		<%
-			try {
-				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"NewPlane.jsp\"title=\"add plane\">add plane</a>");
-				}
-			} catch (Exception e) {
-				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
-				response.sendRedirect(site);
-			}
-		%>
-		<%
-			try {
-				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"FlightInfo.jsp\"title=\"add flight\">add flight</a>");
-				}
-			} catch (Exception e) {
-				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
-				response.sendRedirect(site);
-			}
-		%>
+		
 	</div>
 	<h2>Thank you for choosing Iowa airline, we will provide you with
 		best service for your trip</h2>
