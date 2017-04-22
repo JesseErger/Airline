@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"
-	import="java.io.*,java.util.*"%>
+	import="java.io.*,java.util.*,org.joda.time.*" %>
 <%
 	String username = "";
 	String first_name = "";
@@ -34,11 +34,11 @@
 <style type="text/css">
 h1 {
 	text-align: center;
-	color: red;
+	color: orange;
 }
 
 body {
-	background-image: url(plane2.PNG);
+
 }
 
 h2 {
@@ -57,7 +57,7 @@ h2 {
 
 .container {
 	overflow: hidden;
-	background-color: grey;
+	background-color: blue;
 	font-family: Arial;
 }
 
@@ -82,7 +82,7 @@ h2 {
 	outline: none;
 	color: white;
 	padding: 14px 16px;
-	background-color: grey;
+	background-color: blue;
 }
 
 .container a:hover, .dropdown:hover .dropbtn {
@@ -122,67 +122,72 @@ h2 {
 <title>Account</title>
 </head>
 <body>
-	<h1>Welcome to Iowa Airline!!</h1>
 
-	<hr />
-	<div class="up">
-		<table>
-			<tr>
-				<td><font color="red">Hello <%
-					out.println(first_name);
-				%>!
-				</font>
-					<button type="button" onclick="location = 'LogOut.jsp'">Log
-						Out</button></td>
-			</tr>
-			<tr>
-				<td><font color="red">Email: <%
-					out.println(email);
-				%></font></td>
-			</tr>
-		</table>
-	</div>
-	<div class="container">
-		<a href="#home">Home</a>
-		<div class="dropdown">
-			<button class="dropbtn" onclick="myfunction()">find your
-				destination</button>
-			<div class="dropdown-content" id=myDropdown>
-				<a href="#">Los Angles</a> <a href="#">Seattle</a> <a href="#">New
-					York</a> <a href="#">Miami</a> <a href="#">Chicago</a>
-			</div>
-		</div>
-		<div class="dropdown">
-			<button class="dropbtn" onclick="myfunction()">User
-				information</button>
-			<div class="dropdown-content" id="myDropdown">
-				<a href="#">change Username</a> <a href="ChangePasswordPage.jsp">change
-					password</a> <a href="#">add card</a> <a href="#">delete card</a> <a
-					href="#">order history</a> <a href="#">your next trip</a> <a
-					href="LogOut.jsp">Log out</a>
-			</div>
-		</div>
-		<div class="dropdown">
-		     <button class="dropbtn" onclick = "myfunction()">manage reservation</button>
-		     <div class="dropdown-content" id="myDropdown">
-		     <a href="EnterFirstLast.jsp">search customer by name</a>
-		     <a href="EnterReservationID.jsp">search customer by reservation ID</a>
-		     </div>
-		</div>     
-		
-		
-	</div>
-	<h2>Thank you for choosing Iowa airline, we will provide you with
-		best service for your trip</h2>
-		
-	<h2>enter your depature date</h2>	
+
 	
+	<div class="container">
+		<a href="LogOut.jsp">Log out</a>
+		<a href="SearchPage.jsp">Search Flights</a>
+		
+		<a href="ManagerAccount.jsp">Manage Reservations</a>
+	</div>
 
-
-
-
+	
+	
+		<form method="post" action="SearchByName.jsp">
+		<center>
+			<table border="1" cellpadding="5" cellspacing="2">
+				<thead>
+					<tr>
+						<th colspan="2">Search by First Name Last Name</th>
+					</tr>
+				</thead>	       
+				<tbody>					
+					<tr>
+						<td>First Name</td>
+						<td><input type="text" name="f_name" required /></td>
+					</tr>
+					<tr>
+						<td>Last Name</td>
+						<td><input type="text" name="l_name" required /></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><input type="submit"
+							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</form>
+	<form method="post" action="SearchByReservation.jsp">
+		<center>
+			<table border="1" cellpadding="5" cellspacing="2">
+				<thead>
+					<tr>
+						<th colspan="2">Search by Reservation</th>
+					</tr>
+				</thead>	       
+				<tbody>					
+					<tr>
+						<td>Reservation Number</td>
+						<td><input type="text" name="res_num" required /></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" align="center"><input type="submit"
+							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</form>
 
 	<script>
+	
+	
+	
 		function myFunction() {
 			document.getElementById("myDropdown").classList.toggle("show");
 		}
