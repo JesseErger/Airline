@@ -7,7 +7,7 @@
 <table border="1" cellpadding="5" cellspacing="2">
 	<thead>
 		<tr>
-			<th colspan="7">Results</th>
+			<th colspan="8">Results</th>
 		</tr>
 	</thead>
 
@@ -70,7 +70,7 @@
 				        String get_name = String.format("SELECT * FROM `sys`.`users` where username = '%s'",rs.getString("username"));
 				        rs1 = stmt1.executeQuery(get_name);
 						rs1.next();
-						out.println("<tr><td>Reservation ID</td><td>First Name</td><td>Last Name</td><td>Seating Class</td><td>Date of Departure</td><td>Checked In</td><td>Check In</td></tr>");
+						out.println("<tr><td>Reservation ID</td><td>First Name</td><td>Last Name</td><td>Seating Class</td><td>Date of Departure</td><td>Checked In</td><td>Check In</td><td>Refund</td></tr>");
 						boolean tf = true;
 
 						while (tf) {
@@ -79,14 +79,14 @@
 							String firstname = rs1.getString("firstname");
 							String lastname = rs1.getString("lastname");
 							String checked_in = rs.getString("checked_in").toString();
-							String cancel_button = "<td><form method='post' action='EditReservation.jsp'></td>";
+							String refund_button = "<td><form method='post' action='RefundReservation.jsp'><input type='submit' name='refund' value='" +res_id + "'></td>";
 							String checkin_button = "<td><form method='post' action='EditReservation.jsp'><input type='submit' name='checkin_res' value='" +res_id + "'></td>";
 							String row = "";
 							if(checked_in.equals("0")){
-								row = "<tr><td>"+res_id+"</td><td>"+firstname+"</td><td>"+lastname+"</td><td>"+seating_class+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>"+ "<td>No</td>" +  checkin_button + "</tr>";
+								row = "<tr><td>"+res_id+"</td><td>"+firstname+"</td><td>"+lastname+"</td><td>"+seating_class+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>"+ "<td>No</td>" +  checkin_button + refund_button+ "</tr>";
 							}
 							else{
-								row = "<tr><td>"+res_id+"</td><td>"+firstname+"</td><td>"+lastname+"</td><td>"+seating_class+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>"+ "<td>Yes</td>" + "<td></td>" + "</tr>";
+								row = "<tr><td>"+res_id+"</td><td>"+firstname+"</td><td>"+lastname+"</td><td>"+seating_class+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>"+ "<td>Yes</td>" + "<td></td>" + refund_button+ "</tr>";
 							}
 							out.println(row);
 									
