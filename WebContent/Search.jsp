@@ -39,7 +39,7 @@
 					ResultSet rs = flights.executeQuery(); */
 
 					ArrayList<Flights> returnedFlights = SearchFlights.search(to, from, date, ticketClass);
-					if (!returnedFlights.isEmpty()) {
+					if (returnedFlights.isEmpty()) {
 						out.println("No results, please search again");
 						response.setHeader("Refresh", "5;url=SearchPage.jsp");
 					} else {
