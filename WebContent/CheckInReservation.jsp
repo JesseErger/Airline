@@ -9,13 +9,13 @@
 </head>
 <body>
 <%
-String res_id = request.getParameter("checkin_res");
+String res_id = request.getParameter("res").split("_")[1];
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
 Statement stmt = null;
 stmt = conn.createStatement();
 String check_in = String.format("UPDATE `sys`.`reservations` SET `checked_in`='1' WHERE `reservation_ID`= '%s'",res_id);
 stmt.executeUpdate(check_in);
-out.print("Customner has been checked in succesfully!");
+out.print("Customer has been checked in succesfully!");
 response.setHeader("Refresh", "2;url=ManagerAccount.jsp");
 %>
 </body>

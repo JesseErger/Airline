@@ -125,69 +125,25 @@ h2 {
 
 
 	
+
 	<div class="container">
 		<a href="LogOut.jsp">Log out</a>
 		<a href="SearchPage.jsp">Search Flights</a>
+		<div class="dropdown">
+			<button class="dropbtn" onclick="myfunction()">Manage Reservations</button>
+			<div class="dropdown-content" id="myDropdown">
+					<a href="SearchReservationPage.jsp">Check In Reservation</a>
+					<a href="SearchRefundReservation.jsp">Refund Reservation</a>
+				
+			</div>
+		</div>
+
+	
+	
 		
-		<a href="ManagerAccount.jsp">Manage Reservations</a>
-	</div>
-
 	
 	
-		<form method="post" action="SearchByReservation.jsp">
-		<center>
-			<table border="1" cellpadding="5" cellspacing="2">
-				<thead>
-					<tr>
-						<th colspan="2">Search by First Name Last Name</th>
-					</tr>
-				</thead>	       
-				<tbody>					
-					<tr>
-						<td>First Name</td>
-						<td><input type="text" name="f_name" required /></td>
-					</tr>
-					<tr>
-						<td>Last Name</td>
-						<td><input type="text" name="l_name" required /></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</center>
-	</form>
-	<form method="post" action="SearchByReservation.jsp">
-		<center>
-			<table border="1" cellpadding="5" cellspacing="2">
-				<thead>
-					<tr>
-						<th colspan="2">Search by Reservation</th>
-					</tr>
-				</thead>	       
-				<tbody>					
-					<tr>
-						<td>Reservation Number</td>
-						<td><input type="text" name="res_num" required /></td>
-					</tr>
-					
-					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</center>
-	</form>
-
 	<script>
-	
-	
-	
 		function myFunction() {
 			document.getElementById("myDropdown").classList.toggle("show");
 		}
@@ -200,6 +156,7 @@ h2 {
 			}
 		}
 	</script>
+
 
 
 

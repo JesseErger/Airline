@@ -150,7 +150,7 @@ h2 {
 			<div class="dropdown-content" id="myDropdown">
 					<a href="ChangePasswordPage.jsp">Change
 					Password</a> <a href="#">Edit Payment Information</a> <a
-					href="#">Order History</a>  <a href="LogOut.jsp">Log out</a>
+					href="UserReservations.jsp">Order History</a>  <a href="LogOut.jsp">Log out</a>
 			</div>
 		</div>
 		<%
