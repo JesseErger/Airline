@@ -26,7 +26,7 @@ public class SearchFlights {
 		flights.setString(1, from);
 		flights.setString(2, to);
 		ResultSet rs = flights.executeQuery(); // all direct flights
-
+		
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
 		DateTime dt;
 		DateTime at;
