@@ -31,6 +31,17 @@
 					flightList.get(i), rs.getInt("coach_cost"));
 			createReservation.executeUpdate(sql);
 
+			Statement createTransaction = conn.createStatement();
+			sql = String.format(
+					"INSERT INTO `sys`.`transaction` (`username`, `credit_card`, `cardholder_first`, `cardholder_last`,`CVV`,`address_street`,`address_city`,`address_state`,`address_zipcode`,`amount`)"
+							+ "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+					session.getAttribute("Username").toString(), request.getParameter("credit_card"),
+					request.getParameter("first_name"), request.getParameter("last_name"),
+					request.getParameter("CVV"), request.getParameter("street_address"),
+					request.getParameter("city"), request.getParameter("state"), request.getParameter("zip"),
+					cost);
+			createTransaction.executeUpdate(sql);
+
 		}
 	}
 %>

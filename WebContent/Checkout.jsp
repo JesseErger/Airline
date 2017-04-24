@@ -77,7 +77,7 @@ page import="java.sql.*" language="java"
 				</tr>
 				<tr>
 					<td>State</td>
-					<td><input type="text" name="State" required /></td>
+					<td><input type="text" name="state" required /></td>
 				</tr>
 				<tr>
 					<td>Zip</td>
