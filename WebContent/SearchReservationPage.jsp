@@ -16,7 +16,7 @@ session.setAttribute("check_in", "yes");
 			<table border="1" cellpadding="5" cellspacing="2">
 				<thead>
 					<tr>
-						<th colspan="2">Search by First Name Last Name</th>
+						<th colspan="2">Search by First Name and Last Name or Reservation</th>
 					</tr>
 				</thead>	       
 				<tbody>					
@@ -29,28 +29,9 @@ session.setAttribute("check_in", "yes");
 						<td><input type="text" name="l_name" required /></td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
-						</td>
+						<td>Reservation number</td>
+						<td><input type="text" name="res_num"  /></td>
 					</tr>
-				</tbody>
-			</table>
-		</center>
-	</form>
-	<form method="post" action="SearchReservation.jsp">
-		<center>
-			<table border="1" cellpadding="5" cellspacing="2">
-				<thead>
-					<tr>
-						<th colspan="2">Search by Reservation</th>
-					</tr>
-				</thead>	       
-				<tbody>					
-					<tr>
-						<td>Reservation Number</td>
-						<td><input type="text" name="res_num" required /></td>
-					</tr>
-					
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
 							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
@@ -60,7 +41,7 @@ session.setAttribute("check_in", "yes");
 			</table>
 		</center>
 	</form>
-
+	
 
 </body>
 </html>

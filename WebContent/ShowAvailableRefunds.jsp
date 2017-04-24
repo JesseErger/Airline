@@ -54,6 +54,7 @@
 			        }
 			        else{
 			        	String get_reservations = String.format("SELECT * FROM `sys`.`reservations` where reservation_ID = '%s'",reservationID);
+
 			        	rs = stmt.executeQuery(get_reservations);
 			        }
 			        
