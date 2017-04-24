@@ -60,28 +60,38 @@ public class SearchFlights {
 				ats = rs1.getTimestamp("arrival_time").toString();
 				at = formatter.parseDateTime(ats.substring(0, ats.length() - 2));
 				flightList.add(new Flights(rs1.getInt("plane_ID"), rs1.getString("origin"),
-						rs1.getString("destination"), dt, at, rs1.getInt("firs1t_cost"), rs1.getInt("business_cost"),
+						rs1.getString("destination"), dt, at, rs1.getInt("first_cost"), rs1.getInt("business_cost"),
 						rs1.getInt("coach_cost"), rs1.getInt("flight_ID"), rs1.getString("added_by"),
-						rs1.getInt("coach_vacancy"), rs1.getInt("business_vacancy"), rs1.getInt("firs1t_vacancy"), 0));
+						rs1.getInt("coach_vacancy"), rs1.getInt("business_vacancy"), rs1.getInt("first_vacancy"), 0));
 				System.out.println("added a flight");
 			}
-			sql = "Select * from flight where origin=? and destination=? and " + "departure_time BETWEEN '" + date
+			sql = "Select * from flight where origin=? and " + "departure_time BETWEEN '" + date
 				+ " 00:00:00' AND '" + date + " 23:59:59' and ";
 			sql = addClass(sql, ticketClass);
 			PreparedStatement connections = conn.prepareStatement(sql);
-			connections.setString(1, rs1.getString("origin"));
+			connections.setString(1, rs1.getString("destination"));
 			ResultSet rs2 = connections.executeQuery();
 			while (rs2.next()) {
 				if (rs2.getString("destination").equals(to)) {
+					dts = rs1.getTimestamp("departure_time").toString();
+					dt = formatter.parseDateTime(dts.substring(0, dts.length() - 2));
+					ats = rs1.getTimestamp("arrival_time").toString();
+					at = formatter.parseDateTime(ats.substring(0, ats.length() - 2));
+					flightList.add(new Flights(rs1.getInt("plane_ID"), rs1.getString("origin"),
+							rs1.getString("destination"), dt, at, rs1.getInt("first_cost"), rs1.getInt("business_cost"),
+							rs1.getInt("coach_cost"), rs1.getInt("flight_ID"), rs1.getString("added_by"),
+							rs1.getInt("coach_vacancy"), rs1.getInt("business_vacancy"), rs1.getInt("first_vacancy"), 0));
+					System.out.println("added a flight");
+					
 					dts = rs2.getTimestamp("departure_time").toString();
 					dt = formatter.parseDateTime(dts.substring(0, dts.length() - 2));
 					ats = rs2.getTimestamp("arrival_time").toString();
 					at = formatter.parseDateTime(ats.substring(0, ats.length() - 2));
 					flightList.add(new Flights(rs2.getInt("plane_ID"), rs2.getString("origin"),
-							rs2.getString("destination"), dt, at, rs2.getInt("firs2t_cost"),
+							rs2.getString("destination"), dt, at, rs2.getInt("first_cost"),
 							rs2.getInt("business_cost"), rs2.getInt("coach_cost"), rs2.getInt("flight_ID"),
 							rs2.getString("added_by"), rs2.getInt("coach_vacancy"), rs2.getInt("business_vacancy"),
-							rs2.getInt("firs2t_vacancy"), 0));
+							rs2.getInt("first_vacancy"), 0));
 					System.out.println("added a flight");
 				}
 			}
