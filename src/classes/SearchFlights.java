@@ -41,7 +41,6 @@ public class SearchFlights {
 					at, rs.getInt("first_cost"), rs.getInt("business_cost"), rs.getInt("coach_cost"),
 					rs.getInt("flight_ID"), rs.getString("added_by"), rs.getInt("coach_vacancy"),
 					rs.getInt("business_vacancy"), rs.getInt("first_vacancy"), 0));
-			System.out.println("added a flight");
 		}
 
 		// searches for connecting flights to the destination
@@ -80,7 +79,7 @@ public class SearchFlights {
 					flightList.add(new Flights(rs1.getInt("plane_ID"), rs1.getString("origin"),
 							rs1.getString("destination"), dt, at, rs1.getInt("first_cost"), rs1.getInt("business_cost"),
 							rs1.getInt("coach_cost"), rs1.getInt("flight_ID"), rs1.getString("added_by"),
-							rs1.getInt("coach_vacancy"), rs1.getInt("business_vacancy"), rs1.getInt("first_vacancy"), 0));
+							rs1.getInt("coach_vacancy"), rs1.getInt("business_vacancy"), rs1.getInt("first_vacancy"), 1));
 					System.out.println("added a flight");
 					
 					dts = rs2.getTimestamp("departure_time").toString();
@@ -91,7 +90,7 @@ public class SearchFlights {
 							rs2.getString("destination"), dt, at, rs2.getInt("first_cost"),
 							rs2.getInt("business_cost"), rs2.getInt("coach_cost"), rs2.getInt("flight_ID"),
 							rs2.getString("added_by"), rs2.getInt("coach_vacancy"), rs2.getInt("business_vacancy"),
-							rs2.getInt("first_vacancy"), 0));
+							rs2.getInt("first_vacancy"), 2));
 					System.out.println("added a flight");
 				}
 			}

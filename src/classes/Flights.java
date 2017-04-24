@@ -3,20 +3,20 @@ package classes;
 import org.joda.time.DateTime;
 
 public class Flights {
-	public int plane_ID;
+	public Integer plane_ID;
 	public String origin;
 	public String destination;
 	public DateTime departure_time;
 	public DateTime arrival_time;
-	public int first_cost;
-	public int business_cost;
-	public int coach_cost;
-	public int flight_ID;
+	public Integer first_cost;
+	public Integer business_cost;
+	public Integer coach_cost;
+	public Integer flight_ID;
 	public String added_by;
-	public int coach_vacancy;
-	public int business_vacancy;
-	public int first_vacancy;
-	public int is_connection; 	// 0 if a direct flight, increments based on which
+	public Integer coach_vacancy;
+	public Integer business_vacancy;
+	public Integer first_vacancy;
+	public Integer is_connection; 	// 0 if a direct flight, increments based on which
 								// flight it is in a connection
 
 	public Flights(int start_plane_ID, String start_origin, String start_destination, DateTime start_departure_time,
