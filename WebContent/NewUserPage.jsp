@@ -30,7 +30,7 @@ a:active {
 	background-color: red;
 }
 </style>
-<title>Create Account</title>
+<title>Create user</title>
 </head>
 <body>
 	<form method="post" action="CreateUser.jsp">

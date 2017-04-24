@@ -351,7 +351,7 @@ h2 {
 	    in the United States. With over 2.7 million residents, it is also th
 	    e most populous city in both the state of Illinois and the Midwestern United States." width="300" height="200" >
 	   <img id="myImg5" src="SanF.PNG" alt="San Francisco officially the City and County of San Francisco, is the cultural, commercial, 
-	   and financial center of Northern California. It is the birthplace of the United Nations.[24][25][26] Located at the north 
+	   and financial center of Northern California. It is the birthplace of the United Nations.This picture located at the north 
 	    end of the San  Francisco Peninsula" width="300" height="200" > </p>
 	
 	<div id="myModal" class="modal">

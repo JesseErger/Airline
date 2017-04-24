@@ -81,7 +81,6 @@ a:active {
 .modal-content {
     background-color: ;
     margin: 5% auto 5% auto; /* 5% from the top, 15% from the bottom and centered */
-
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
@@ -201,7 +200,7 @@ a:active {
 		<table>
 			<tr>
 				<td>Don't have an account?</td>
-				<td><a href="NewUserPage.jsp" title="create a new account">click
+				<td><a href="CreateUserPage.jsp" title="create a new account">click
 						here</a></td>
 			</tr>
 		</table>
