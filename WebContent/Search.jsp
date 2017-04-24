@@ -38,7 +38,7 @@
 								out.println("<tr><td>Departure Time</td><td>" + returnedFlights.get(i).departure_time
 										+ "\n" + returnedFlights.get(i + 1).departure_time
 										+ "<td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
-										+ returnedFlights.get(i).flight_ID.toString()
+										+ returnedFlights.get(i).flight_ID.toString() + ","
 										+ returnedFlights.get(i + 1).flight_ID.toString()
 										+ "><input type='submit' name='Buy' value='Buy'></td></form>");
 								i++;
