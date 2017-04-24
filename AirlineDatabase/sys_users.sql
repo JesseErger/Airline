@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sys
 -- ------------------------------------------------------
--- Server version	5.7.17
+-- Server version	5.7.17-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,7 +40,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('password_is_admin','blah','admin','≤UÖıT\»\„!,iâäuY|G','admin','cboz718@me.com'),('password_is_manager','blah','manager','\ gñ¸B#çE\„\–\Z\Á\„','manager','cboz718@me.com'),('password_is_user','blah','user','ÅòÑ\'¢∑ì∆≤ ¡üxët','user','cboz718@me.com');
+INSERT INTO `users` VALUES ('admin','admin','admin','≤UÖıT\»\„!,iâäuY|G','admin','cboz718@me.com'),('manager','manager','manager','\ gñ¸B#çE\„\–\Z\Á\„','manager','cboz718@me.com'),('user','user','user','ÅòÑ\'¢∑ì∆≤ ¡üxët','user','cboz718@me.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-17  2:02:24
+-- Dump completed on 2017-04-23 23:18:30

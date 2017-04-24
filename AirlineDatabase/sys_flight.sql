@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sys
 -- ------------------------------------------------------
--- Server version	5.7.17
+-- Server version	5.7.17-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +39,7 @@ CREATE TABLE `flight` (
   PRIMARY KEY (`flight_ID`),
   UNIQUE KEY `flight_ID_UNIQUE` (`flight_ID`),
   KEY `plane_ID` (`origin`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `flight` (
 
 LOCK TABLES `flight` WRITE;
 /*!40000 ALTER TABLE `flight` DISABLE KEYS */;
-INSERT INTO `flight` VALUES (1,'New York','Chicago','2017-04-20 05:30:00','2017-04-20 07:30:00',300,200,100,1,'admin',20,20,20),(1,'Chicago','Iowa City','2017-04-20 08:30:00','2017-04-20 09:30:00',300,200,100,2,'admin',20,20,20),(2,'New York','Iowa City','2017-04-20 05:30:00','2017-04-20 09:30:00',400,300,200,3,'admin',1,1,1);
+INSERT INTO `flight` VALUES (5,'New York','Iowa City','2017-04-20 05:30:00','2017-04-20 09:30:00',400,300,200,3,'admin',26,3,1);
 /*!40000 ALTER TABLE `flight` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-17  2:02:24
+-- Dump completed on 2017-04-23 23:18:30

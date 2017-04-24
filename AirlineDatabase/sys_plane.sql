@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sys
 -- ------------------------------------------------------
--- Server version	5.7.17
+-- Server version	5.7.17-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `plane` (
   `c_capacity` int(4) DEFAULT NULL,
   PRIMARY KEY (`plane_ID`),
   UNIQUE KEY `plane_ID_UNIQUE` (`plane_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `plane` (
 
 LOCK TABLES `plane` WRITE;
 /*!40000 ALTER TABLE `plane` DISABLE KEYS */;
-INSERT INTO `plane` VALUES ('Boeing 757',20,1,'admin',20,20),('Cessna 150',1,2,'admin',1,1);
+INSERT INTO `plane` VALUES ('Cessna 150',1,2,'admin',1,1),('KC390',8,3,'admin',8,8),('KC390',8,4,'admin',8,8),('Boeing 757',20,5,'admin',20,20);
 /*!40000 ALTER TABLE `plane` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-17  2:02:25
+-- Dump completed on 2017-04-23 23:18:30
