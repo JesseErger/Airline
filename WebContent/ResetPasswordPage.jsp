@@ -11,6 +11,7 @@
 
 body{
   background-image: url(plane2.PNG);
+  font-family: Verdana,sans-serif;
 }
 
 h1{
@@ -80,7 +81,7 @@ td{
 <body>
 	<form method="post" action="ResetPassword.jsp" style="border:1px solid #ccc">
 	<div class="container">
-		<h1>Reset Password</h1>
+		<h1>Forget Password? Don't worry!!!</h1>
 		<hr />
 		<center>
 			<table cellpadding="5" cellspacing="10">

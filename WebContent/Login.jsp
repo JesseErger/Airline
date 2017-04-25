@@ -22,7 +22,7 @@
 
 /* Caption text */
 .text {
-  color: black;
+  color: white;
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
@@ -179,7 +179,7 @@ a:active {
 }
 
 .imgcontainer {
-    text-align: center;
+    text-align: right;
     margin: 12px 0 12px 0;
     position: relative;
 }
@@ -216,6 +216,9 @@ position: absolute;
 top :20px;
 left: 20px;
 }
+.logintable{
+   color:#DEDFD7;
+}
 
 
 </style>
@@ -249,7 +252,7 @@ left: 20px;
 		 <div class="modal-content animate" >
 			
 			<p><center><img id="myImg" src="plane.PNG" width="300" height="200" ></center></p>
-			<table border="1" cellspacing="2">
+			<div class="logintable"><table border="1" cellspacing="2">
 				<thead>
 					<tr>
 						<th colspan="2">Login Here</th>
@@ -279,7 +282,7 @@ left: 20px;
 								username?</a></td>
 					</tr>
 				</tbody>
-			</table>
+			</table></div>
 			</div>
 		</center>
 		</div>
@@ -300,28 +303,55 @@ window.onclick = function(event) {
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-  <div class="numbertext">1 / 3</div>
+  <div class="numbertext">1 / 7</div>
  <div class="picture"> <img src="plane3.PNG" width = "650", height = "450"></div>
   <div class="text">Welcome to Iowa Airline</div>
 </div>
 
 <div class="mySlides fade">
-  <div class="numbertext">2 / 3</div>
+  <div class="numbertext">2 / 7</div>
   <div class="picture"><img src="service.PNG" width = "650", height = "450"></div>
   <div class="text">We provides best service</div>
 </div>
 
 <div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
+  <div class="numbertext">3 / 7</div>
  <div class="picture"> <img src="on time.PNG" width = "650", height = "450"></div>
   <div class="text">Our plane took off on time</div>
 </div>
 
+<div class="mySlides fade">
+  <div class="numbertext">4 / 7</div>
+ <div class="picture"> <img src="first class.PNG" width = "650", height = "450"></div>
+  <div class="text">we provide different classes</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 7</div>
+ <div class="picture"> <img src="business class.PNG" width = "650", height = "450"></div>
+  <div class="text">we provide different classes</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">6 / 7</div>
+ <div class="picture"> <img src="economy.PNG" width = "650", height = "450"></div>
+  <div class="text">we provide different classes</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">7 / 7</div>
+ <div class="picture"> <img src="happy journey.PNG" width = "650", height = "450"></div>
+  <div class="text">you will have a wonderful journey if you choose us</div>
+</div>
 </div>
 
 <br>
 
 <div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
   <span class="dot"></span> 
   <span class="dot"></span> 
   <span class="dot"></span> 

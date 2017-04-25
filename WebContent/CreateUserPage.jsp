@@ -7,6 +7,7 @@
 
 body{
   background-image: url(plane2.PNG);
+  font-family: Verdana,sans-serif;
 }
 
 h2{
