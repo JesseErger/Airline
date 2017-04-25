@@ -17,7 +17,6 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
-    top: 10px;
 }
 .imgcontainer {
     text-align: center;
@@ -134,8 +133,15 @@ a:active {
 }
 
 .createAccount{
-   top: 20px;
-   right: 20px
+   position: absolute;
+   top: 30px;
+   right: 30px
+}
+
+.login{
+position: absolute;
+top :20px;
+left: 20px;
 }
 
 
@@ -147,7 +153,16 @@ a:active {
 	<form method="post" action="validate.jsp">
 	
 		<h1>Welcome to Iowa Airline</h1>
-		<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+		<div class ="createAccount">
+		<table>
+			<tr>
+				<td>Don't have an account?</td>
+				<td><a href="CreateUserPage.jsp" title="create a new account">click
+						here</a></td>
+			</tr>
+		</table>
+	</div>
+		<div class="login"><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></div>
 		<hr />
 		   <%
 				try {
@@ -161,7 +176,7 @@ a:active {
 		 <div class="modal-content animate" >
 			
 			<p><center><img id="myImg" src="plane.PNG" width="300" height="200" ></center></p>
-			<table border="1" cellpadding="5" cellspacing="2">
+			<table border="1" cellspacing="2">
 				<thead>
 					<tr>
 						<th colspan="2">Login Here</th>
@@ -196,15 +211,7 @@ a:active {
 		</center>
 		</div>
 	</form>
-	<div class ="createAccount">
-		<table>
-			<tr>
-				<td>Don't have an account?</td>
-				<td><a href="CreateUserPage.jsp" title="create a new account">click
-						here</a></td>
-			</tr>
-		</table>
-	</div>
+	
 	<script>
 // Get the modal
 var modal = document.getElementById('id01');
