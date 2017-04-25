@@ -18,31 +18,34 @@
 				try {
 					String f_name = "";
 					String l_name = "";
-					String reservationID = "5";
+					String reservationID = "0";
 					
 					
-					try{
-						f_name = request.getParameter("f_name");
-						l_name = request.getParameter("l_name");
-					}
-					catch (Exception e){
-					}
 					try{
 						reservationID = request.getParameter("res_num");
 					}
 					catch (Exception e){
+						
+					}
+					try{
+					f_name = request.getParameter("f_name");
+					l_name = request.getParameter("l_name");
+					
+					}
+					catch(Exception e){
+						
 					}
 
 					Boolean by_name = false;
 					if(!f_name.equals("")){
 						by_name = true;
 					}
-					
 					Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
 					
 			        Statement stmt = null;
 			        stmt = conn.createStatement();
 			        ResultSet rs = null;
+			        boolean by_res = false;
 			        if(by_name){
 			        	String get_user = String.format("SELECT username FROM `sys`.`users` where firstname = '%s' and lastname = '%s'",f_name,l_name);
 			        	rs = stmt.executeQuery(get_user);

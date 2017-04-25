@@ -69,7 +69,13 @@ catch(Exception e){
 	
 }
 out.print("Refund was succesful!");
+if(session.getAttribute("Account_Type").equals("manager")){
 response.setHeader("Refresh", "2;url=ManagerAccount.jsp");
+}
+else
+{
+	response.setHeader("Refresh", "2;url=Account.jsp");
+}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

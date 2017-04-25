@@ -22,44 +22,27 @@ session.setAttribute("check_in", "no");
 				<tbody>					
 					<tr>
 						<td>First Name</td>
-						<td><input type="text" name="f_name" required /></td>
+						<td><input type="text" name="f_name"  /></td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
-						<td><input type="text" name="l_name" required /></td>
+						<td><input type="text" name="l_name"  /></td>
+					</tr>
+					<tr>
+						<td>Reservation number</td>
+						<td><input type="text" name="res_num"  /></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
 							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
 						</td>
-					</tr>
-				</tbody>
-			</table>
-		</center>
-	</form>
-	<form method="post" action="ShowAvailableRefunds.jsp">
-		<center>
-			<table border="1" cellpadding="5" cellspacing="2">
-				<thead>
-					<tr>
-						<th colspan="2">Search by Reservation</th>
-					</tr>
-				</thead>	       
-				<tbody>					
-					<tr>
-						<td>Reservation Number</td>
-						<td><input type="text" name="res_num" required /></td>
 					</tr>
 					
-					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
-						</td>
-					</tr>
 				</tbody>
 			</table>
 		</center>
 	</form>
+
 
 
 </body>
