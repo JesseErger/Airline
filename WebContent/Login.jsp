@@ -301,19 +301,19 @@ window.onclick = function(event) {
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
- <div class="picture"> <img src="plane3.PNG" width = "550", height = "350"></div>
+ <div class="picture"> <img src="plane3.PNG" width = "650", height = "450"></div>
   <div class="text">Welcome to Iowa Airline</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 3</div>
-  <div class="picture"><img src="service.PNG" width = "550", height = "350"></div>
+  <div class="picture"><img src="service.PNG" width = "650", height = "450"></div>
   <div class="text">We provides best service</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 3</div>
- <div class="picture"> <img src="on time.PNG" width = "550", height = "350"></div>
+ <div class="picture"> <img src="on time.PNG" width = "650", height = "450"></div>
   <div class="text">Our plane took off on time</div>
 </div>
 
