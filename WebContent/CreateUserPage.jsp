@@ -17,7 +17,7 @@ b{
   font:bold;
 }
 input[type=text], input[type=password] {
-    width: 100%;
+    width: 250%;
     padding: 10px 15px;
     margin: 8px 0;
     display: inline-block;
@@ -63,7 +63,7 @@ button {
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
     .cancelbtn, .signupbtn {
-       width: 100%;
+       width: 25%;
     }
 }
 </style>
@@ -74,24 +74,34 @@ button {
 
 <form action="CreateUser.jsp" style="border:1px solid #ccc">
   <div class="container">
-    <label><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-
-    <label><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="ConfirmPassword" required>
-    
-    <label><b>Username</b></label>
-    <input type="text"  placeholder="Enter username" name = "username" required>
-    
-    <label><b>First Name</b></label>
-    <input type="text"  placeholder="Enter First Name" name = "first" required>
-    
-    <label><b>First Name</b></label>
-    <input type="text"  placeholder="Enter Last Name" name = "last" required>
+  <table>
+  <tr>
+   <td> <label><b>Email</b></label></td>
+    <td><input type="text" placeholder="Enter Email" name="email" required></td>
+</tr>
+<tr>
+   <td> <label><b>Password</b></label></td>
+   <td> <input type="password" placeholder="Enter Password" name="password" required></td>
+</tr>
+<tr>
+   <td> <label><b>Repeat Password</b></label></td>
+   <td> <input type="password" placeholder="Repeat Password" name="ConfirmPassword" required></td>
+</tr>   
+<tr>    
+   <td> <label><b>Username</b></label></td>
+    <td><input type="text"  placeholder="Enter username" name = "username" required></td>
+</tr>   
+<tr> 
+    <td><label><b>First Name</b></label></td>
+    <td><input type="text"  placeholder="Enter First Name" name = "first" required></td>
+    </tr>
+<tr >  
+  <td>  <label><b>Lirst Name</b></label></td>
+  <td>  <input type="text"  placeholder="Enter Last Name" name = "last" required></td></tr>
+  </table>
     <input type="checkbox" checked="checked"> Remember me
+   
+   
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
     <div class="clearfix">
