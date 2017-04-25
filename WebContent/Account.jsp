@@ -168,6 +168,7 @@ h1 {
 
 body {
 	background-image: url(plane2.PNG);
+	font-family: Verdana,sans-serif;
 }
 
 h2 {
@@ -251,7 +252,7 @@ h2 {
 <title>Account</title>
 </head>
 <body>
-	<h1>Welcome to Iowa Airline!!</h1>
+	<h1>We hope you will have a nice journey</h1>
 
 	<hr />
 	<div class="up">

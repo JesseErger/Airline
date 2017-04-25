@@ -7,6 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<style>
+body{
+  background-image: url(plane2.PNG);
+  font-family: Verdana,sans-serif;
+}
+</style>
 <body>
 <%
 session.setAttribute("check_in", "yes");
