@@ -6,14 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 body{
-  background-image: url(plane2.PNG);
+  background-image: url(searchflight_b.PNG);
   font-family: Verdana,sans-serif;
+  color:white;
 }
 
 #flight{
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 50%;
+    color:white;
   
     
 }
