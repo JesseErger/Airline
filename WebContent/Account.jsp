@@ -252,24 +252,30 @@ h2 {
 <title>Account</title>
 </head>
 <body>
-	<h1>We hope you will have a nice journey</h1>
+<% 
+	
+	
+	try {
+		if (!session.getValue("Account_Type").equals("admin")) {
+			out.println("<h1>We hope you will have a nice journey</h1>");
+		}
+	} catch (Exception e) {
+		String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
+		response.sendRedirect(site);
+	}
 
+%>
 	<hr />
 	<div class="up">
 		<table>
 			<tr>
+			
+			</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr>
+			
 				<td><font color="orange">Hello <%
-					out.println(first_name);
-				%>!
-				</font>
-					<button type="button" onclick="location = 'LogOut.jsp'">Log
-						Out</button></td>
-			</tr>
+					out.println(first_name+"!");
+				%>
 			<tr>
-				<td><font color="orange">Email: <%
-					out.println(email);
-				%></font></td>
-			</tr>
 		</table>
 	</div>
 	<div class="container">
@@ -316,6 +322,16 @@ h2 {
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {
 					out.println("<a href=\"FlightInfo.jsp\"title=\"add flight\">Add Flight</a>");
+				}
+			} catch (Exception e) {
+				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
+				response.sendRedirect(site);
+			}
+		%>
+		<%
+			try {
+				if (session.getValue("Account_Type").equals("admin")) {
+					out.println("<a href=\"UpdatePricingPage.jsp\"title=\"add flight\">Update Pricing</a>");
 				}
 			} catch (Exception e) {
 				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
