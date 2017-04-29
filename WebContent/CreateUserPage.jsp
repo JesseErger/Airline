@@ -175,7 +175,7 @@ button {
     <input type="checkbox" checked="checked"> Remember me
    
    
-    <p>By creating an account you agree to our <button id="myBtn">Terms & Privacy</button>.</p>
+    <p>By creating an account you agree to our <button id="myBtn">Terms & Privacy</button><input type="checkbox" value="agree" required> agree </p>
     <div id="myModal" class="modal">
 
   
