@@ -220,6 +220,60 @@ left: 20px;
    color:#DEDFD7;
 }
 
+#flight{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%
+}
+
+#flight td, #flight th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border: 5px;
+    text-align:center;
+}
+
+#flight tr:hover {background-color: #ddd;}
+
+#flight th {
+    padding-top: 30px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #69C830;
+    color: white;
+}
+
+input[type=text], input[type=password] {
+    width: 80%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#pt{
+ text-align:center;
+}
+
+#sub{
+  background-color: green;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    width: 25%;
+}
+
+#res{
+background-color: red;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    width: 25%;
+
+}
 
 </style>
 <title>Login</title>
@@ -252,7 +306,7 @@ left: 20px;
 		 <div class="modal-content animate" >
 			
 			<p><center><img id="myImg" src="plane.PNG" width="300" height="200" ></center></p>
-			<div class="logintable"><table border="1" cellspacing="2">
+			<div class="logintable"><table border="1" cellspacing="2" id="flight">
 				<thead>
 					<tr>
 						<th colspan="2">Login Here</th>
@@ -269,16 +323,16 @@ left: 20px;
 						<td><input type="password" name="password" required /></td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Login" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
+						<td colspan="2" align="center"><input id = "sub" type="submit"
+							value="Login" /> &nbsp;&nbsp; <input id = "res" type="reset" value="Reset" />
 						</td>
 					</tr>
 
 
 					<tr>
-						<td><a href="ResetPasswordPage.jsp" title="reset password">forget
+						<td id="pt"><a href="ResetPasswordPage.jsp" title="reset password">forget
 								password?</a></td>
-						<td><a href="ForgetUsernamePage.jsp" title="forget username">forget
+						<td id="pt"><a href="ForgetUsernamePage.jsp" title="forget username">forget
 								username?</a></td>
 					</tr>
 				</tbody>
@@ -304,43 +358,43 @@ window.onclick = function(event) {
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 7</div>
- <div class="picture"> <img src="plane3.PNG" width = "650", height = "450"></div>
+ <div class="picture"> <img src="plane3.PNG" width = "1000", height = "800"></div>
   <div class="text">Welcome to Iowa Airline</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 7</div>
-  <div class="picture"><img src="service.PNG" width = "650", height = "450"></div>
+  <div class="picture"><img src="service.PNG" width = "1000", height = "800"></div>
   <div class="text">We provides best service</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 7</div>
- <div class="picture"> <img src="on time.PNG" width = "650", height = "450"></div>
+ <div class="picture"> <img src="on time.PNG" width = "1000", height = "800"></div>
   <div class="text">Our plane took off on time</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">4 / 7</div>
- <div class="picture"> <img src="first class.PNG" width = "650", height = "450"></div>
+ <div class="picture"> <img src="first class.PNG" width = "1000", height = "800"></div>
   <div class="text">we provide different classes</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">5 / 7</div>
- <div class="picture"> <img src="business class.PNG" width = "650", height = "450"></div>
+ <div class="picture"> <img src="business class.PNG" width = "1000", height = "800"></div>
   <div class="text">we provide different classes</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">6 / 7</div>
- <div class="picture"> <img src="economy.PNG" width = "650", height = "450"></div>
+ <div class="picture"> <img src="economy.PNG" width = "1000", height = "800"></div>
   <div class="text">we provide different classes</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">7 / 7</div>
- <div class="picture"> <img src="happy journey.PNG" width = "650", height = "450"></div>
+ <div class="picture"> <img src="happy journey.PNG" width = "1000", height = "800"></div>
   <div class="text">you will have a wonderful journey if you choose us</div>
 </div>
 </div>
