@@ -257,7 +257,7 @@ h2 {
 	
 	try {
 		if (!session.getValue("Account_Type").equals("admin")) {
-			out.println("<h1>We hope you will have a nice journey</h1>");
+			out.println("<h1>Welcome to Iowa Airline, "+first_name+"!</h1>");
 		}
 	} catch (Exception e) {
 		String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
@@ -272,8 +272,14 @@ h2 {
 			
 			</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr>
 			
-				<td><font color="orange">Hello <%
-					out.println(first_name+"!");
+				<td><font color="orange"><%try {
+					if (session.getValue("Account_Type").equals("admin")) {
+						out.println("Hello "+first_name+"!");
+					}
+				} catch (Exception e) {
+				}
+				
+					
 				%>
 			<tr>
 		</table>
