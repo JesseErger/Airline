@@ -30,17 +30,21 @@
 				} else {
 					for (int i = 0; i < returnedFlights.size(); i++) {
 						if (returnedFlights.get(i).is_connection == 0) {
-							out.println(
-									"<tr><td>Departure Time</td><td>" + " leaves " + returnedFlights.get(i).destination
-											+ " at " + returnedFlights.get(i).departure_time
-											+ "<td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
-											+ returnedFlights.get(i).flight_ID
-											+ "><input type='submit' name='Buy' value='Buy'></td></form>");
+							out.println("<tr><td>Flight Number: "+returnedFlights.get(i).flight_ID.toString()+"</td><td>" + " leaves " + returnedFlights.get(i).origin
+									+ " at " + returnedFlights.get(i).departure_time + " arrives at "
+									+ returnedFlights.get(i).destination + " at "
+									+ returnedFlights.get(i).departure_time
+									+ "<td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
+									+ returnedFlights.get(i).flight_ID
+									+ "><input type='submit' name='Buy' value='Buy'></td></form>");
 						} else {
 							if (returnedFlights.get(i).is_connection > 0) {
-								out.println("<tr><td>Departure Time</td><td>" + " leaves "
-										+ returnedFlights.get(i).destination + " at "
-										+ returnedFlights.get(i).departure_time + " leaves "
+								out.println("<tr><td>Flight Numbers: "+returnedFlights.get(i).flight_ID.toString()+", "+returnedFlights.get(i+1).flight_ID.toString()+"</td><td>" + " leaves "
+										+ returnedFlights.get(i).origin + " at " + returnedFlights.get(i).departure_time
+										+ " arrives at " + returnedFlights.get(i).destination + " at "
+										+ returnedFlights.get(i).departure_time + "</br>leaves "
+										+ returnedFlights.get(i + 1).origin + " at "
+										+ returnedFlights.get(i + 1).departure_time + " arrives at "
 										+ returnedFlights.get(i + 1).destination + " at "
 										+ returnedFlights.get(i + 1).departure_time
 										+ "<td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="

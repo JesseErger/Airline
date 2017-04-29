@@ -12,11 +12,10 @@
 		Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "Pwtemp01!");
 
-		// gets direct flights
 		String sql = "Select * from flight where flight_id=?";
 		PreparedStatement flights = conn.prepareStatement(sql);
 		flights.setString(1, flightList.get(i));
-		ResultSet rs = flights.executeQuery(); // all direct flights
+		ResultSet rs = flights.executeQuery(); // flight being bought
 		if (rs.next()) {
 			Integer newCapacity;
 			if (ticketClass.equals("coach")) {
@@ -48,13 +47,22 @@
 					request.getParameter("first_name"), request.getParameter("last_name"),
 					request.getParameter("expiration"), request.getParameter("CVV"),
 					request.getParameter("street_address"), request.getParameter("city"),
-					request.getParameter("state"), request.getParameter("zip"), rs.getInt(ticketClass + "_cost"));
+					request.getParameter("state"), request.getParameter("zip"),
+					rs.getInt(ticketClass + "_cost"));
 			createTransaction.executeUpdate(sql);
+
+			sql = "SELECT * FROM reservations WHERE reservation_ID = (SELECT max(reservation_ID) from reservations)";
+			PreparedStatement reservation = conn.prepareStatement(sql);
+			ResultSet reservationResult = reservation.executeQuery(); // flight being bought
+			reservationResult.next();
+			
 
 			sendMail.send("Flight Booked",
 					"Thank you for buying your flight\n" + "your flight number is: " + rs.getString("flight_ID")
-							+ "\nDate: " + rs.getTimestamp("departure_time") + "\nCost: "
-							+ rs.getInt(ticketClass + "_cost"),
+							+ "\nLeaving at: " + rs.getTimestamp("departure_time") + " Arriving at: "
+							+ rs.getTimestamp("arrival_time") + "\nCost: " + rs.getInt(ticketClass + "_cost")
+							+ "\nFrom: " + rs.getString("Origin") + "\nTo: " + rs.getString("destination")
+							+ "\nYour reservation number is: " + reservationResult.getInt("reservation_ID"),
 					session.getAttribute("Email").toString());
 
 		}
