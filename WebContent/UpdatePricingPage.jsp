@@ -1,0 +1,89 @@
+<%@ page import="java.sql.*" language="java"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
+	import="java.io.*,java.util.*" %>
+
+
+
+<table border="1" cellpadding="5" cellspacing="2">
+	<thead>
+		<tr>
+			<th colspan="7">Results</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+
+			<%
+				try {
+					
+					Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
+					
+			        Statement stmt = null;
+			        stmt = conn.createStatement();
+			        ResultSet rs = null;
+			        ResultSet rs1 = null;
+			        Vector <String> f_ids = new Vector();
+			        Vector <String []> p_ids = new Vector();
+		        	String get_flights = String.format("SELECT flight_ID FROM `sys`.`reservations`");
+		        	String get_planes = String.format("SELECT plane_ID,flight_ID FROM `sys`.`flight`");
+		        	rs = stmt.executeQuery(get_flights);
+		        	rs1 = stmt.executeQuery(get_planes);
+			        	while(rs.next()){
+			        		f_ids.add(rs.getString("flight_ID"));
+			        		out.println(rs.getString("flight_ID"));
+			        	}
+			        	while(rs1.next()){
+			        		p_ids.add([rs.getString("flight_ID"),rs.getString("plane_ID")]);
+			        		out.println(rs.getString("plane_ID"));
+			        	}
+			        	
+				}
+			        	catch(Exception e){
+			        	}
+			        	
+						/* Statement stmt1 = null;
+				        stmt1 = conn.createStatement();
+						ResultSet rs1 = null;
+				        String get_name = String.format("SELECT * FROM `sys`.`users` where username = '%s'",rs.getString("username"));
+				        rs1 = stmt1.executeQuery(get_name);
+						rs1.next();
+						out.println("<tr><td>Reservation ID</td><td>First Name</td><td>Last Name</td><td>Seating Class</td><td>Date of Departure</td><td>Checked In</td><td>Check In</td></tr>");
+						boolean tf = true;
+
+						while (tf) {
+							String res_id = rs.getString("reservation_ID");
+							
+							String seating_class = rs.getString("seating_class");
+							String firstname = rs1.getString("firstname");
+							String lastname = rs1.getString("lastname");
+							String checked_in = rs.getString("checked_in").toString();
+							String nextpage = "";
+							if(session.getAttribute("check_in").equals("yes")){
+								nextpage = "CheckInReservation.jsp";
+							}
+							else{
+								nextpage = "RefundReservation.jsp";
+							}
+							String checkin_button = "<td><form method='post' action='" + nextpage + "'><input type='submit' name='res' value='" + "Reservation_"+res_id + "'></td>";
+							String row = "";
+							if(checked_in.equals("0")){
+								row = "<tr><td>"+res_id+"</td><td>"+firstname+"</td><td>"+lastname+"</td><td>"+seating_class+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>"+ "<td>No</td>" +  checkin_button  +  "</tr>";
+							}
+							else{
+								row = "<tr><td>"+res_id+"</td><td>"+firstname+"</td><td>"+lastname+"</td><td>"+seating_class+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>"+ "<td>Yes</td>" + "<td></td>" +"</tr>";
+							}
+							out.println(row);
+									
+						tf = rs.next();
+						}
+					} 
+
+				} catch (Exception e) {
+					out.println(e.toString());
+				} */
+			%>
+		
+
+	</tbody>
+</table>
