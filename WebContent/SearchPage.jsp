@@ -10,15 +10,72 @@ body{
   font-family: Verdana,sans-serif;
 }
 
+#flight{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+  
+    
+}
+
+#flight td, #flight th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border: 5px;
+}
+
+#flight tr:hover {background-color: #ddd;}
+
+#flight th {
+    padding-top: 30px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #69C830;
+    color: white;
+}
+
+input[type=text], input[type=password] {
+    width: 25%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+
 h1 {
 	text-align: center;
 	color: red;
 }
 
-td {
-	font-weight: bold;
-	font-style: center
+#sub{
+  background-color: green;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    width: 25%;
 }
+
+#res{
+background-color: red;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    width: 25%;
+
+}
+#left{
+  text-align: right;
+}
+
+#right{
+  text-align: left;
+}
+
 
 a:hover {
 	background-color: blue;
@@ -48,17 +105,17 @@ a:active {
 <body>
 	<form method="post" action="Search.jsp">
 		<center>
-			<table border="1" cellpadding="5" cellspacing="2">
+			<table border="1" cellpadding="5" cellspacing="2" id="flight">
 				<thead>
 					<tr>
-						<th colspan="2">Search</th>
+						<th colspan="2">Search your flight</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					<tr>
-						<td>From</td>
-						<td><select name="from">
+						<td id="left">From</td>
+						<td id="right"><select name="from">
 								<option value="Chicago">Chicago</option>
 								<option value="New York">New York</option>
 								<option value="Iowa City">Iowa City</option>
@@ -67,8 +124,8 @@ a:active {
 						</select></td>
 					</tr>
 					<tr>
-						<td>To</td>
-						<td><select name="to">
+						<td id="left">To</td>
+						<td id="right"><select name="to">
 								<option value="Chicago">Chicago</option>
 								<option value="New York" selected>New York</option>
 								<option value="Iowa City">Iowa City</option>
@@ -77,20 +134,20 @@ a:active {
 						</select></td>
 					</tr>
 					<tr>
-						<td>Class</td>
-						<td><select name="class">
+						<td id="left">Class</td>
+						<td id="right"><select name="class">
 								<option value="coach">Coach</option>
 								<option value="business">Business</option>
 								<option value="first">First</option>
 						</select></td>
 					</tr>
 					<tr>
-						<td>Date</td>
+						<td id="left">Date</td>
 						<td><input type="text" name="date" id="datepicker" required /></td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Search" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
+						<td colspan="2" align="center"><input id="sub" type="submit"
+							value="Search" /> &nbsp;&nbsp; <input id ="res" type="reset" value="Reset" />
 						</td>
 					</tr>
 				</tbody>
