@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
 --
 -- Host: localhost    Database: sys
 -- ------------------------------------------------------
--- Server version	5.7.17-log
+-- Server version	5.7.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,25 +24,22 @@ DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction` (
   `username` varchar(255) NOT NULL,
-  `credit_card` int(16) NOT NULL,
+  `credit_card` varchar(16) NOT NULL,
   `cardholder_first` varchar(30) NOT NULL,
   `cardholder_last` varchar(30) NOT NULL,
-  `exp_date` date NOT NULL,
+  `exp_date` int(4) NOT NULL,
   `CVV` int(3) NOT NULL,
   `address_street` varchar(50) NOT NULL,
   `address_city` varchar(50) NOT NULL,
   `address_state` varchar(50) NOT NULL,
   `address_zipcode` int(5) NOT NULL,
-  `amount` double(7,2) NOT NULL,
-  `reservation_ID` int(15) NOT NULL,
+  `amount` int(10) NOT NULL,
   `transaction_ID` int(15) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`transaction_ID`),
   UNIQUE KEY `transaction_ID_UNIQUE` (`transaction_ID`),
   KEY `username` (`username`),
-  KEY `reservation_ID` (`reservation_ID`),
-  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`),
-  CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`reservation_ID`) REFERENCES `reservations` (`reservation_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,6 +48,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES ('admin','1234567891234567','Chris','Boswell',0,323,'222 E Market St., #2','Iowa City','IA',52245,100,13);
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-23 23:18:30
+-- Dump completed on 2017-04-28 23:49:31
