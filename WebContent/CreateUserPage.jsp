@@ -6,7 +6,7 @@
 /* Full-width input fields */
 
 body{
-  background-image: url(plane2.PNG);
+  background-image: url(Signup-B.PNG);
   font-family: Verdana,sans-serif;
 }
 
