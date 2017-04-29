@@ -9,17 +9,75 @@
 <style type="text/css">
 body {
  font-family: Verdana,sans-serif;
+ background-image: url(Word-B.PNG);
+ color:black;
 }
+
+#flight{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    
+}
+
+#flight td, #flight th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border: 5px;
+}
+
+#flight tr:hover {background-color: #DCADC1;}
+
+#flight th {
+    padding-top: 30px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #91A7C5;
+    color: white;
+}
+
+input[type=text], input[type=password] {
+    width: 80%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
 
 h1 {
 	text-align: center;
 	color: red;
 }
 
-td {
-	font-weight: bold;
-	font-style: center
+#sub{
+  background-color: green;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    width: 25%;
 }
+
+#res{
+background-color: red;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    width: 25%;
+
+}
+#left{
+  text-align: center;
+}
+
+#right{
+  text-align: left;
+}
+
 
 a:hover {
 	background-color: blue;
@@ -56,14 +114,14 @@ a:active {
 <body>
 	<form method="post" action="NewFlight.jsp">
 		<center>
-			<table border="1" cellpadding="5" cellspacing="2">
+			<table border="1" cellpadding="5" cellspacing="2" id="flight">
 				<thead>
 					<tr>
 						<th colspan="2">Add Flight</th>
 					</tr>
 				</thead>
 					<tr>
-						<td>From</td>
+						<td id="left">From</td>
 						<td><select name="origin">
 								<option value="Chicago">Chicago</option>
 								<option value="New York">New York</option>
@@ -73,7 +131,7 @@ a:active {
 						</select></td>
 					</tr>
 					<tr>
-						<td>To</td>
+						<td id="left">To</td>
 						<td><select name="destination">
 								<option value="Chicago">Chicago</option>
 								<option value="New York" selected>New York</option>
@@ -83,22 +141,22 @@ a:active {
 						</select></td>
 					</tr>
 					<tr>
-						<td>Departure Date</td>
+						<td id="left">Departure Date</td>
 						<td><input type="text" name="date_of_departure" id="datepicker" required /></td>
 					</tr>
 					<tr>
-						<td>Departure Time(HH:MM)</td>
+						<td id="left">Departure Time(HH:MM)</td>
 						<td><input type="text" name="time_of_departure" required /></td>
 					</tr>
 					<tr>
-						<td>Arrival Date</td>
+						<td id="left">Arrival Date</td>
 						<td><input type="text" name="arrival_date" id="datepicker1" required /></td>
 					</tr>
 					<tr>
-						<td>Arrival Time(HH:MM)</td>
+						<td id="left">Arrival Time(HH:MM)</td>
 						<td><input type="text" name="arrival_time" required /></td>
 					</tr>
-					<td>Frequency</td>
+					<td id="left">Frequency</td>
 						<td><select name="frequency">
 								<option value="once">One Time</option>
 								<option value="daily" >Daily</option>
@@ -107,8 +165,8 @@ a:active {
 								
 						</select></td>					
 					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
+						<td colspan="2" align="center"><input id="sub" type="submit"
+							value="Submit" /> &nbsp;&nbsp; <input id="res" type="reset" value="Reset" />
 						</td>
 					</tr>
 				</tbody>

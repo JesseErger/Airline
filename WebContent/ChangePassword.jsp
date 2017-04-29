@@ -13,6 +13,7 @@ page import="java.sql.*" language="java"
 	String email = "";
 	String acc_type = "";
 	String loged_out = "";
+	
 	try {
 		username = session.getAttribute("Username").toString();
 		first_name = session.getAttribute("First_Name").toString();
@@ -41,8 +42,10 @@ page import="java.sql.*" language="java"
 				|| !newPassword.matches(".*\\d+.*")) {
 			out.println(
 					"Your password must contain at least 7 Characters, contain at least one upper case letter, and one number");
+			
 		} else if (!confirmNewPassword.equals(newPassword)) {
 			out.println("Your password must match the confirm password!");
+		
 		} else {
 			newPassword = "AES_ENCRYPT('";
 			newPassword += request.getParameter("newPassword")+ "','_KEY_')";
