@@ -56,7 +56,7 @@
 					password, last, username, first, acc_type, email);
 			stmt.executeUpdate(sql);
 			out.print("Your account has been succesfully created!");
-			sendMail.send("New account", "Your account is " + username + "\n your password is " + password
+			sendMail.send("New account", "Your account is " + username + "\n your password is " + request.getParameter("ConfirmPassword")
 					+ "\n please change your password in your account settings", email);
 			if (iscust) {
 				response.setHeader("Refresh", "5;url=Login.jsp");

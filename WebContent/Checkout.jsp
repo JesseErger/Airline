@@ -8,6 +8,8 @@ page import="java.sql.*" language="java"
 	//must be signed in
 	//String flightNumber = session.getAttribute("flightNumber").toString();
 	String flightNumber = request.getParameter("flightNumber");
+	String ticketClass = session.getAttribute("ticketClass").toString();
+
 	session.setAttribute("flightNumber", flightNumber);
 	List<String> flightList = Arrays.asList(flightNumber.split(","));
 	int cost = 0;
@@ -21,7 +23,13 @@ page import="java.sql.*" language="java"
 		flights.setString(1, flightList.get(i));
 		ResultSet rs = flights.executeQuery(); // all direct flights
 		if (rs.next()) {
-			cost += rs.getInt("coach_cost");
+			if (ticketClass.equals("coach")) {
+				cost += rs.getInt("coach_cost");
+			} else if (ticketClass.equals("businesss")) {
+				cost += rs.getInt("business_cost");
+			} else {
+				cost += rs.getInt("first_cost");
+			}
 		}
 	}
 	session.setAttribute("totalCost", cost);
@@ -87,14 +95,6 @@ page import="java.sql.*" language="java"
 					<td colspan="2" align="center"><input type="submit"
 						value="Confirm Payment" /> &nbsp;&nbsp; <input type="reset"
 						value="Reset" /></td>
-				</tr>
-
-
-				<tr>
-					<td><a href="ResetPasswordPage.jsp" title="reset password">forget
-							password?</a></td>
-					<td><a href="ForgetUsernamePage.jsp" title="forget username">forget
-							username?</a></td>
 				</tr>
 			</tbody>
 		</table>
