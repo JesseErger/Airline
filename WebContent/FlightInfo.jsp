@@ -98,6 +98,14 @@ a:active {
 						<td>Arrival Time(HH:MM)</td>
 						<td><input type="text" name="arrival_time" required /></td>
 					</tr>
+					<td>Frequency</td>
+						<td><select name="frequency">
+								<option value="once">One Time</option>
+								<option value="daily" >Daily</option>
+								<option value="weekly">Weekly</option>
+								<option value="monthly">Monthly</option>
+								
+						</select></td>					
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
 							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />

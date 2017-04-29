@@ -68,7 +68,7 @@ catch(Exception e){
 	out.println(e);
 	
 }
-out.print("Refund was succesful!");
+out.print("Cancellation was succesful!");
 if(session.getAttribute("Account_Type").equals("manager")){
 response.setHeader("Refresh", "2;url=ManagerAccount.jsp");
 }

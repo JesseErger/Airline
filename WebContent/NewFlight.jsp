@@ -42,6 +42,7 @@ a:active {
 					</tr>
 				</thead>
 				<%
+				String frequency = request.getParameter("frequency").toString();
 				String origin = request.getParameter("origin").toString();
 				String destination = request.getParameter("destination").toString();
 				String date_of_departure = request.getParameter("date_of_departure").toString();

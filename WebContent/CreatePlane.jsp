@@ -29,7 +29,7 @@
 		}
 
 	} catch (Exception e) {
-		out.println("There was a problem adding the plane, please try again!");
+		out.println("There was a problem adding the plane, please try again!" + e);
 	}
 %>
 <script>
