@@ -17,6 +17,62 @@ b{
   color:black;
   font:bold;
 }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 input[type=text], input[type=password] {
     width: 250%;
     padding: 10px 15px;
@@ -67,6 +123,22 @@ button {
        width: 25%;
     }
 }
+
+#myBtn{
+  background-color:grey;
+  width: 15%;
+}
+
+#pic{
+  width:400px;
+  height:300px;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #ADC2CA;
+    color: black;
+}
 </style>
 <body>
 
@@ -97,19 +169,59 @@ button {
     <td><input type="text"  placeholder="Enter First Name" name = "first" required></td>
     </tr>
 <tr >  
-  <td>  <label><b>Lirst Name</b></label></td>
+  <td>  <label><b>Last Name</b></label></td>
   <td>  <input type="text"  placeholder="Enter Last Name" name = "last" required></td></tr>
   </table>
     <input type="checkbox" checked="checked"> Remember me
    
    
-    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+    <p>By creating an account you agree to our <button id="myBtn">Terms & Privacy</button>.</p>
+    <div id="myModal" class="modal">
 
+  
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h3>Please read carefully!</h3>
+      </div>
+    <p><img src="Terms_P.PNG" id="pic"></p>
+    
+  </div>
+
+</div>
     <div class="clearfix">
       <button type="reset" class="cancelbtn">Clear All</button>
       <button type="submit" class="signupbtn">Sign Up</button>
     </div>
   </div>
+  
+  <script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </form>
 
 </body>
