@@ -98,7 +98,7 @@ a:hover {
 a:active {
 	background-color: red;
 }
-}
+
 </style>
 <title>Add Plane</title>
 </head>
