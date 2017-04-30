@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-	import="java.io.*,java.util.*" %>
+	import="java.io.*,java.util.*,org.joda.time.*"%>
 
 
 
@@ -41,7 +41,12 @@
 							String nextpage = "RefundReservation.jsp";
 							String cancel_button = "<td><form method='post' action='" + nextpage + "'><input type='submit' name='res' value='" + "Reservation_"+res_id + "'></td>";
 							String row = "";
-							if(checked_in.equals("0")){
+							DateTime cur = new DateTime();
+							
+							DateTime depart = new DateTime(rs.getTimestamp("date_of_depature"));
+
+					        DateTime limit = cur.plusHours(24);
+							if(checked_in.equals("0") && limit.isBefore(depart) ){
 								row = "<tr><td>"+res_id+"</td><td>"+seating_class+"</td><td>" + rs.getTimestamp("date_of_depature") + "</td>"+ "<td>No</td>" +  cancel_button  +  "</tr>";
 							}
 							else{
