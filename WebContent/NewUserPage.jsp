@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 body {
+   font-family: Verdana,sans-serif;
+   background-image:url(createManager-B.PNG)
 
 }
 
@@ -30,7 +32,7 @@ a:active {
 	background-color: red;
 }
 </style>
-<title>Create user</title>
+<title>Create manager</title>
 </head>
 <body>
 	<form method="post" action="CreateUser.jsp">
@@ -38,7 +40,7 @@ a:active {
 			<table border="1" cellpadding="5" cellspacing="2">
 				<thead>
 					<tr>
-						<th colspan="2">Create Account</th>
+						<th colspan="2">Create Manager Account</th>
 					</tr>
 				</thead>
 

@@ -349,43 +349,43 @@ window.onclick = function(event) {
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 7</div>
- <div class="picture"> <img src="plane3.PNG" width = "1000", height = "800"></div>
+ <div class="picture"> <img src="plane3.PNG" width = "600", height = "400"></div>
   <div class="text">Welcome to Iowa Airline</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 7</div>
-  <div class="picture"><img src="service.PNG" width = "1000", height = "800"></div>
+  <div class="picture"><img src="service.PNG" width = "600", height = "400"></div>
   <div class="text">We provides best service</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 7</div>
- <div class="picture"> <img src="on time.PNG" width = "1000", height = "800"></div>
+ <div class="picture"> <img src="on time.PNG" width = "600", height = "400"></div>
   <div class="text">Our plane took off on time</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">4 / 7</div>
- <div class="picture"> <img src="first class.PNG" width = "1000", height = "800"></div>
+ <div class="picture"> <img src="first class.PNG" width = "600", height = "400"></div>
   <div class="text">we provide different classes</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">5 / 7</div>
- <div class="picture"> <img src="business class.PNG" width = "1000", height = "800"></div>
+ <div class="picture"> <img src="business class.PNG" width = "600", height = "400"></div>
   <div class="text">we provide different classes</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">6 / 7</div>
- <div class="picture"> <img src="economy.PNG" width = "1000", height = "800"></div>
+ <div class="picture"> <img src="economy.PNG" width = "600", height = "400"></div>
   <div class="text">we provide different classes</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">7 / 7</div>
- <div class="picture"> <img src="happy journey.PNG" width = "1000", height = "800"></div>
+ <div class="picture"> <img src="happy journey.PNG" width = "600", height = "400"></div>
   <div class="text">you will have a wonderful journey if you choose us</div>
 </div>
 </div>
