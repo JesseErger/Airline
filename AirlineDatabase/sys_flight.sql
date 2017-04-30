@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sys
 -- ------------------------------------------------------
--- Server version	5.7.17
+-- Server version	5.7.17-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +39,7 @@ CREATE TABLE `flight` (
   PRIMARY KEY (`flight_ID`),
   UNIQUE KEY `flight_ID_UNIQUE` (`flight_ID`),
   KEY `plane_ID` (`origin`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `flight` (
 
 LOCK TABLES `flight` WRITE;
 /*!40000 ALTER TABLE `flight` DISABLE KEYS */;
-INSERT INTO `flight` VALUES (5,'New York','Iowa City','2017-04-25 05:30:00','2017-04-25 09:30:00',400,300,200,3,'admin',25,3,2),(2,'New York','Chicago','2017-04-25 01:23:00','2017-04-25 02:45:00',20,20,20,5,'admin',17,1,1),(2,'Chicago','Iowa City','2017-04-25 09:45:00','2017-04-25 10:55:00',20,20,24,6,'admin',11,1,1),(6,'Chicago','New York','2017-04-27 07:45:00','2017-04-27 10:55:00',300,200,100,7,'admin',20,20,20),(2,'Chicago','New York','2017-04-29 13:00:00','2017-04-29 15:00:00',300,200,100,8,'admin',-2,1,1);
+INSERT INTO `flight` VALUES (5,'New York','Iowa City','2017-04-25 05:30:00','2017-04-25 09:30:00',7,7,7,3,'admin',25,3,2),(2,'New York','Chicago','2017-04-25 01:23:00','2017-04-25 02:45:00',450,2342,23542,5,'admin',17,1,1),(2,'Chicago','Iowa City','2017-04-25 09:45:00','2017-04-25 10:55:00',23432,23423,3423,6,'admin',11,1,1),(6,'Chicago','New York','2017-04-27 07:45:00','2017-04-27 10:55:00',300,200,100,7,'admin',21,20,20),(2,'Chicago','New York','2017-04-29 13:00:00','2017-04-29 15:00:00',300,200,100,8,'admin',-2,1,1),(2,'Chicago','New York','2017-04-28 05:30:00','2017-04-25 07:30:00',45,99,8778,9,'admin',1,1,1);
 /*!40000 ALTER TABLE `flight` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-28 23:49:30
+-- Dump completed on 2017-04-30 16:15:31

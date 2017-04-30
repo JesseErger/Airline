@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for macos10.12 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sys
 -- ------------------------------------------------------
--- Server version	5.7.17
+-- Server version	5.7.17-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,12 +30,13 @@ CREATE TABLE `reservations` (
   `reservation_ID` int(15) NOT NULL AUTO_INCREMENT,
   `checked_in` tinyint(1) NOT NULL DEFAULT '0',
   `amount` int(5) NOT NULL,
+  `seat_num` varchar(10) DEFAULT '0',
   PRIMARY KEY (`reservation_ID`),
   UNIQUE KEY `reservation_ID_UNIQUE` (`reservation_ID`),
   KEY `username` (`username`),
   KEY `plane_ID_idx` (`flight_ID`),
   CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`flight_ID`) REFERENCES `flight` (`flight_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +45,7 @@ CREATE TABLE `reservations` (
 
 LOCK TABLES `reservations` WRITE;
 /*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
-INSERT INTO `reservations` VALUES ('admin','2017-04-29','coach',8,20,0,100),('admin','2017-04-29','coach',8,21,0,100);
+INSERT INTO `reservations` VALUES ('admin','2017-04-29','coach',7,1,1,100,'2'),('admin','2017-04-29','coach',7,2,0,100,'0'),('admin','2017-04-29','first',7,3,1,100,'2'),('admin','2017-04-29','business',7,4,0,100,'0'),('admin','2017-04-29','first',7,7,1,100,'1'),('admin','2017-04-29','coach',7,15,1,100,'1');
 /*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-28 23:49:30
+-- Dump completed on 2017-04-30 16:15:31
