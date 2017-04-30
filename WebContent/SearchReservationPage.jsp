@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Search Reservations</title>
 </head>
 <style>
 body{
@@ -104,11 +104,11 @@ session.setAttribute("check_in", "yes");
 				<tbody>					
 					<tr>
 						<td id = "left">First Name</td>
-						<td><input type="text" name="f_name" required /></td>
+						<td><input type="text" name="f_name"  /></td>
 					</tr>
 					<tr>
 						<td id = "left">Last Name</td>
-						<td><input type="text" name="l_name" required /></td>
+						<td><input type="text" name="l_name" /></td>
 					</tr>
 					<tr>
 						<td id = "left">Reservation number</td>

@@ -16,7 +16,12 @@ stmt = conn.createStatement();
 String check_in = String.format("UPDATE `sys`.`reservations` SET `checked_in`='1' WHERE `reservation_ID`= '%s'",res_id);
 stmt.executeUpdate(check_in);
 out.print("Customer has been checked in succesfully!");
-response.setHeader("Refresh", "2;url=ManagerAccount.jsp");
+if(session.getAttribute("Account_Type").equals("admin")){
+	response.setHeader("Refresh", "2;url=Account.jsp");
+}
+else{
+	response.setHeader("Refresh", "2;url=ManagerAccount.jsp");
+}
 %>
 </body>
 </html>

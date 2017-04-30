@@ -265,36 +265,34 @@ h2 {
 	}
 
 %>
-	<hr />
-	<div class="up">
-		<table>
-			<tr>
+
 			
-			</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr>
 			
-				<td><font color="orange"><%try {
+			
+			<h2>
+				<font color="orange"><%try {
 					if (session.getValue("Account_Type").equals("admin")) {
-						out.println("Hello "+first_name+"!");
+						out.println("Welcome "+first_name+"!");
 					}
 				} catch (Exception e) {
 				}
 				
 					
 				%>
-			<tr>
-		</table>
-	</div>
+			</font></h2>
 	<div class="container">
-		<a href="SearchPage.jsp">Search Flights</a>
+		
 		<div class="dropdown">
-			<button class="dropbtn" onclick="myfunction()">User
-				information</button>
+			<button class="dropbtn" onclick="myfunction()">My Account
+				</button>
 			<div class="dropdown-content" id="myDropdown">
 					<a href="ChangePasswordPage.jsp">Change
 					Password</a> <a href="#">Edit Payment Information</a> <a
 					href="UserReservations.jsp">Order History</a>  <a href="LogOut.jsp">Log out</a>
 			</div>
+			
 		</div>
+		<a href="SearchPage.jsp">Search Flights</a>
 		<%
 		try {
 			if (session.getValue("Account_Type").equals("manager")) {
@@ -337,14 +335,22 @@ h2 {
 		<%
 			try {
 				if (session.getValue("Account_Type").equals("admin")) {
-					out.println("<a href=\"UpdatePricingPage.jsp\"title=\"add flight\">Update Pricing</a>");
+					out.println("<a href=\"UpdatePricingPage.jsp\"title=\"add flight\">Update Flight Pricing</a>");
+					out.println("<a href=\"SearchReservationPage.jsp\"title=\"sear rev\">Check In Reservation</a>");
+					out.println("<a href=\"SearchRefundReservation.jsp\"title=\"add flight\">Cancel Reservation</a>");
+					
 				}
+
 			} catch (Exception e) {
 				String site = new String("http://localhost:8080/com.airline.web.index/Login.jsp");
 				response.sendRedirect(site);
 			}
 		%>
-	</div>
+		
+		</div>
+		
+		
+
 	
 	
 	
@@ -361,6 +367,20 @@ h2 {
 			}
 		}
 	</script>
+	<script>
+		function myFunction1() {
+			document.getElementById("myDropdown1").classList.toggle("show");
+		}
+		window.onclick = function(e) {
+			if (!e.target.matches('.dropbtn')) {
+				var myDropdown1 = document.getElementById("myDropdown1");
+				if (myDropdown1.classList.contains('show')) {
+					myDropdown1.classList.remove('show');
+				}
+			}
+		}
+	</script>
+	
 	
 	<div>
 	<p><img id="myImg" src="Iowa City.PNG" alt="Iowa City was the second capital of the Iowa Territory and the first
