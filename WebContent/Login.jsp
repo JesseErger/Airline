@@ -161,7 +161,7 @@ a:active {
     position: absolute;
     right: 25px;
     top: 0;
-    color: #000;
+    color: pink;
     font-size: 35px;
     font-weight: bold;
 }
@@ -233,7 +233,7 @@ left: 20px;
     text-align:center;
 }
 
-#flight tr:hover {background-color: #ddd;}
+
 
 #flight th {
     padding-top: 30px;
@@ -283,15 +283,6 @@ background-color: red;
 	<form method="post" action="validate.jsp">
 	
 		<h1>Welcome to Iowa Airline</h1>
-		<div class ="createAccount">
-		<table>
-			<tr>
-				<td>Don't have an account?</td>
-				<td><a href="CreateUserPage.jsp" title="create a new account">click
-						here</a></td>
-			</tr>
-		</table>
-	</div>
 		<div class="login"><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></div>
 		<hr />
 		   <%
@@ -330,11 +321,11 @@ background-color: red;
 
 
 					<tr>
-						<td id="pt"><a href="ResetPasswordPage.jsp" title="reset password">forget
-								password?</a></td>
-						<td id="pt"><a href="ForgetUsernamePage.jsp" title="forget username">forget
-								username?</a></td>
+						<td id="pt"><a href="ResetPasswordPage.jsp" title="reset password">Forgot
+								Password?</a></td>
+						<td id="pt"><a href="CreateUserPage.jsp" title="create account">Create an Account</a></td>
 					</tr>
+					
 				</tbody>
 			</table></div>
 			</div>
