@@ -9,10 +9,11 @@ page import="java.sql.*" language="java"
 	//String flightNumber = session.getAttribute("flightNumber").toString();
 	String flightNumber = request.getParameter("flightNumber");
 	String ticketClass = session.getAttribute("ticketClass").toString();
+	Integer numberTickets = (Integer) session.getAttribute("numberTickets");
 
 	session.setAttribute("flightNumber", flightNumber);
 	List<String> flightList = Arrays.asList(flightNumber.split(","));
-	int cost = 0;
+	Integer cost = 0;
 	for (int i = 0; i < flightList.size(); i++) {
 		Class.forName("com.mysql.jdbc.Driver"); // MySQL database connection
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys", "root", "Pwtemp01!");
@@ -32,7 +33,7 @@ page import="java.sql.*" language="java"
 			}
 		}
 	}
-	session.setAttribute("totalCost", cost);
+	session.setAttribute("totalCost", cost * numberTickets);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
