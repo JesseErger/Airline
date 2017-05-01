@@ -1,13 +1,16 @@
 <%@ page import="java.sql.*" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-	import="java.io.*,java.util.*,classes.SearchFlights,classes.Flights"%>
+	import="java.io.*,java.util.*,classes.SearchFlights,classes.Flights,classes.FormatDate"%>
 
 
 
-<table border="1" cellpadding="5" cellspacing="2">
+<table class="sortable" border="1" cellpadding="5" cellspacing="2">
 	<thead>
 		<tr>
-			<th colspan="3">Results</th>
+			<th>Flight Number</th>
+			<th>Departing</th>
+			<th>Arriving</th>
+			<th>Purchase</th>
 		</tr>
 	</thead>
 
@@ -30,18 +33,21 @@
 				} else {
 					for (int i = 0; i < returnedFlights.size(); i++) {
 						if (returnedFlights.get(i).is_connection == 0) {
-							out.println("<tr><td>Flight Number: "+returnedFlights.get(i).flight_ID.toString()+"</td><td>" + " leaves " + returnedFlights.get(i).origin
-									+ " at " + returnedFlights.get(i).departure_time + " arrives at "
+							out.println("<tr><td>" + returnedFlights.get(i).flight_ID.toString() + "</td><td>"
+									+ returnedFlights.get(i).origin + " at "
+									+ FormatDate.readable(returnedFlights.get(i).departure_time) + "</td><td>"
 									+ returnedFlights.get(i).destination + " at "
-									+ returnedFlights.get(i).departure_time
-									+ "<td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
+									+ FormatDate.readable(returnedFlights.get(i).departure_time)
+									+ "</td><td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
 									+ returnedFlights.get(i).flight_ID
 									+ "><input type='submit' name='Buy' value='Buy'></td></form>");
 						} else {
 							if (returnedFlights.get(i).is_connection > 0) {
-								out.println("<tr><td>Flight Numbers: "+returnedFlights.get(i).flight_ID.toString()+", "+returnedFlights.get(i+1).flight_ID.toString()+"</td><td>" + " leaves "
-										+ returnedFlights.get(i).origin + " at " + returnedFlights.get(i).departure_time
-										+ " arrives at " + returnedFlights.get(i).destination + " at "
+								out.println("<tr><td>Flight Numbers: " + returnedFlights.get(i).flight_ID.toString()
+										+ ", " + returnedFlights.get(i + 1).flight_ID.toString() + "</td><td>"
+										+ " leaves " + returnedFlights.get(i).origin + " at "
+										+ returnedFlights.get(i).departure_time + " arrives at "
+										+ returnedFlights.get(i).destination + " at "
 										+ returnedFlights.get(i).departure_time + "</br>leaves "
 										+ returnedFlights.get(i + 1).origin + " at "
 										+ returnedFlights.get(i + 1).departure_time + " arrives at "

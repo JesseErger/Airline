@@ -35,7 +35,7 @@
 			sql = String.format(
 					"INSERT INTO `sys`.`reservations` (`username`, `date_of_depature`, `seating_class`, `flight_ID`,`amount`)"
 							+ "VALUES ('%s', '%s', '%s', '%s', '%s')",
-					session.getAttribute("Username").toString(), rs.getDate("departure_time"), ticketClass,
+					session.getAttribute("Username").toString(), rs.getTimestamp("departure_time"), ticketClass,
 					flightList.get(i), rs.getInt(ticketClass + "_cost"));
 			createReservation.executeUpdate(sql);
 
