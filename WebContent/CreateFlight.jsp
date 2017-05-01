@@ -83,23 +83,9 @@
         	Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
 	        added_by = session.getAttribute("Username").toString();
 
-        	while(arrival_temp.isBefore(arrive) ){
-        		if(frequency.equals("once")){
-					arrival_temp = arrive;
-				}
-				else if(frequency.equals("daily")){
-					arrival_temp = arrival_temp.plusHours(24);
-					depart_temp = depart_temp.plusHours(24);
-				}
-				else if(frequency.equals("weekly")){
-					arrival_temp = arrival_temp.plusDays(7);//5 hour buffer
-					depart_temp = depart_temp.plusDays(7);
-				}
-				else if(frequency.equals("monthly")){
-					arrival_temp = arrival_temp.plusMonths(1);
-					depart_temp = depart_temp.plusMonths(1);
-				}
-				else{}
+        	while(arrival_temp.isBefore(arrive.plusSeconds(1))) {
+        		
+				
         		//String date_time = date_of_departure.concat(time_of_departure.concat(":00"));
                 //String date_time_arrival = arrival_date.concat(arrival_time.concat(":00")); 
                 String date_time = depart_temp.toString("yyyy-MM-dd hh:mm:ss");//date_of_departure.concat(time_of_departure.concat(":00"));
@@ -110,6 +96,21 @@
 	        String sql = String.format("INSERT INTO `sys`.`flight` (`added_by`, `destination`, `departure_time`, `arrival_time`,`origin`, `first_cost`,`business_cost`,`coach_cost`, `plane_ID`,`business_vacancy`,`coach_vacancy`, `first_vacancy` )" + 
 	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", added_by, destination, date_time, date_time_arrival, origin, first_cost, business_cost, coach_cost, plane_ID, b_capacity, c_capacity, f_capacity );
 	        stmt.executeUpdate(sql);
+	        if(frequency.equals("once")){
+				arrival_temp = arrive;
+			}
+			else if(frequency.equals("daily")){
+				arrival_temp = arrival_temp.plusHours(24);
+				depart_temp = depart_temp.plusHours(24);
+			}
+			else if(frequency.equals("weekly")){
+				arrival_temp = arrival_temp.plusDays(7);//5 hour buffer
+				depart_temp = depart_temp.plusDays(7);
+			}
+			else if(frequency.equals("monthly")){
+				arrival_temp = arrival_temp.plusMonths(1);
+				depart_temp = depart_temp.plusMonths(1);
+			}
                 
         	}
         		
