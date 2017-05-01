@@ -38,6 +38,8 @@ h1 {
 }
 
 body {
+background-image: url(plane5.PNG);
+font-family: Verdana,sans-serif;
 
 }
 
@@ -57,7 +59,7 @@ h2 {
 
 .container {
 	overflow: hidden;
-	background-color: blue;
+	background-color: grey;
 	font-family: Arial;
 }
 
@@ -82,7 +84,7 @@ h2 {
 	outline: none;
 	color: white;
 	padding: 14px 16px;
-	background-color: blue;
+	background-color: #9E9C86;
 }
 
 .container a:hover, .dropdown:hover .dropbtn {
@@ -92,7 +94,7 @@ h2 {
 .dropdown-content {
 	display: none;
 	position: absolute;
-	background-color: #f9f9f9;
+	background-color: white;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
@@ -116,17 +118,50 @@ h2 {
 }
 
 .show {
-	display: block
+	display: block;
+	
+
 }
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.hero-image {
+  background-image: url("manager.PNG");
+  height: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
 </style>
-<title>Account</title>
+
+<title>M Account</title>
 </head>
 <body>
 
+		
+<div class="hero-image">
+  <div class="hero-text">
+    <h2 style="font-size:50px" >Manage our flight</h2>
+  </div>
+</div>	
 
 	
-
-	<div class="container">
+<div class="container">
 		<a href="LogOut.jsp">Log out</a>
 		<a href="SearchPage.jsp">Search Flights</a>
 		<div class="dropdown">
@@ -136,11 +171,10 @@ h2 {
 					<a href="SearchRefundReservation.jsp">Refund Reservation</a>
 				
 			</div>
-		</div>
-
-	
-	
+		</div>	
 		
+		
+
 	
 	
 	<script>

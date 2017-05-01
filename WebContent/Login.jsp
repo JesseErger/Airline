@@ -239,7 +239,7 @@ left: 20px;
     padding-top: 30px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #69C830;
+    background-color: #BFA381;
     color: white;
 }
 
