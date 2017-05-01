@@ -8,6 +8,7 @@
 	<thead>
 		<tr>
 			<th>Flight Number</th>
+			<th>Cost</th>
 			<th>Departing</th>
 			<th>Arriving</th>
 			<th>Purchase</th>
@@ -32,33 +33,56 @@
 					response.setHeader("Refresh", "5;url=SearchPage.jsp");
 				} else {
 					for (int i = 0; i < returnedFlights.size(); i++) {
+						Integer cost;
 						if (returnedFlights.get(i).is_connection == 0) {
-							out.println("<tr><td>" + returnedFlights.get(i).flight_ID.toString() + "</td><td>"
+
+							if (ticketClass.equals("coach")) {
+								cost = returnedFlights.get(i).coach_cost;
+							} else if (ticketClass.equals("businesss")) {
+								cost = returnedFlights.get(i).business_cost;
+							} else {
+								cost = returnedFlights.get(i).first_cost;
+							}
+
+							out.println("<tr><td>" + returnedFlights.get(i).flight_ID.toString() + "</td><td>$" + cost
+									+ "</td><td>"
+
 									+ returnedFlights.get(i).origin + " at "
 									+ FormatDate.readable(returnedFlights.get(i).departure_time) + "</td><td>"
+
 									+ returnedFlights.get(i).destination + " at "
 									+ FormatDate.readable(returnedFlights.get(i).departure_time)
 									+ "</td><td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
 									+ returnedFlights.get(i).flight_ID
 									+ "><input type='submit' name='Buy' value='Buy'></td></form>");
-						} else {
-							if (returnedFlights.get(i).is_connection > 0) {
-								out.println("<tr><td>Flight Numbers: " + returnedFlights.get(i).flight_ID.toString()
-										+ ", " + returnedFlights.get(i + 1).flight_ID.toString() + "</td><td>"
-										+ " leaves " + returnedFlights.get(i).origin + " at "
-										+ returnedFlights.get(i).departure_time + " arrives at "
-										+ returnedFlights.get(i).destination + " at "
-										+ returnedFlights.get(i).departure_time + "</br>leaves "
-										+ returnedFlights.get(i + 1).origin + " at "
-										+ returnedFlights.get(i + 1).departure_time + " arrives at "
-										+ returnedFlights.get(i + 1).destination + " at "
-										+ returnedFlights.get(i + 1).departure_time
-										+ "<td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
-										+ returnedFlights.get(i).flight_ID.toString() + ","
-										+ returnedFlights.get(i + 1).flight_ID.toString()
-										+ "><input type='submit' name='Buy' value='Buy'></td></form>");
-								i++;
+						} else if (returnedFlights.get(i).is_connection > 0) {
+
+							if (ticketClass.equals("coach")) {
+								cost = returnedFlights.get(i).coach_cost + returnedFlights.get(i + 1).coach_cost;
+							} else if (ticketClass.equals("businesss")) {
+								cost = returnedFlights.get(i).business_cost + returnedFlights.get(i + 1).business_cost;
+							} else {
+								cost = returnedFlights.get(i).first_cost + returnedFlights.get(i + 1).first_cost;
 							}
+
+							out.println("<tr><td>" + returnedFlights.get(i).flight_ID.toString() + "<br>"
+									+ returnedFlights.get(i + 1).flight_ID.toString() + "</td><td>$"
+											+ cost.toString() + "</td><td>"
+									
+									+ returnedFlights.get(i).origin + " at "
+									+ FormatDate.readable(returnedFlights.get(i).departure_time) + "<br>"
+									+ returnedFlights.get(i + 1).origin + " at "
+									+ FormatDate.readable(returnedFlights.get(i + 1).departure_time) + "</td><td>"
+
+									+ returnedFlights.get(i).destination + " at "
+									+ FormatDate.readable(returnedFlights.get(i).departure_time) + "<br>"
+									+ returnedFlights.get(i + 1).destination + " at "
+									+ FormatDate.readable(returnedFlights.get(i + 1).departure_time)
+									+ "</td><td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
+									+ returnedFlights.get(i).flight_ID.toString() + ","
+									+ returnedFlights.get(i + 1).flight_ID.toString()
+									+ "><input type='submit' name='Buy' value='Buy'></td></form>");
+							i++;
 
 						}
 					}
