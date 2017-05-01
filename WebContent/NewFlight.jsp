@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 body {
+   font-family: Verdana,sans-serif;
+   background-image:url(createManager-B.PNG)
+
 }
 
 h1 {
@@ -18,6 +21,74 @@ td {
 	font-weight: bold;
 	font-style: center
 }
+
+#flight{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    color:black;
+  
+    
+}
+
+#flight td, #flight th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border: 5px;
+}
+
+
+
+#flight th {
+    padding-top: 20px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #DAC2B2;
+    color: black;
+}
+
+input[type=text], input[type=password] {
+    width: 75%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+
+h1 {
+	text-align: center;
+	color: red;
+}
+
+#sub{
+  background-color: green;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    width: 25%;
+}
+
+#res{
+background-color: red;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    width: 25%;
+
+}
+#left{
+  text-align: right;
+}
+
+#right{
+  text-align: left;
+}
+
 
 a:hover {
 	background-color: blue;
@@ -35,7 +106,7 @@ a:active {
 <body>
 	<form method="post" action="CreateFlight.jsp">
 		<center>
-			<table border="1" cellpadding="5" cellspacing="2">
+			<table border="1" cellpadding="5" cellspacing="2" id="flight">
 				<thead>
 					<tr>
 						<th colspan="2">Add Flight</th>
@@ -185,21 +256,21 @@ a:active {
 				%> --%>
 				
 				<tbody>					
-					<tr>
-						<td>First Class Pricing</td>
+					<tr >
+						<td id="left">First Class Pricing</td>
 						<td><input type="text" name="first_cost" required /></td>
 					</tr>
 					<tr>
-						<td>Business Class Pricing</td>
+						<td id="left">Business Class Pricing</td>
 						<td><input type="text" name="business_cost" required /></td>
 					</tr>
 					<tr>
-						<td>Coach Pricing</td>
+						<td id="left">Coach Pricing</td>
 						<td><input type="text" name="coach_cost" required /></td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Submit" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
+						<td colspan="2" align="center"><input id="sub" type="submit"
+							value="Submit" /> &nbsp;&nbsp; <input id="res"  type="reset" value="Reset" />
 						</td>
 					</tr>
 				</tbody>
