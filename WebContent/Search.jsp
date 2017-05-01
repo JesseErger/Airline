@@ -73,6 +73,7 @@
 				<th onclick="sortTable(1)"><u>Cost</u></th>
 				<th>Departing</th>
 				<th>Arriving</th>
+				<th>Map</th>
 				<th>Purchase</th>
 			</tr>
 		</thead>
@@ -116,7 +117,11 @@
 										+ FormatDate.readable(returnedFlights.get(i).departure_time) + "</td><td>"
 
 										+ returnedFlights.get(i).destination + " at "
-										+ FormatDate.readable(returnedFlights.get(i).arrival_time)
+										+ FormatDate.readable(returnedFlights.get(i).arrival_time) + "</td><td>"
+										+ "<form method='push' action='MapPage.jsp'><input id='from' type='hidden' name='from' value='"
+										+ returnedFlights.get(i).origin + "'><input id='to' type='hidden' name='to' value='"
+										+ returnedFlights.get(i).destination
+										+ "'><input type='submit' name='Map' value='Map'></form>"
 										+ "</td><td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
 										+ returnedFlights.get(i).flight_ID
 										+ "><input type='submit' name='Buy' value='Buy'></form></td>");
