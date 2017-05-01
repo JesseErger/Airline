@@ -67,7 +67,13 @@ html, body {
 					.push(
 	<%out.print(request.getParameter("from").toLowerCase().replaceAll("\\s+", ""));%>
 		)
-			flightPlanCoordinates
+	<%if (request.getParameter("from1") != null) {
+				out.println("flightPlanCoordinates.push("
+						+ request.getParameter("from1").toLowerCase().replaceAll("\\s+", "") + ")");
+				out.println("flightPlanCoordinates.push("
+						+ request.getParameter("to1").toLowerCase().replaceAll("\\s+", "") + ")");
+			}%>
+		flightPlanCoordinates
 			var flightPath = new google.maps.Polyline({
 				path : flightPlanCoordinates,
 				geodesic : true,

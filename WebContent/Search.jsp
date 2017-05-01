@@ -150,7 +150,15 @@
 										+ returnedFlights.get(i).destination + " at "
 										+ FormatDate.readable(returnedFlights.get(i).arrival_time) + "<br>"
 										+ returnedFlights.get(i + 1).destination + " at "
-										+ FormatDate.readable(returnedFlights.get(i + 1).arrival_time)
+										+ FormatDate.readable(returnedFlights.get(i + 1).arrival_time) + "</td><td>"
+										+ "<form method='push' action='MapPage.jsp'><input id='from' type='hidden' name='from' value='"
+										+ returnedFlights.get(i).origin + "'><input id='to' type='hidden' name='to' value='"
+										+ returnedFlights.get(i).destination
+										+ "'>"
+										+ "<form method='push' action='MapPage.jsp'><input id='from1' type='hidden' name='from1' value='"
+										+ returnedFlights.get(i+1).origin + "'><input id='to1' type='hidden' name='to1' value='"
+										+ returnedFlights.get(i+1).destination
+										+ "'><input type='submit' name='Map' value='Map'></form>"
 										+ "</td><td><form method='post' action='Checkout.jsp'><input id='flightNumber' type='hidden' name='flightNumber' value="
 										+ returnedFlights.get(i).flight_ID.toString() + ","
 										+ returnedFlights.get(i + 1).flight_ID.toString()
