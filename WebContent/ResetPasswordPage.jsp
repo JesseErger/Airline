@@ -12,10 +12,12 @@
 body{
   background-image: url(ForgetPassword-B.PNG);
   font-family: Verdana,sans-serif;
+  color:white;
 }
 
 h1{
    text-align:center;
+   color: #060C18
 }
 b{
   color:black;
@@ -75,7 +77,7 @@ button {
 td{
   font-size: 20px;
   font-weight: bold;
-  color:#060C18;
+  color:white;
 }
 </style>
 <body>
