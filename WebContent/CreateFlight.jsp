@@ -114,7 +114,7 @@
         	}
         		
 	        out.print("Flight has been added! Redirecting you to your homepage");
-	        response.setHeader("Refresh", "20;url=Account.jsp");
+	        response.setHeader("Refresh", "5;url=Account.jsp");
 
         }
 	}
