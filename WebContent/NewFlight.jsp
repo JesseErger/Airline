@@ -49,12 +49,14 @@ a:active {
 				String time_of_departure = request.getParameter("time_of_departure").toString();
 				String arrival_date = request.getParameter("arrival_date").toString();
 				String arrival_time = request.getParameter("arrival_time").toString();
+				
 				session.setAttribute("origin", origin);
 				session.setAttribute("destination", destination);
 				session.setAttribute("date_of_departure", date_of_departure);
 				session.setAttribute("time_of_departure", time_of_departure);
 				session.setAttribute("arrival_date", arrival_date);
 				session.setAttribute("arrival_time", arrival_time);
+				session.setAttribute("frequency", frequency);
 				
 				String [] dep_date_parts =session.getAttribute("date_of_departure").toString().split("-");
 		        String [] dep_time_parts = time_of_departure.split(":");
