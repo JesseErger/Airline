@@ -7,10 +7,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Update Flight Pricing</title>
 </head>
+<style>
+body{
+background-image:url(Signup-B.jpg);
+  font-family: Verdana,sans-serif;
+  }
+  
+  #flight{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    color:black;
+    text-alian:center;
+  
+    
+}
+
+#flight td, #flight th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border: 5px;
+}
+
+#flight tr:hover {background-color: #CCB3D3;}
+
+#flight th {
+    padding-top: 20px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #DAC2B2;
+    color: black;
+}
+</style>
 <body>
 
 
-<table border="1" cellpadding="5" cellspacing="2">
+<table border="1" cellpadding="5" cellspacing="2" id=flight>
 	<thead>
 		<tr>
 			<th colspan="9">Flights Available To Update</th>
