@@ -85,7 +85,9 @@
 
         	while(arrival_temp.isBefore(arrive.plusSeconds(1))) {
         		
-				
+        		if(frequency.equals("once")){
+    				arrival_temp = arrive.plusSeconds(1);
+    			}
         		//String date_time = date_of_departure.concat(time_of_departure.concat(":00"));
                 //String date_time_arrival = arrival_date.concat(arrival_time.concat(":00")); 
                 String date_time = depart_temp.toString("yyyy-MM-dd hh:mm:ss");//date_of_departure.concat(time_of_departure.concat(":00"));
@@ -96,10 +98,8 @@
 	        String sql = String.format("INSERT INTO `sys`.`flight` (`added_by`, `destination`, `departure_time`, `arrival_time`,`origin`, `first_cost`,`business_cost`,`coach_cost`, `plane_ID`,`business_vacancy`,`coach_vacancy`, `first_vacancy` )" + 
 	        		"VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", added_by, destination, date_time, date_time_arrival, origin, first_cost, business_cost, coach_cost, plane_ID, b_capacity, c_capacity, f_capacity );
 	        stmt.executeUpdate(sql);
-	        if(frequency.equals("once")){
-				arrival_temp = arrive;
-			}
-			else if(frequency.equals("daily")){
+	        
+			if(frequency.equals("daily")){
 				arrival_temp = arrival_temp.plusHours(24);
 				depart_temp = depart_temp.plusHours(24);
 			}
