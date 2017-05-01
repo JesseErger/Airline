@@ -72,29 +72,49 @@ a:active {
 		        int min_a = Integer.parseInt(arr_time_parts[1]);
 		        
 		        DateTime depart = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d);
-		        DateTime temp = new DateTime(year_a,  month_a,  day_a,  hour_a,  min_a); //add 5 hour buffer
-		        DateTime arrive = temp.plusHours(5);
+		        DateTime depart_temp = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d);
+		        DateTime arrival_temp = new DateTime(year_d,  month_d,  day_d,  hour_d,  min_d); 
+		        DateTime arrive = new DateTime(year_a,  month_a,  day_a,  hour_a,  min_a);
 		        //Interval intv = new Interval(depart, arrive);        
 		        //String duration = Long.toString(dur.getStandardMinutes()); 
 				
 				
 				
-					try {
+					/* try { */
+						
 						Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sys" , "root", "Pwtemp01!");
 						Statement stmt = null;
 				        stmt = conn.createStatement();
-				        
-				        PreparedStatement pst1 = conn.prepareStatement("Select plane_ID,departure_time,arrival_time from flight");
-				        PreparedStatement pst2 = conn.prepareStatement("Select plane_ID from plane");
-				        
 
-						ResultSet resultset1 = pst1.executeQuery();
-						ResultSet resultset2 = pst2.executeQuery();
-						ResultSetMetaData resultsetmd1 = resultset1.getMetaData();
-						int size1 = resultsetmd1.getColumnCount();	
 						ArrayList<String> avail_planes = new ArrayList<String>();
 						ArrayList<String> all_planes = new ArrayList<String>();
 						ArrayList<String> not_avail_planes = new ArrayList<String>();
+						boolean are_more_dates = true;
+					while(arrival_temp.isBefore(arrive) ){
+						if(frequency.equals("once")){
+							arrival_temp = arrive.plusHours(5); //5 hour buffer
+						}
+						else if(frequency.equals("daily")){
+							arrival_temp = arrival_temp.plusHours(29);//5 hour buffer
+							depart_temp = depart_temp.plusHours(24);
+						}
+						else if(frequency.equals("weekly")){
+							arrival_temp = arrival_temp.plusDays(7);//5 hour buffer
+							arrival_temp = arrival_temp.plusHours(5);//5 hour buffer
+							depart_temp = depart_temp.plusDays(7);
+						}
+						else if(frequency.equals("monthly")){
+							arrival_temp = arrival_temp.plusMonths(1);//5 hour buffer
+							arrival_temp = arrival_temp.plusHours(5);//5 hour buffer
+							depart_temp = depart_temp.plusMonths(1);
+						}
+						
+						PreparedStatement pst2 = conn.prepareStatement("Select plane_ID from plane");
+						ResultSet resultset2 = pst2.executeQuery();
+						PreparedStatement pst1 = conn.prepareStatement("Select plane_ID,departure_time,arrival_time from flight");
+						ResultSet resultset1 = pst1.executeQuery();
+						ResultSetMetaData resultsetmd1 = resultset1.getMetaData();
+						int size1 = resultsetmd1.getColumnCount();	
 						for(int z = 0; resultset2.next();z++){
 							String p_id = resultset2.getString(1);
 							all_planes.add(p_id);
@@ -121,10 +141,13 @@ a:active {
 					        int min_a1 = Integer.parseInt(arr_time_parts1[1]);
 					        DateTime depart1 = new DateTime(year_d1,  month_d1,  day_d1,  hour_d1,  min_d1);
 					        DateTime arrive1 = new DateTime(year_a1,  month_a1,  day_a1,  hour_a1,  min_a1);
-					        if( !arrive.isBefore(depart1) && !depart.isAfter(arrive1) ){
+					        if( !arrival_temp.isBefore(depart1) && !depart_temp.isAfter(arrive1) ){
 					        	not_avail_planes.add(p_id1);
 					        }
+					        
 						}
+						
+					}//end while
 						for(int y =0;y<all_planes.size();y++){
 							if(!not_avail_planes.contains(all_planes.get(y))){
 								avail_planes.add(all_planes.get(y));
@@ -153,11 +176,11 @@ a:active {
 						%>
 						
 					</select>
-				<%
+				<%-- <%
 					} catch (Exception e) {
 						out.println("INVALID ->" + e);
 					}					
-				%>
+				%> --%>
 				
 				<tbody>					
 					<tr>
