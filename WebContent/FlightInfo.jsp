@@ -127,7 +127,7 @@ a:active {
 								<option value="New York">New York</option>
 								<option value="Iowa City">Iowa City</option>
 								<option value="Des Moines">Des Moines</option>
-								<option value="San Franscisco">San Francisco</option>
+								<option value="San Francisco">San Francisco</option>
 						</select></td>
 					</tr>
 					<tr>
@@ -137,7 +137,7 @@ a:active {
 								<option value="New York" selected>New York</option>
 								<option value="Iowa City">Iowa City</option>
 								<option value="Des Moines">Des Moines</option>
-								<option value="San Franscisco">San Francisco</option>
+								<option value="San Francisco">San Francisco</option>
 						</select></td>
 					</tr>
 					<tr>
